@@ -4,11 +4,18 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public float movePower = 1000f;
+    public float Speed = 500f;
     public GameObject[] weapons;
     public bool[] hasWeapons;
 
+    public int coin;
+    public int health;
+
+    public int maxcoin;
+    public int maxhealth;
+    
     float hAxis, vAxis;
+
     bool iDown;
     bool sDown1;
     bool sDown2;
@@ -39,7 +46,8 @@ public class Player : MonoBehaviour
         Swap();
         Interaction();
         if (Input.GetButton("Horizontal"))
-            spriteRenderer.flipX = Input.GetAxisRaw("Horizontal") == -1;
+            if(Input.GetAxisRaw("Horizontal") > 0) transform.localScale = new Vector3(1,1,1);
+            else if(Input.GetAxisRaw("Horizontal") < 0) transform.localScale = new Vector3(-1,1,1);
     }
     void GetInput()
     {
@@ -62,7 +70,7 @@ public class Player : MonoBehaviour
         
         moveVelocity = new Vector3(hAxis, vAxis, 0);
 
-        rigid.velocity = moveVelocity * movePower * Time.deltaTime;
+        rigid.velocity = moveVelocity * Speed * Time.deltaTime;
         //transform.position += moveVelocity * movePower * Time.deltaTime;
     }
     void Swap()
@@ -102,7 +110,6 @@ public class Player : MonoBehaviour
             }
         }
     }
-
 
     void OnTriggerStay2D(Collider2D other)
     {

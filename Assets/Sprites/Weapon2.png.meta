@@ -1,13 +1,19 @@
 fileFormatVersion: 2
-guid: 9b120707e024a424e89bbe459914180f
+guid: a5dfe532cd01fbd41bd33b0966260d52
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 21300000
-    second: Sword
+      213: -4906864666938018422
+    second: Magic
   - first:
-      213: -7237694045298799272
-    second: Hammer
+      213: -5704627066735044902
+    second: Weapon2_1
+  - first:
+      213: -7310884378538523348
+    second: Weapon2_2
+  - first:
+      213: 3954836654050351759
+    second: Weapon2_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -63,61 +69,76 @@ TextureImporter:
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
-  applyGammaDecoding: 1
+  applyGammaDecoding: 0
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Sword
+      name: Magic
       rect:
         serializedVersion: 2
-        x: 112
-        y: 129
-        width: 7
-        height: 17
-      alignment: 9
-      pivot: {x: 0.5, y: 0.13794215}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0a7f7ffad3391054a80549e2336b8f47
-      internalID: 21300000
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Hammer
-      rect:
-        serializedVersion: 2
-        x: 120
-        y: 129
+        x: 324
+        y: 337
         width: 8
-        height: 18
+        height: 30
       alignment: 9
-      pivot: {x: 0.4999981, y: 0.12695567}
+      pivot: {x: 0.5, y: 0.16999309}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 85d410ddc9b8e8b90800000000000000
-      internalID: -7237694045298799272
+      spriteID: a857e36459057ebb0800000000000000
+      internalID: -4906864666938018422
       vertices: []
       indices: 
       edges: []
@@ -125,7 +146,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 315e08e488b7a1d4aa3e629b2b69c7d8
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 

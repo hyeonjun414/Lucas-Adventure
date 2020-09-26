@@ -31,7 +31,7 @@ public class Player : MonoBehaviour
     
 
     GameObject nearObject;
-    GameObject equipWeapon;
+    Weapon equipWeapon;
     int equipWeaponIndex = -1;
     float fireDelay;
     void Start()
@@ -43,7 +43,11 @@ public class Player : MonoBehaviour
     void Update()
     {
         GetInput();
+        Attack();
+        Move();
         Swap();
+        
+        
         Interaction();
         if (Input.GetButton("Horizontal"))
             if(Input.GetAxisRaw("Horizontal") > 0) transform.localScale = new Vector3(1,1,1);
@@ -53,6 +57,7 @@ public class Player : MonoBehaviour
     {
         hAxis = Input.GetAxisRaw("Horizontal");
         vAxis = Input.GetAxisRaw("Vertical");
+        fDown = Input.GetButtonDown("Fire1");
         iDown = Input.GetButtonDown("Interaction");
         sDown1 = Input.GetButtonDown("Swap1");
         sDown2 = Input.GetButtonDown("Swap2");
@@ -60,7 +65,23 @@ public class Player : MonoBehaviour
     }
     void FixedUpdate()
     {
-        Move();
+        
+    }
+    //공격
+    void Attack()
+    {
+        if(equipWeapon == null)
+        {
+            return;
+        }
+        fireDelay += Time.deltaTime;
+        isFireReady = equipWeapon.rate < fireDelay;
+
+        if(fDown && isFireReady)
+        {
+            equipWeapon.Use();
+            fireDelay = 0;
+        }
     }
     //이동
     void Move()
@@ -89,10 +110,10 @@ public class Player : MonoBehaviour
         if ((sDown1 || sDown2 || sDown3))
         {
             if(equipWeapon != null)
-                equipWeapon.SetActive(false);
+                equipWeapon.gameObject.SetActive(false);
             equipWeaponIndex = weaponIndex;
-            equipWeapon = weapons[weaponIndex];
-            equipWeapon.SetActive(true);
+            equipWeapon = weapons[weaponIndex].GetComponent<Weapon>();
+            equipWeapon.gameObject.SetActive(true);
             
         }
     }

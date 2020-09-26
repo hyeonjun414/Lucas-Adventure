@@ -10,7 +10,8 @@ public class Weapon : MonoBehaviour
     public float rate;
     public BoxCollider2D meleeArea;
     public TrailRenderer trailEffect;
-
+    GameObject Arm;
+    float ro_angle;
     public void Use() //플레이어가 무기를 사용
     {
         if(type == Type.Melee)
@@ -21,12 +22,21 @@ public class Weapon : MonoBehaviour
     }
     IEnumerator Swing()
     {
+        Arm = gameObject;
+        if (gameObject.transform.parent.parent.localScale.x == -1)
+            ro_angle = 15;
+        else
+            ro_angle = -15;
+        Arm.transform.parent.rotation = Quaternion.Euler(0,0,ro_angle*3);
         yield return new WaitForSeconds(0.1f);
         meleeArea.enabled = true;
         trailEffect.enabled = true;
-        yield return new WaitForSeconds(0.3f);
+        Arm.transform.parent.rotation = Quaternion.Euler(0, 0, ro_angle*6);
+        yield return new WaitForSeconds(0.2f);
         meleeArea.enabled = false;
-        yield return new WaitForSeconds(0.3f);
+        Arm.transform.parent.rotation = Quaternion.Euler(0, 0, ro_angle*3);
+        yield return new WaitForSeconds(0.1f);
+        Arm.transform.parent.rotation = Quaternion.Euler(0, 0, 0);
         trailEffect.enabled = false;
     }
     

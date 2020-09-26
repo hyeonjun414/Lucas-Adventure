@@ -110,6 +110,28 @@ public class Player : MonoBehaviour
             }
         }
     }
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.tag == "Item")
+        {
+            Item item = other.GetComponent<Item>();
+            switch (item.type)
+            {
+                case Item.Type.Coin:
+                    coin += item.value;
+                    if (coin > maxcoin)
+                        coin = maxcoin;
+                    break;
+                case Item.Type.Heart:
+                    health += item.value;
+                    if (health > maxhealth)
+                        health = maxhealth;
+                    break;
+            }
+            Destroy(other.gameObject);
+        }
+        
+    }
 
     void OnTriggerStay2D(Collider2D other)
     {

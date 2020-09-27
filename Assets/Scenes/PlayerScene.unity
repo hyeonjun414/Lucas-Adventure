@@ -198,6 +198,8 @@ MonoBehaviour:
   rate: 1
   meleeArea: {fileID: 35639227}
   trailEffect: {fileID: 990487780}
+  bulletPos: {fileID: 0}
+  bullet: {fileID: 0}
 --- !u!212 &35639230
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -274,7 +276,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 272751688}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.3, y: 0.15, z: 0}
+  m_LocalPosition: {x: -0.43, y: -0.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 282983907}
@@ -409,11 +411,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 282983905}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.5, y: -0.5, z: -0}
+  m_LocalPosition: {x: -2.41, y: -0.52, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2093019747}
   - {fileID: 272751689}
+  - {fileID: 1451326853}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3452,6 +3455,8 @@ MonoBehaviour:
   rate: 0.4
   meleeArea: {fileID: 1113552176}
   trailEffect: {fileID: 1920149680}
+  bulletPos: {fileID: 0}
+  bullet: {fileID: 0}
 --- !u!1 &1200270998
 GameObject:
   m_ObjectHideFlags: 0
@@ -3635,6 +3640,36 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!1 &1451326852
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1451326853}
+  m_Layer: 0
+  m_Name: bulletPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1451326853
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1451326852}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.5, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 282983907}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1763772844
 GameObject:
   m_ObjectHideFlags: 0
@@ -3709,9 +3744,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 1
   damage: 15
-  rate: 0.5
+  rate: 0.4
   meleeArea: {fileID: 1763772846}
   trailEffect: {fileID: 1290697875}
+  bulletPos: {fileID: 1451326853}
+  bullet: {fileID: 8717677395532401123, guid: 0f413abe5829ead48803f3c9b49ec7de, type: 3}
 --- !u!212 &1763772849
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3779,7 +3816,7 @@ GameObject:
   - component: {fileID: 1812423449}
   m_Layer: 0
   m_Name: wall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3828,7 +3865,7 @@ CompositeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:

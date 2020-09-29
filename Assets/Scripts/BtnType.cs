@@ -29,7 +29,7 @@ public class BtnType : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 Debug.Log("새 게임");
                 break;
             case BTNType.Continue:
-                SceneLoad.LoadSceneHandle("PlayScene", 1);
+                SceneLoad.LoadSceneHandle("PlayerScene", 0);
                 Debug.Log("이어하기");
                 break;
             case BTNType.Option:

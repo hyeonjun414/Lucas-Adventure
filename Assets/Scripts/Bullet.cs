@@ -8,9 +8,9 @@ public class Bullet : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Wall")
+        if(collision.gameObject.tag != "Player")
         {
-            Destroy(gameObject, 3);
+            Destroy(gameObject, 0.1f);
         }
     }
 }

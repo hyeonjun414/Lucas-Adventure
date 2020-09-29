@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
     bool sDown3;
     bool fDown;
 
-
+    bool isMotion;
     bool isFireReady;
 
     Rigidbody2D rigid;
@@ -36,6 +36,7 @@ public class Player : MonoBehaviour
     float fireDelay;
     void Start()
     {
+        isMotion = false;
         rigid = gameObject.GetComponent<Rigidbody2D>();
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
     }
@@ -46,8 +47,6 @@ public class Player : MonoBehaviour
         Attack();
         Move();
         Swap();
-        
-        
         Interaction();
         if (Input.GetButton("Horizontal"))
             if(Input.GetAxisRaw("Horizontal") > 0) transform.localScale = new Vector3(1,1,1);
@@ -70,15 +69,18 @@ public class Player : MonoBehaviour
     //공격
     void Attack()
     {
+        
         if(equipWeapon == null)
         {
             return;
         }
+
         fireDelay += Time.deltaTime;
         isFireReady = equipWeapon.rate < fireDelay;
 
         if(fDown && isFireReady)
         {
+            StartCoroutine("icanswap");
             equipWeapon.Use();
             fireDelay = 0;
         }
@@ -96,6 +98,8 @@ public class Player : MonoBehaviour
     }
     void Swap()
     {
+        if (isMotion)
+            return;
         if (sDown1 && (!hasWeapons[0] || equipWeaponIndex == 0))
             return;
         if (sDown2 && (!hasWeapons[1] || equipWeaponIndex == 1))
@@ -169,5 +173,11 @@ public class Player : MonoBehaviour
         {
             nearObject = null;
         }
+    }
+    IEnumerator icanswap()
+    {
+        isMotion = true;
+        yield return new WaitForSeconds(equipWeapon.rate);
+        isMotion = false;
     }
 }

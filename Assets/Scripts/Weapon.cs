@@ -31,41 +31,51 @@ public class Weapon : MonoBehaviour
     IEnumerator Swing()
     {
         Arm = gameObject;
-        if (gameObject.transform.parent.parent.localScale.x == -1)
-            ro_angle = 15;
-        else
-            ro_angle = -15;
-        Arm.transform.parent.rotation = Quaternion.Euler(0,0,ro_angle*3);
         yield return new WaitForSeconds(0.1f);
         meleeArea.enabled = true;
         trailEffect.enabled = true;
-        Arm.transform.parent.rotation = Quaternion.Euler(0, 0, ro_angle*6);
+        for (int i = 0; i < 15; i++)
+        {
+            yield return null;
+            Arm.transform.parent.Rotate(0, 0, -3, Space.Self);
+        }
+        for (int i = 0; i < 15; i++)
+        {
+            yield return null;
+            Arm.transform.parent.Rotate(0, 0, 3, Space.Self);
+        }
         yield return new WaitForSeconds(0.1f);
         meleeArea.enabled = false;
-        Arm.transform.parent.rotation = Quaternion.Euler(0, 0, ro_angle*3);
         yield return new WaitForSeconds(0.1f);
-        Arm.transform.parent.rotation = Quaternion.Euler(0, 0, 0);
         trailEffect.enabled = false;
     }
     IEnumerator Shot()
     {
-        
         GameObject instantBullet = Instantiate(bullet, new Vector2(bulletPos.position.x, bulletPos.position.y), Quaternion.identity);
         Rigidbody2D bulletRigid = instantBullet.GetComponent<Rigidbody2D>();
-        bulletRigid.velocity = bulletPos.right * 10;
         Arm = gameObject;
-        if (gameObject.transform.parent.parent.localScale.x == -1)
-            ro_angle = 15;
-        else
-            ro_angle = -15;
-        Arm.transform.parent.rotation = Quaternion.Euler(0, 0, ro_angle * 1);
+
         yield return new WaitForSeconds(0.1f);
+        meleeArea.enabled = true;
         trailEffect.enabled = true;
-        Arm.transform.parent.rotation = Quaternion.Euler(0, 0, ro_angle * 2);
+        if (gameObject.transform.parent.parent.localScale.x == -1)
+            bulletRigid.velocity = bulletPos.right * -10;
+        else
+            bulletRigid.velocity = bulletPos.right * 10;
+        for (int i = 0; i < 15; i++)
+        {
+            yield return null;
+            Arm.transform.parent.Rotate(0, 0, -2, Space.Self);
+        }
+        for (int i = 0; i < 15; i++)
+        {
+            yield return null;
+            Arm.transform.parent.Rotate(0, 0, 2, Space.Self);
+        }
+
+        yield return new WaitForSeconds(0.2f);
+        meleeArea.enabled = false;
         yield return new WaitForSeconds(0.1f);
-        Arm.transform.parent.rotation = Quaternion.Euler(0, 0, ro_angle * 1);
-        yield return new WaitForSeconds(0.1f);
-        Arm.transform.parent.rotation = Quaternion.Euler(0, 0, 0);
         trailEffect.enabled = false;
     }
     

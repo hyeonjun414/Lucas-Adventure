@@ -1,24 +1,31 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.AI;
 public class Enemy : MonoBehaviour
 {
     public int maxHealth;
     public int curHealth;
+    public Transform target;
+
 
     Rigidbody2D rigid;
     BoxCollider2D boxCollider;
     Material mat;
-
+    NavMeshAgent nav;
 
     void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
         mat = GetComponent<SpriteRenderer>().material;
+        nav = GetComponent<NavMeshAgent>();
     }
 
+    void Update()
+    {
+        nav.SetDestination(target.position);
+    }
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Melee")
@@ -47,16 +54,17 @@ public class Enemy : MonoBehaviour
         if(curHealth > 0)
         {
             mat.color = Color.white;
-            reactVec = reactVec.normalized;
-            reactVec += Vector2.right;
-            rigid.AddForce(reactVec * 5, ForceMode2D.Impulse);
+            
         }
         else
         {
             mat.color = Color.gray;
             gameObject.layer = 9;
 
-            
+            reactVec = reactVec.normalized;
+            reactVec += Vector2.up;
+            rigid.AddForce(reactVec, ForceMode2D.Impulse);
+
             Destroy(gameObject, 2);
         }
 

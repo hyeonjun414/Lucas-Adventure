@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     public int maxhealth;
     
     float hAxis, vAxis;
+    Vector2 ray_dir;
 
     bool iDown;
     bool sDown1;
@@ -24,6 +25,7 @@ public class Player : MonoBehaviour
 
     bool isMotion;
     bool isFireReady;
+    bool isBorder;
 
     Rigidbody2D rigid;
     SpriteRenderer spriteRenderer;
@@ -64,12 +66,11 @@ public class Player : MonoBehaviour
     }
     void FixedUpdate()
     {
-        
     }
+    
     //공격
     void Attack()
     {
-        
         if(equipWeapon == null)
         {
             return;
@@ -92,7 +93,6 @@ public class Player : MonoBehaviour
 
         
         moveVelocity = new Vector3(hAxis, vAxis, 0);
-
         rigid.velocity = moveVelocity * Speed * Time.deltaTime;
         //transform.position += moveVelocity * movePower * Time.deltaTime;
     }

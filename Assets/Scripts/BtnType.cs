@@ -17,7 +17,7 @@ public class BtnType : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     bool isSound = true;
 
     private void Start()
-    {
+    {   
         defaultScale = buttonScale.localScale;
     }
     public void OnBtnClick()
@@ -25,7 +25,22 @@ public class BtnType : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         switch (currentType)
         {
             case BTNType.New:
-                SceneLoad.LoadSceneHandle("PlayScene", 0);
+                switch (Random.Range(0, 4))
+                {
+                    case 0:
+                        SceneLoad.LoadSceneHandle("map1", 0);
+                        break;
+                    case 1:
+                        SceneLoad.LoadSceneHandle("map2", 0);
+                        break;
+                    case 2:
+                        SceneLoad.LoadSceneHandle("map3", 0);
+                        break;
+                    case 3:
+                        SceneLoad.LoadSceneHandle("map4", 0);
+                        break;
+                }
+                //SceneLoad.LoadSceneHandle("PlayScene", 0);
                 Debug.Log("새 게임");
                 break;
             case BTNType.Continue:

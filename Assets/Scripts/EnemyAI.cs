@@ -8,30 +8,31 @@ public class EnemyAI : MonoBehaviour
     public Transform target;
 
     public float speed = 200f;
-    public float nextWatpointDistance = 3f;
+    public float nextWaypointDistance = 3f;
 
     public Transform enemyGFX;
 
     Path path;
     int currentWaypoint = 0;
     bool reachedEndofPath = false;
-
+    bool isPlayer = false;
 
     Seeker seeker;
     Rigidbody2D rb;
+    CircleCollider2D coll;
     // Start is called before the first frame update
     void Start()
     {
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
-
+        coll = GetComponent<CircleCollider2D>();
         InvokeRepeating("UpdatePath", 0f, 0.5f);
         
     }
 
     void UpdatePath()
     {
-        if(seeker.IsDone())
+        if(seeker.IsDone() && isPlayer)
             seeker.StartPath(rb.position, target.position, OnPathComplete);
     }
 
@@ -66,7 +67,7 @@ public class EnemyAI : MonoBehaviour
 
         float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
 
-        if(distance < nextWatpointDistance)
+        if(distance < nextWaypointDistance)
         {
             currentWaypoint++;
         }
@@ -77,4 +78,23 @@ public class EnemyAI : MonoBehaviour
         else if (rb.velocity.x <= -0.01f)
             enemyGFX.localScale = new Vector3(1f, 1f, 1f);
     }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "Player")
+        {
+            isPlayer = true;
+        }
+        
+    }
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "Player")
+        {
+            isPlayer = false;
+            rb.velocity = new Vector2(0,0);
+        }
+        
+    }
+
 }

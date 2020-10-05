@@ -34,16 +34,6 @@ public class Weapon : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         meleeArea.enabled = true;
         trailEffect.enabled = true;
-        for (int i = 0; i < 15; i++)
-        {
-            yield return null;
-            Arm.transform.parent.Rotate(0, 0, -3, Space.Self);
-        }
-        for (int i = 0; i < 15; i++)
-        {
-            yield return null;
-            Arm.transform.parent.Rotate(0, 0, 3, Space.Self);
-        }
         yield return new WaitForSeconds(0.1f);
         meleeArea.enabled = false;
         yield return new WaitForSeconds(0.1f);
@@ -62,16 +52,6 @@ public class Weapon : MonoBehaviour
             bulletRigid.velocity = bulletPos.right * -10;
         else
             bulletRigid.velocity = bulletPos.right * 10;
-        for (int i = 0; i < 15; i++)
-        {
-            yield return null;
-            Arm.transform.parent.Rotate(0, 0, -2, Space.Self);
-        }
-        for (int i = 0; i < 15; i++)
-        {
-            yield return null;
-            Arm.transform.parent.Rotate(0, 0, 2, Space.Self);
-        }
 
         yield return new WaitForSeconds(0.2f);
         meleeArea.enabled = false;

@@ -32,8 +32,8 @@ public class Player : MonoBehaviour
     Rigidbody2D rigid;
     SpriteRenderer spriteRenderer;
     Vector3 movement;
-    
 
+    Animator anim;
     GameObject nearObject;
     Weapon equipWeapon;
     int equipWeaponIndex = -1;
@@ -42,7 +42,8 @@ public class Player : MonoBehaviour
     {
         isMotion = false;
         rigid = gameObject.GetComponent<Rigidbody2D>();
-        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        spriteRenderer = gameObject.GetComponentInChildren<SpriteRenderer>();
+        anim = GetComponentInChildren<Animator>();
     }
     
     void Update()
@@ -84,7 +85,9 @@ public class Player : MonoBehaviour
         if(fDown && isFireReady)
         {
             StartCoroutine("icanswap");
+            anim.SetTrigger("isAttack");
             equipWeapon.Use();
+            
             fireDelay = 0;
         }
     }
@@ -92,10 +95,11 @@ public class Player : MonoBehaviour
     void Move()
     {
         Vector3 moveVelocity = Vector3.zero;
-
         
         moveVelocity = new Vector3(hAxis, vAxis, 0);
+        anim.SetBool("isMoving", moveVelocity != Vector3.zero);
         rigid.velocity = moveVelocity * Speed * Time.deltaTime;
+        
         //transform.position += moveVelocity * movePower * Time.deltaTime;
     }
     void Swap()

@@ -8,17 +8,10 @@ public class Bullet : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Enemy" || other.tag == "Wall")
+        if (other.tag == "Enemy" || other.tag == "Wall" || 
+            (gameObject.name == "EnemyBullet" && other.tag == "Player"))
         {
             Destroy(gameObject);
         }
     }
-    /*
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if(collision.gameObject.tag != "Player")
-        {
-            Destroy(gameObject, 0.1f);
-        }
-    }*/
 }

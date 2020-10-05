@@ -26,7 +26,7 @@ public class EnemyAI : MonoBehaviour
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
         coll = GetComponent<CircleCollider2D>();
-        InvokeRepeating("UpdatePath", 0f, 0.5f);
+        InvokeRepeating("UpdatePath", 0f, 0.25f);
         
     }
 
@@ -44,7 +44,8 @@ public class EnemyAI : MonoBehaviour
             currentWaypoint = 0;
         }
     }
-    // Update is called once per frame
+
+
     void FixedUpdate()
     {
         if (path == null)
@@ -92,7 +93,8 @@ public class EnemyAI : MonoBehaviour
         if (collision.tag == "Player")
         {
             isPlayer = false;
-            rb.velocity = new Vector2(0,0);
+            //rb.velocity = new Vector2(0,0);
+            path = null;
         }
         
     }

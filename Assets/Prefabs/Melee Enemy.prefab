@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5764082908739807300}
   - component: {fileID: 5764082908739807301}
   m_Layer: 8
-  m_Name: Monster2
+  m_Name: MeleeGFX
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -90,13 +90,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5764082909305663643}
-  - component: {fileID: 5764082909305663642}
-  - component: {fileID: 5764082909305663645}
+  - component: {fileID: 6609486931842115970}
   - component: {fileID: 5764082909305663640}
   - component: {fileID: 5764082909305663644}
   - component: {fileID: 5764082909305663647}
   m_Layer: 0
-  m_Name: Melee Enemy 1
+  m_Name: Melee Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -117,7 +116,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5764082909305663642
+--- !u!114 &6609486931842115970
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -126,41 +125,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 5764082909305663646}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
+  m_Script: {fileID: 11500000, guid: 2a7b3074f91c5a84ab18a303d4b22d7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 1
-  drawGizmos: 1
-  detailedGizmos: 0
-  startEndModifier:
-    addPoints: 0
-    exactStartPoint: 3
-    exactEndPoint: 3
-    useRaycasting: 0
-    mask:
-      serializedVersion: 2
-      m_Bits: 4294967295
-    useGraphRaycasting: 0
-  traversableTags: -1
-  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-  graphMask:
-    value: -17
---- !u!114 &5764082909305663645
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5764082909305663646}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70ea071bbc6340645af3ddaf8a68b37b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  type: 0
+  speed: 200
+  maxHealth: 100
+  curHealth: 100
   target: {fileID: 0}
-  speed: 400
-  nextWaypointDistance: 3
-  enemyGFX: {fileID: 5764082908739807300}
+  Bullet: {fileID: 0}
 --- !u!58 &5764082909305663640
 CircleCollider2D:
   m_ObjectHideFlags: 0

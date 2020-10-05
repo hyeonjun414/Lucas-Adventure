@@ -4,28 +4,87 @@ using UnityEngine;
 using UnityEngine.AI;
 public class Enemy : MonoBehaviour
 {
+    public enum Type { Melee, Range };
+    public Type type;
+
+    public float speed = 200f;
     public int maxHealth;
     public int curHealth;
     public Transform target;
-
+    public GameObject Bullet;
+    int movementFlag = 0;
 
     Rigidbody2D rigid;
     BoxCollider2D boxCollider;
     Material mat;
-    NavMeshAgent nav;
+
+    bool isTracing = false;
+
 
     void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
-        mat = GetComponent<SpriteRenderer>().material;
-        nav = GetComponent<NavMeshAgent>();
+        mat = GetComponentInChildren<SpriteRenderer>().material;
+    }
+    void Start()
+    {
+        StartCoroutine("ChangeMovement");
+        if(type == Type.Range)
+            InvokeRepeating("Shoting", 0, 1);
+    }
+    
+    void FixedUpdate()
+    {
+        Move();
+        Tracing();
+    }
+    void Move()
+    {
+        if (isTracing || type == Type.Range) return;
+
+        Vector3 moveVelocity = Vector3.zero;
+
+        if(movementFlag == 1)
+        {
+            moveVelocity = Vector3.left;
+            transform.localScale = new Vector3(1, 1, 1);
+        }
+        else if(movementFlag == 2)
+        {
+            moveVelocity = Vector2.right;
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
+        transform.position += moveVelocity * Time.deltaTime;
     }
 
-    void Update()
+    void Tracing()
     {
-        nav.SetDestination(target.position);
+        if (isTracing && type == Type.Melee)
+        {
+            Vector2 movevelo = new Vector2(target.position.x - transform.position.x, 
+                                            target.position.y - transform.position.y).normalized;
+
+            
+            rigid.velocity = movevelo * speed *Time.deltaTime;
+
+            if (rigid.velocity.x >= 0.01f)
+                transform.localScale = new Vector3(-1f, 1f, 1f);
+            else if (rigid.velocity.x <= -0.01f)
+                transform.localScale = new Vector3(1f, 1f, 1f);
+        }
     }
+
+    void Shoting()
+    {
+        if (isTracing && type == Type.Range)
+        {
+            GameObject instantBullet = Instantiate(Bullet, transform.position, transform.rotation);
+            Rigidbody2D rigidBullet = instantBullet.GetComponent<Rigidbody2D>();
+            rigidBullet.velocity = new Vector2(target.position.x - transform.position.x, target.position.y - transform.position.y).normalized * 3;
+        }
+    }
+
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Melee")
@@ -44,8 +103,45 @@ public class Enemy : MonoBehaviour
             StartCoroutine(OnDamage(reactVec));
             Debug.Log("Range : " + curHealth);
         }
+        if (other.tag == "Player")
+        {
+            isTracing = true;
+            target = other.transform;
+        }
+    }
+    void OnTriggerStay2D(Collider2D other)
+    {
+        if(other.tag == "Player")
+        {
+            isTracing = true;
+            target = other.transform;
+        }
     }
 
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.tag == "Player")
+        {
+            isTracing = false;
+            target = null;
+            rigid.velocity = Vector2.zero;
+        }
+    }
+    IEnumerator ChangeMovement()
+    {
+        movementFlag = Random.Range(0, 3);
+
+        if (movementFlag == 0)
+        {
+
+        }
+        else
+        { 
+        }
+        yield return new WaitForSeconds(3f);
+
+        StartCoroutine("ChangeMovement");
+    }
     IEnumerator OnDamage(Vector2 reactVec)
     {
         mat.color = Color.red;
@@ -54,7 +150,6 @@ public class Enemy : MonoBehaviour
         if(curHealth > 0)
         {
             mat.color = Color.white;
-            
         }
         else
         {

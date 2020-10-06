@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
     public int curHealth;
     public Transform target;
     public GameObject Bullet;
+    public Collider2D coll;
     int movementFlag = 0;
 
     Rigidbody2D rigid;
@@ -20,7 +21,7 @@ public class Enemy : MonoBehaviour
     Animator anim;
 
     bool isTracing = false;
-
+    public bool isDead = false;
 
     void Awake()
     {
@@ -38,8 +39,11 @@ public class Enemy : MonoBehaviour
     
     void FixedUpdate()
     {
-        Move();
-        Tracing();
+        if (!isDead)
+        {
+            Move();
+            Tracing();
+        }
     }
     void Move()
     {
@@ -81,7 +85,7 @@ public class Enemy : MonoBehaviour
 
     void Shoting()
     {
-        if (isTracing && type == Type.Range)
+        if (isTracing && type == Type.Range && !isDead)
         {
             GameObject instantBullet = Instantiate(Bullet, transform.position, transform.rotation);
             Rigidbody2D rigidBullet = instantBullet.GetComponent<Rigidbody2D>();
@@ -91,6 +95,7 @@ public class Enemy : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        /*
         if (other.tag == "Melee")
         {
             Weapon weapon = other.GetComponent<Weapon>();
@@ -106,7 +111,8 @@ public class Enemy : MonoBehaviour
             Vector2 reactVec = transform.position - other.transform.position;
             StartCoroutine(OnDamage(reactVec));
             Debug.Log("Range : " + curHealth);
-        }
+        }*/
+
         if (other.tag == "Player")
         {
             isTracing = true;
@@ -134,20 +140,15 @@ public class Enemy : MonoBehaviour
     IEnumerator ChangeMovement()
     {
         movementFlag = Random.Range(0, 3);
-
-        if (movementFlag == 0)
-        {
-
-        }
-        else
-        { 
-        }
+        
         yield return new WaitForSeconds(3f);
 
         StartCoroutine("ChangeMovement");
     }
+    /*
     IEnumerator OnDamage(Vector2 reactVec)
     {
+
         mat.color = Color.red;
         yield return new WaitForSeconds(0.1f);
 
@@ -167,6 +168,6 @@ public class Enemy : MonoBehaviour
             Destroy(gameObject, 2);
         }
 
-    }
+    }*/
 
 }

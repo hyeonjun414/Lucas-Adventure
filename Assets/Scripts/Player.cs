@@ -15,7 +15,6 @@ public class Player : MonoBehaviour
     public int maxhealth;
     
     float hAxis, vAxis;
-    Vector2 ray_dir;
 
     bool iDown;
     bool sDown1;
@@ -38,6 +37,8 @@ public class Player : MonoBehaviour
     Weapon equipWeapon;
     int equipWeaponIndex = -1;
     float fireDelay;
+
+
     void Start()
     {
         isMotion = false;
@@ -175,10 +176,11 @@ public class Player : MonoBehaviour
     }
     IEnumerator OnDamage()
     {
+        Debug.Log("hit");
         isDamage = true;
         spriteRenderer.material.color = Color.yellow;
         yield return new WaitForSeconds(1f);
-
+        
         isDamage = false;
         spriteRenderer.material.color = Color.white;
     }

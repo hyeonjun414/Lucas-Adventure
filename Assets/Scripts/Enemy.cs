@@ -19,6 +19,7 @@ public class Enemy : MonoBehaviour
     BoxCollider2D boxCollider;
     Material mat;
     Animator anim;
+    ItemDrop drop;
 
     bool isTracing = false;
     public bool isDead = false;
@@ -29,6 +30,7 @@ public class Enemy : MonoBehaviour
         boxCollider = GetComponent<BoxCollider2D>();
         mat = GetComponentInChildren<SpriteRenderer>().material;
         anim = GetComponentInChildren<Animator>();
+        drop = GetComponent<ItemDrop>();
     }
     void Start()
     {
@@ -95,24 +97,6 @@ public class Enemy : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        /*
-        if (other.tag == "Melee")
-        {
-            Weapon weapon = other.GetComponent<Weapon>();
-            curHealth -= weapon.damage;
-            Vector2 reactVec = transform.position - other.transform.position;
-            StartCoroutine(OnDamage(reactVec));
-            Debug.Log("Melee : " + curHealth);
-        }
-        else if (other.tag == "Bullet")
-        {
-            Bullet bullet = other.GetComponent<Bullet>();
-            curHealth -= bullet.damage;
-            Vector2 reactVec = transform.position - other.transform.position;
-            StartCoroutine(OnDamage(reactVec));
-            Debug.Log("Range : " + curHealth);
-        }*/
-
         if (other.tag == "Player")
         {
             isTracing = true;
@@ -145,29 +129,4 @@ public class Enemy : MonoBehaviour
 
         StartCoroutine("ChangeMovement");
     }
-    /*
-    IEnumerator OnDamage(Vector2 reactVec)
-    {
-
-        mat.color = Color.red;
-        yield return new WaitForSeconds(0.1f);
-
-        if(curHealth > 0)
-        {
-            mat.color = Color.white;
-        }
-        else
-        {
-            mat.color = Color.gray;
-            gameObject.layer = 9;
-
-            reactVec = reactVec.normalized;
-            reactVec += Vector2.up;
-            rigid.AddForce(reactVec, ForceMode2D.Impulse);
-
-            Destroy(gameObject, 2);
-        }
-
-    }*/
-
 }

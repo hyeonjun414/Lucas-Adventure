@@ -6,13 +6,18 @@ public class EnemyHit : MonoBehaviour
 {
     public GameObject obj;
     Enemy enemy;
+    ItemDrop drop;
     Material mat;
     Rigidbody2D rigid;
+    Animator anim;
     void Start()
     {
         rigid = GetComponentInParent<Rigidbody2D>();
         enemy = GetComponentInParent<Enemy>();
+        drop = GetComponentInParent<ItemDrop>();
         mat = GetComponent<SpriteRenderer>().material;
+        anim = GetComponent<Animator>();
+        
     }
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -45,13 +50,12 @@ public class EnemyHit : MonoBehaviour
         }
         else
         {
+            rigid.velocity = Vector2.zero;
+            anim.SetBool("isRun", false);
             mat.color = Color.gray;
             gameObject.layer = 9;
-
-            reactVec = reactVec.normalized;
-            reactVec += Vector2.up;
-            rigid.AddForce(reactVec, ForceMode2D.Impulse);
             enemy.isDead = true;
+            drop.DropItem();
             Destroy(obj, 2);
         }
 

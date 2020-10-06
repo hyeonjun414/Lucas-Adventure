@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3360953696773840439}
   - component: {fileID: 3360953696773840442}
   - component: {fileID: 2901833847570509427}
+  - component: {fileID: 4405926144354741233}
   m_Layer: 8
   m_Name: Range Enemy
   m_TagString: Enemy
@@ -90,6 +91,21 @@ MonoBehaviour:
   target: {fileID: 0}
   Bullet: {fileID: 233296031657346121, guid: c0def31bbb2127d46829f1b012a48d6e, type: 3}
   coll: {fileID: 0}
+  isDead: 0
+--- !u!114 &4405926144354741233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3360953696773840441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9c00cd8484d29c4f9f9ef9b939085e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Weapon: []
+  Coin: {fileID: 8220115403989457548, guid: a17125128b522e9479d396404f3d5f58, type: 3}
 --- !u!1 &3360953697801349002
 GameObject:
   m_ObjectHideFlags: 0

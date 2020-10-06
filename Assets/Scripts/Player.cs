@@ -97,7 +97,7 @@ public class Player : MonoBehaviour
         Vector3 moveVelocity = Vector3.zero;
         
         moveVelocity = new Vector3(hAxis, vAxis, 0);
-        anim.SetBool("isMoving", moveVelocity != Vector3.zero);
+        anim.SetBool("isRun", moveVelocity != Vector3.zero);
         rigid.velocity = moveVelocity * Speed * Time.deltaTime;
         
         //transform.position += moveVelocity * movePower * Time.deltaTime;

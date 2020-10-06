@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour
     Rigidbody2D rigid;
     BoxCollider2D boxCollider;
     Material mat;
+    Animator anim;
 
     bool isTracing = false;
 
@@ -26,6 +27,7 @@ public class Enemy : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
         mat = GetComponentInChildren<SpriteRenderer>().material;
+        anim = GetComponentInChildren<Animator>();
     }
     void Start()
     {
@@ -52,27 +54,29 @@ public class Enemy : MonoBehaviour
         }
         else if(movementFlag == 2)
         {
-            moveVelocity = Vector2.right;
+            moveVelocity = Vector3.right;
             transform.localScale = new Vector3(-1, 1, 1);
         }
-        transform.position += moveVelocity * Time.deltaTime;
+        rigid.velocity = moveVelocity * 100f *Time.deltaTime;
+        anim.SetBool("isRun", rigid.velocity != Vector2.zero);
     }
 
     void Tracing()
     {
         if (isTracing && type == Type.Melee)
         {
-            Vector2 movevelo = new Vector2(target.position.x - transform.position.x, 
-                                            target.position.y - transform.position.y).normalized;
+            Vector3 movevelo = new Vector3(target.position.x - transform.position.x, 
+                                            target.position.y - transform.position.y, 0).normalized;
 
             
-            rigid.velocity = movevelo * speed *Time.deltaTime;
+            rigid.velocity = movevelo * speed * Time.deltaTime;
 
             if (rigid.velocity.x >= 0.01f)
                 transform.localScale = new Vector3(-1f, 1f, 1f);
             else if (rigid.velocity.x <= -0.01f)
                 transform.localScale = new Vector3(1f, 1f, 1f);
         }
+        anim.SetBool("isRun", rigid.velocity != Vector2.zero);
     }
 
     void Shoting()
@@ -81,7 +85,7 @@ public class Enemy : MonoBehaviour
         {
             GameObject instantBullet = Instantiate(Bullet, transform.position, transform.rotation);
             Rigidbody2D rigidBullet = instantBullet.GetComponent<Rigidbody2D>();
-            rigidBullet.velocity = new Vector2(target.position.x - transform.position.x, target.position.y - transform.position.y).normalized * 3;
+            rigidBullet.velocity = new Vector3(target.position.x - transform.position.x, target.position.y - transform.position.y, 0).normalized * 3;
         }
     }
 

@@ -9,7 +9,7 @@ public class ItemDrop : MonoBehaviour
     int n;
     public void DropItem()
     {
-        n = Random.Range(0, 1);
+        n = Random.Range(0, 2);
         if(n == 0)
         {
             n = Random.Range(0, 10);

@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
     bool isBorder;
     bool isDamage;
 
-
+    public ParticleSystem dust;
     Rigidbody2D rigid;
     SpriteRenderer spriteRenderer;
     Vector3 movement;
@@ -55,8 +55,11 @@ public class Player : MonoBehaviour
         Swap();
         Interaction();
         if (Input.GetButton("Horizontal"))
-            if(Input.GetAxisRaw("Horizontal") > 0) transform.localScale = new Vector3(1,1,1);
-            else if(Input.GetAxisRaw("Horizontal") < 0) transform.localScale = new Vector3(-1,1,1);
+            if(Input.GetAxisRaw("Horizontal") > 0)
+                transform.localScale = new Vector3(1, 1, 1);
+            else if(Input.GetAxisRaw("Horizontal") < 0)
+                transform.localScale = new Vector3(-1, 1, 1);
+                
     }
     void GetInput()
     {
@@ -100,7 +103,7 @@ public class Player : MonoBehaviour
         moveVelocity = new Vector3(hAxis, vAxis, 0);
         anim.SetBool("isRun", moveVelocity != Vector3.zero);
         rigid.velocity = moveVelocity * Speed * Time.deltaTime;
-        
+        if(moveVelocity != Vector3.zero) CreateDust();
         //transform.position += moveVelocity * movePower * Time.deltaTime;
     }
     void Swap()
@@ -206,5 +209,10 @@ public class Player : MonoBehaviour
         isMotion = true;
         yield return new WaitForSeconds(equipWeapon.rate);
         isMotion = false;
+    }
+
+    void CreateDust()
+    {
+        dust.Play();
     }
 }

@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     public float speed = 200f;
     public int maxHealth;
     public int curHealth;
+    public int damage;
     public Transform target;
     public GameObject Bullet;
     public Collider2D coll;

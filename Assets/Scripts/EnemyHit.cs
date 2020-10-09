@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyHit : MonoBehaviour
 {
     public GameObject obj;
-    Enemy enemy;
+    public Enemy enemy;
     ItemDrop drop;
     Material mat;
     Rigidbody2D rigid;

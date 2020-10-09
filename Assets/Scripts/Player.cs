@@ -25,7 +25,7 @@ public class Player : MonoBehaviour
     bool isMotion;
     bool isFireReady;
     bool isBorder;
-    bool isDamage;
+    public bool isDamage;
 
     public ParticleSystem dust;
     Rigidbody2D rigid;
@@ -165,27 +165,6 @@ public class Player : MonoBehaviour
             }
             Destroy(other.gameObject);
         }
-        else if (other.tag == "EnemyBullet")
-        {
-            if (!isDamage)
-            {
-                Bullet enemyBullet = other.GetComponent<Bullet>();
-                health -= enemyBullet.damage;
-                StartCoroutine(OnDamage());
-            }
-            
-        }
-        
-    }
-    IEnumerator OnDamage()
-    {
-        Debug.Log("hit");
-        isDamage = true;
-        spriteRenderer.material.color = Color.yellow;
-        yield return new WaitForSeconds(1f);
-        
-        isDamage = false;
-        spriteRenderer.material.color = Color.white;
     }
 
     void OnTriggerStay2D(Collider2D other)

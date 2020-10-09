@@ -7,10 +7,11 @@ TagManager:
   - Weapon
   - Item
   - Wall
-  - Melee
   - Bullet
   - Enemy
   - EnemyBullet
+  - Melee
+  - EnemyGFX
   layers:
   - Default
   - TransparentFX

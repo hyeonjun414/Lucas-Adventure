@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public float Speed = 500f;
+    public float Speed = 5f;
     public GameObject[] weapons;
     public bool[] hasWeapons;
 
@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
 
     public int maxcoin;
     public int maxhealth;
-    
+    public float maxSpeed = 10f;
     float hAxis, vAxis;
 
     bool iDown;
@@ -51,7 +51,7 @@ public class Player : MonoBehaviour
     {
         GetInput();
         Attack();
-        Move();
+        
         Swap();
         Interaction();
         if (Input.GetButton("Horizontal"))
@@ -73,6 +73,7 @@ public class Player : MonoBehaviour
     }
     void FixedUpdate()
     {
+        Move();
     }
     
     //공격
@@ -98,13 +99,40 @@ public class Player : MonoBehaviour
     //이동
     void Move()
     {
-        Vector3 moveVelocity = Vector3.zero;
+        Vector2 moveVelocity = new Vector3(hAxis, vAxis, 0);
+        anim.SetBool("isRun", moveVelocity != Vector2.zero);
+        rigid.AddForce(moveVelocity * Speed * Time.deltaTime, ForceMode2D.Impulse);
+
+        if(hAxis > 0) //x축 이동 계산
+        {
+            if (rigid.velocity.x > maxSpeed)
+            {
+                rigid.velocity = new Vector2(maxSpeed, rigid.velocity.y);
+            }
+        }
+        else if(hAxis < 0)
+        {
+            if (rigid.velocity.x < maxSpeed * -1)
+            {
+                rigid.velocity = new Vector2(maxSpeed * -1, rigid.velocity.y);
+            }
+        }
+        if(vAxis > 0) //y축 이동 계산
+        {
+            if (rigid.velocity.y > maxSpeed)
+            {
+                rigid.velocity = new Vector2(rigid.velocity.x, maxSpeed);
+            }
+        }
+        else if(vAxis < 0)
+        {
+            if (rigid.velocity.y < maxSpeed * -1)
+            {
+                rigid.velocity = new Vector2(rigid.velocity.x, maxSpeed * -1);
+            }
+        }
+        if (moveVelocity != Vector2.zero) CreateDust(); //먼지 효과
         
-        moveVelocity = new Vector3(hAxis, vAxis, 0);
-        anim.SetBool("isRun", moveVelocity != Vector3.zero);
-        rigid.velocity = moveVelocity * Speed * Time.deltaTime;
-        if(moveVelocity != Vector3.zero) CreateDust();
-        //transform.position += moveVelocity * movePower * Time.deltaTime;
     }
     void Swap()
     {

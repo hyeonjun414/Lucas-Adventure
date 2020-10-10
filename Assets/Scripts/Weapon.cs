@@ -30,7 +30,6 @@ public class Weapon : MonoBehaviour
     }
     IEnumerator Swing()
     {
-        Arm = gameObject;
         yield return new WaitForSeconds(0.1f);
         meleeArea.enabled = true;
         trailEffect.enabled = true;
@@ -43,19 +42,15 @@ public class Weapon : MonoBehaviour
     {
         GameObject instantBullet = Instantiate(bullet, new Vector2(bulletPos.position.x, bulletPos.position.y), Quaternion.identity);
         Rigidbody2D bulletRigid = instantBullet.GetComponent<Rigidbody2D>();
-        Arm = gameObject;
 
         yield return new WaitForSeconds(0.1f);
-        meleeArea.enabled = true;
         trailEffect.enabled = true;
         if (gameObject.transform.parent.parent.localScale.x == -1)
             bulletRigid.velocity = bulletPos.right * -10;
         else
             bulletRigid.velocity = bulletPos.right * 10;
 
-        yield return new WaitForSeconds(0.2f);
-        meleeArea.enabled = false;
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.3f);
         trailEffect.enabled = false;
     }
     

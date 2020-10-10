@@ -92,7 +92,7 @@ public class Enemy : MonoBehaviour
         {
             GameObject instantBullet = Instantiate(Bullet, transform.position, transform.rotation);
             Rigidbody2D rigidBullet = instantBullet.GetComponent<Rigidbody2D>();
-            rigidBullet.velocity = new Vector3(target.position.x - transform.position.x, target.position.y - transform.position.y, 0).normalized * 3;
+            rigidBullet.velocity = new Vector3(target.position.x - transform.position.x, target.position.y - transform.position.y, 0).normalized * 5;
         }
     }
 

@@ -48,7 +48,7 @@ public class PlayerHit : MonoBehaviour
         player.isDamage = true;
         sprite.material.color = Color.yellow;
         rigid.AddForce(vec * 1000f * Time.deltaTime, ForceMode2D.Impulse);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         
         player.isDamage = false;
         sprite.material.color = Color.white;

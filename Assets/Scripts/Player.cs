@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
     bool sDown2;
     bool sDown3;
     bool fDown;
+    bool zDown;
 
     bool isMotion;
     bool isFireReady;
@@ -28,6 +29,7 @@ public class Player : MonoBehaviour
     public bool isDamage;
 
     public ParticleSystem dust;
+    public ParticleSystem dash;
     Rigidbody2D rigid;
     SpriteRenderer spriteRenderer;
     Vector3 movement;
@@ -70,10 +72,12 @@ public class Player : MonoBehaviour
         sDown1 = Input.GetButtonDown("Swap1");
         sDown2 = Input.GetButtonDown("Swap2");
         sDown3 = Input.GetButtonDown("Swap3");
+        zDown = Input.GetButtonDown("Dash");
     }
     void FixedUpdate()
     {
         Move();
+        Dash();
     }
     
     //공격
@@ -99,7 +103,8 @@ public class Player : MonoBehaviour
     //이동
     void Move()
     {
-        Vector2 moveVelocity = new Vector3(hAxis, vAxis, 0);
+        if (isDamage) return;
+        Vector2 moveVelocity = new Vector2(hAxis, vAxis);
         anim.SetBool("isRun", moveVelocity != Vector2.zero);
         rigid.AddForce(moveVelocity * Speed * Time.deltaTime, ForceMode2D.Impulse);
 
@@ -133,6 +138,15 @@ public class Player : MonoBehaviour
         }
         if (moveVelocity != Vector2.zero) CreateDust(); //먼지 효과
         
+    }
+    void Dash()
+    {
+        if (zDown)
+        {
+            Vector2 moveVelocity = new Vector2(hAxis, vAxis);
+            dash.Play();
+            rigid.AddForce(moveVelocity * 1000f * Time.deltaTime, ForceMode2D.Impulse);
+        }
     }
     void Swap()
     {
@@ -221,5 +235,9 @@ public class Player : MonoBehaviour
     void CreateDust()
     {
         dust.Play();
+    }
+    void CreateDashEffect()
+    {
+        dash.Play();
     }
 }

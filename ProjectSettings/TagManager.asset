@@ -7,9 +7,11 @@ TagManager:
   - Weapon
   - Item
   - Wall
-  - Melee
   - Bullet
   - Enemy
+  - EnemyBullet
+  - Melee
+  - EnemyGFX
   layers:
   - Default
   - TransparentFX
@@ -22,7 +24,7 @@ TagManager:
   - Enemy
   - EnemyDead
   - floor
-  - 
+  - EnemyBullet
   - 
   - 
   - 
@@ -46,4 +48,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Player
+    uniqueID: 2785164741
     locked: 0

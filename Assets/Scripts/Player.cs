@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public float Speed = 500f;
+    public float Speed = 5f;
     public GameObject[] weapons;
     public bool[] hasWeapons;
 
@@ -13,46 +13,55 @@ public class Player : MonoBehaviour
 
     public int maxcoin;
     public int maxhealth;
-    
+    public float maxSpeed = 10f;
     float hAxis, vAxis;
-    Vector2 ray_dir;
 
     bool iDown;
     bool sDown1;
     bool sDown2;
     bool sDown3;
     bool fDown;
+    bool zDown;
 
     bool isMotion;
     bool isFireReady;
     bool isBorder;
+    public bool isDamage;
 
+    public ParticleSystem dust;
+    public ParticleSystem dash;
     Rigidbody2D rigid;
     SpriteRenderer spriteRenderer;
     Vector3 movement;
-    
 
+    Animator anim;
     GameObject nearObject;
     Weapon equipWeapon;
     int equipWeaponIndex = -1;
     float fireDelay;
+
+
     void Start()
     {
         isMotion = false;
         rigid = gameObject.GetComponent<Rigidbody2D>();
-        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        spriteRenderer = gameObject.GetComponentInChildren<SpriteRenderer>();
+        anim = GetComponentInChildren<Animator>();
     }
     
     void Update()
     {
         GetInput();
         Attack();
-        Move();
+        
         Swap();
         Interaction();
         if (Input.GetButton("Horizontal"))
-            if(Input.GetAxisRaw("Horizontal") > 0) transform.localScale = new Vector3(1,1,1);
-            else if(Input.GetAxisRaw("Horizontal") < 0) transform.localScale = new Vector3(-1,1,1);
+            if(Input.GetAxisRaw("Horizontal") > 0)
+                transform.localScale = new Vector3(1, 1, 1);
+            else if(Input.GetAxisRaw("Horizontal") < 0)
+                transform.localScale = new Vector3(-1, 1, 1);
+                
     }
     void GetInput()
     {
@@ -63,9 +72,12 @@ public class Player : MonoBehaviour
         sDown1 = Input.GetButtonDown("Swap1");
         sDown2 = Input.GetButtonDown("Swap2");
         sDown3 = Input.GetButtonDown("Swap3");
+        zDown = Input.GetButtonDown("Dash");
     }
     void FixedUpdate()
     {
+        Move();
+        Dash();
     }
     
     //공격
@@ -82,19 +94,59 @@ public class Player : MonoBehaviour
         if(fDown && isFireReady)
         {
             StartCoroutine("icanswap");
+            anim.SetTrigger("isAttack");
             equipWeapon.Use();
+            
             fireDelay = 0;
         }
     }
     //이동
     void Move()
     {
-        Vector3 moveVelocity = Vector3.zero;
+        if (isDamage) return;
+        Vector2 moveVelocity = new Vector2(hAxis, vAxis);
+        anim.SetBool("isRun", moveVelocity != Vector2.zero);
+        rigid.AddForce(moveVelocity * Speed * Time.deltaTime, ForceMode2D.Impulse);
 
+        if(hAxis > 0) //x축 이동 계산
+        {
+            if (rigid.velocity.x > maxSpeed)
+            {
+                rigid.velocity = new Vector2(maxSpeed, rigid.velocity.y);
+            }
+        }
+        else if(hAxis < 0)
+        {
+            if (rigid.velocity.x < maxSpeed * -1)
+            {
+                rigid.velocity = new Vector2(maxSpeed * -1, rigid.velocity.y);
+            }
+        }
+        if(vAxis > 0) //y축 이동 계산
+        {
+            if (rigid.velocity.y > maxSpeed)
+            {
+                rigid.velocity = new Vector2(rigid.velocity.x, maxSpeed);
+            }
+        }
+        else if(vAxis < 0)
+        {
+            if (rigid.velocity.y < maxSpeed * -1)
+            {
+                rigid.velocity = new Vector2(rigid.velocity.x, maxSpeed * -1);
+            }
+        }
+        if (moveVelocity != Vector2.zero) CreateDust(); //먼지 효과
         
-        moveVelocity = new Vector3(hAxis, vAxis, 0);
-        rigid.velocity = moveVelocity * Speed * Time.deltaTime;
-        //transform.position += moveVelocity * movePower * Time.deltaTime;
+    }
+    void Dash()
+    {
+        if (zDown)
+        {
+            Vector2 moveVelocity = new Vector2(hAxis, vAxis);
+            dash.Play();
+            rigid.AddForce(moveVelocity * 1000f * Time.deltaTime, ForceMode2D.Impulse);
+        }
     }
     void Swap()
     {
@@ -155,7 +207,6 @@ public class Player : MonoBehaviour
             }
             Destroy(other.gameObject);
         }
-        
     }
 
     void OnTriggerStay2D(Collider2D other)
@@ -179,5 +230,14 @@ public class Player : MonoBehaviour
         isMotion = true;
         yield return new WaitForSeconds(equipWeapon.rate);
         isMotion = false;
+    }
+
+    void CreateDust()
+    {
+        dust.Play();
+    }
+    void CreateDashEffect()
+    {
+        dash.Play();
     }
 }

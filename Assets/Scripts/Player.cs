@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
 
     public int coin;
     public int health;
+    public int score;
+    public int exp;
 
     public int maxcoin;
     public int maxhealth;
@@ -36,7 +38,7 @@ public class Player : MonoBehaviour
 
     Animator anim;
     GameObject nearObject;
-    Weapon equipWeapon;
+    public Weapon equipWeapon;
     int equipWeaponIndex = -1;
     float fireDelay;
 

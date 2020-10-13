@@ -9,9 +9,9 @@ public class Bullet : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Enemy" || other.tag == "Wall" || 
-            (gameObject.name == "EnemyBullet" && other.tag == "Player"))
+            (gameObject.name == "EnemyBullet(Clone)" && other.tag == "Player"))
         {
-            Destroy(gameObject);
+            Destroy(gameObject, 0.2f);
         }
     }
 }

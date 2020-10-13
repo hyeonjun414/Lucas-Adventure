@@ -10,11 +10,11 @@ public class Player : MonoBehaviour
 
     public int coin;
     public int health;
-    public int score;
     public int exp;
 
     public int maxcoin;
     public int maxhealth;
+    public int maxExp;
     public float maxSpeed = 10f;
     float hAxis, vAxis;
 

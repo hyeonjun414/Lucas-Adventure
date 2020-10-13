@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     public bool isBattle;
 
     public GameObject gamePanel;
-    public Text scoreTxt;
+    public GameObject inventoryPanel;
     public Text stageTxt;
     public Text playTimeTxt;
 
@@ -24,9 +24,15 @@ public class GameManager : MonoBehaviour
     public Image weapon2Img;
     public Image weapon3Img;
 
+    bool activeInventory = false;
+
     void Awake()
     {
 
+    }
+    void Start()
+    {
+        inventoryPanel.SetActive(activeInventory);
     }
     void Update()
     {
@@ -34,10 +40,14 @@ public class GameManager : MonoBehaviour
         {
             playTime += Time.deltaTime;
         }
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            activeInventory = !activeInventory;
+            inventoryPanel.SetActive(activeInventory);
+        }
     }
     void LateUpdate()
     {
-        scoreTxt.text = string.Format("{0:n0}", player.score);
         stageTxt.text = "STAGE " + stage;
 
         int hour = (int)(playTime / 3600);
@@ -49,6 +59,7 @@ public class GameManager : MonoBehaviour
 
         playerHealthTxt.text = player.health + " / " + player.maxhealth;
         playerCoinTxt.text = string.Format("{0:n0}", player.coin);
+        playerExpTxt.text = player.exp + " / " + player.maxExp;
 
         weapon1Img.color = new Color(1, 1, 1, player.hasWeapons[0] ? 1 : 0);
         weapon2Img.color = new Color(1, 1, 1, player.hasWeapons[1] ? 1 : 0);

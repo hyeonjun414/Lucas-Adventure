@@ -12,6 +12,8 @@ TagManager:
   - EnemyBullet
   - Melee
   - EnemyGFX
+  - Undefined
+  - FieldItem
   layers:
   - Default
   - TransparentFX

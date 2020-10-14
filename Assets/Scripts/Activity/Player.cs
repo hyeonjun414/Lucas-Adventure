@@ -182,7 +182,7 @@ public class Player : MonoBehaviour
         {
             if(nearObject.tag == "Weapon")
             {
-                Item item = nearObject.GetComponent<Item>();
+                Item2 item = nearObject.GetComponent<Item2>();
                 int weaponIndex = item.value;
                 hasWeapons[weaponIndex] = true;
                 Destroy(nearObject);
@@ -193,15 +193,15 @@ public class Player : MonoBehaviour
     {
         if(other.tag == "Item")
         {
-            Item item = other.GetComponent<Item>();
+            Item2 item = other.GetComponent<Item2>();
             switch (item.type)
             {
-                case Item.Type.Coin:
+                case Item2.Type.Coin:
                     coin += item.value;
                     if (coin > maxcoin)
                         coin = maxcoin;
                     break;
-                case Item.Type.Heart:
+                case Item2.Type.Heart:
                     health += item.value;
                     if (health > maxhealth)
                         health = maxhealth;

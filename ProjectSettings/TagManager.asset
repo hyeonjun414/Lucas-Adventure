@@ -3,7 +3,17 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Weapon
+  - Item
+  - Wall
+  - Bullet
+  - Enemy
+  - EnemyBullet
+  - Melee
+  - EnemyGFX
+  - Undefined
+  - FieldItem
   layers:
   - Default
   - TransparentFX
@@ -13,10 +23,10 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - Enemy
+  - EnemyDead
+  - floor
+  - EnemyBullet
   - 
   - 
   - 
@@ -40,4 +50,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Player
+    uniqueID: 2785164741
     locked: 0

@@ -25,6 +25,8 @@ public class Inventory : MonoBehaviour
 
     public List<Item> items = new List<Item>();
 
+    public List<Item> equipitems = new List<Item>();
+
 
     private int slotCnt;
     public int SlotCnt
@@ -55,8 +57,12 @@ public class Inventory : MonoBehaviour
 
     public void RemoveItem(int _index)
     {
-        items.RemoveAt(_index);
-        onChangeItem.Invoke();
+        if(items[_index].itemType == ItemType.posion)
+        {
+            items.RemoveAt(_index);
+            onChangeItem.Invoke();
+        }
+        
     }
 
     private void OnTriggerEnter2D(Collider2D other)

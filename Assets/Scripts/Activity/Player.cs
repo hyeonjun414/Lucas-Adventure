@@ -158,14 +158,11 @@ public class Player : MonoBehaviour
             return;
         if (sDown2 && (!hasWeapons[1] || equipWeaponIndex == 1))
             return;
-        if (sDown3 && (!hasWeapons[2] || equipWeaponIndex == 2))
-            return;
         int weaponIndex = -1;
         if (sDown1) weaponIndex = 0;
         if (sDown2) weaponIndex = 1;
-        if (sDown3) weaponIndex = 2;
 
-        if ((sDown1 || sDown2 || sDown3))
+        if ((sDown1 || sDown2))
         {
             if(equipWeapon != null)
                 equipWeapon.gameObject.SetActive(false);

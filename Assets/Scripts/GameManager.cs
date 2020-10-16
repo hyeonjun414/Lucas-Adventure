@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject gamePanel;
     public GameObject inventoryPanel;
+    public GameObject ManuPanel;
+
     public Text stageTxt;
     public Text playTimeTxt;
 
@@ -27,6 +29,7 @@ public class GameManager : MonoBehaviour
     public Image posionImg;
 
     bool activeInventory = false;
+    bool activeManu = false;
 
     public Slot[] slots;
     public Transform slotHolder;
@@ -90,6 +93,11 @@ public class GameManager : MonoBehaviour
         {
             activeInventory = !activeInventory;
             inventoryPanel.SetActive(activeInventory);
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            activeManu = !activeManu;
+            ManuPanel.SetActive(activeManu);
         }
     }
     void LateUpdate()

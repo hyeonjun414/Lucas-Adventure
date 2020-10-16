@@ -9,7 +9,6 @@ public class Weapon : MonoBehaviour
     public int damage;
     public float rate;
     public BoxCollider2D meleeArea;
-    public TrailRenderer trailEffect;
     public Transform bulletPos;
     public GameObject bullet;
 
@@ -32,11 +31,9 @@ public class Weapon : MonoBehaviour
     {
         yield return new WaitForSeconds(0.1f);
         meleeArea.enabled = true;
-        trailEffect.enabled = true;
         yield return new WaitForSeconds(0.1f);
         meleeArea.enabled = false;
         yield return new WaitForSeconds(0.1f);
-        trailEffect.enabled = false;
     }
     IEnumerator Shot()
     {
@@ -44,14 +41,12 @@ public class Weapon : MonoBehaviour
         Rigidbody2D bulletRigid = instantBullet.GetComponent<Rigidbody2D>();
 
         yield return new WaitForSeconds(0.1f);
-        trailEffect.enabled = true;
         if (gameObject.transform.parent.parent.localScale.x == -1)
             bulletRigid.velocity = bulletPos.right * -10;
         else
             bulletRigid.velocity = bulletPos.right * 10;
 
         yield return new WaitForSeconds(0.3f);
-        trailEffect.enabled = false;
     }
     
     //Use() 메인루틴 -> Swing() 서브루틴 -> Use() 메인루틴

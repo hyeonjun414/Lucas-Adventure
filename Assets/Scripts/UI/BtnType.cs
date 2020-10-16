@@ -14,33 +14,24 @@ public class BtnType : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public CanvasGroup mainGroup;
     public CanvasGroup optionGroup;
 
+    public GameObject inventoryPanel;
+    bool activeInventory = false;
+
+    public GameObject ManuPanel;
+    bool activeManu = false;
+
     bool isSound = true;
 
     private void Start()
     {   
         defaultScale = buttonScale.localScale;
+        
     }
     public void OnBtnClick()
     {
         switch (currentType)
         {
             case BTNType.New:
-                switch (Random.Range(0, 4))
-                {
-                    case 0:
-                        SceneLoad.LoadSceneHandle("map1", 0);
-                        break;
-                    case 1:
-                        SceneLoad.LoadSceneHandle("map2", 0);
-                        break;
-                    case 2:
-                        SceneLoad.LoadSceneHandle("map3", 0);
-                        break;
-                    case 3:
-                        SceneLoad.LoadSceneHandle("map4", 0);
-                        break;
-                }
-                //SceneLoad.LoadSceneHandle("PlayScene", 0);
                 Debug.Log("새 게임");
                 break;
             case BTNType.Continue:
@@ -75,6 +66,15 @@ public class BtnType : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             case BTNType.Quit:
                 Debug.Log("나가기");
                 break;
+            case BTNType.Inventory:
+                activeInventory = !activeInventory;
+                inventoryPanel.SetActive(activeInventory);
+                break;
+            case BTNType.Manu:
+                activeManu = !activeManu;
+                ManuPanel.SetActive(activeManu);
+                break;
+
         }
     }
 

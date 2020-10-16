@@ -13,6 +13,7 @@ public class Slot : MonoBehaviour, IPointerUpHandler
     public void UpdateSlotUI()
     {
         itemIcon.sprite = item.itemImage;
+        itemIcon.preserveAspect = true;
         itemIcon.gameObject.SetActive(true);
     }
 

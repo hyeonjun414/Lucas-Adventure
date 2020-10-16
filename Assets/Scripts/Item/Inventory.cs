@@ -57,11 +57,8 @@ public class Inventory : MonoBehaviour
 
     public void RemoveItem(int _index)
     {
-        if(items[_index].itemType == ItemType.posion)
-        {
             items.RemoveAt(_index);
             onChangeItem.Invoke();
-        }
         
     }
 

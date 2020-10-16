@@ -4058,7 +4058,6 @@ MonoBehaviour:
   playerExpTxt: {fileID: 154922518}
   weapon1Img: {fileID: 1372121962}
   weapon2Img: {fileID: 1722832869}
-  weapon3Img: {fileID: 2048103603}
   posionImg: {fileID: 1405237604}
   slots: []
   slotHolder: {fileID: 1421127901}
@@ -21297,10 +21296,20 @@ PrefabInstance:
       propertyPath: m_Time
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 779245527404325771, guid: 0067dd47262f52d4da99d7e4c408529c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 779245527503573009, guid: 0067dd47262f52d4da99d7e4c408529c,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 779245528052251426, guid: 0067dd47262f52d4da99d7e4c408529c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 779245528229323528, guid: 0067dd47262f52d4da99d7e4c408529c,
         type: 3}
@@ -21374,6 +21383,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 779245528229323543, guid: 0067dd47262f52d4da99d7e4c408529c,
         type: 3}
+      propertyPath: weapons.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 779245528229323543, guid: 0067dd47262f52d4da99d7e4c408529c,
+        type: 3}
+      propertyPath: hasWeapons.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 779245528229323543, guid: 0067dd47262f52d4da99d7e4c408529c,
+        type: 3}
       propertyPath: dust
       value: 
       objectReference: {fileID: 929578345}
@@ -21392,6 +21411,21 @@ PrefabInstance:
       propertyPath: nextLevel
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 779245528229323543, guid: 0067dd47262f52d4da99d7e4c408529c,
+        type: 3}
+      propertyPath: weapons.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 779245528229323543, guid: 0067dd47262f52d4da99d7e4c408529c,
+        type: 3}
+      propertyPath: weapons.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 779245528519638495, guid: 0067dd47262f52d4da99d7e4c408529c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 779245528571678763, guid: 0067dd47262f52d4da99d7e4c408529c,
         type: 3}
       propertyPath: m_SortingLayerID
@@ -21400,12 +21434,22 @@ PrefabInstance:
     - target: {fileID: 779245528571678763, guid: 0067dd47262f52d4da99d7e4c408529c,
         type: 3}
       propertyPath: m_SortingLayer
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 779245528571678765, guid: 0067dd47262f52d4da99d7e4c408529c,
         type: 3}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 779245528595299021, guid: 0067dd47262f52d4da99d7e4c408529c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 779245528616183815, guid: 0067dd47262f52d4da99d7e4c408529c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5768987277914555334, guid: 0067dd47262f52d4da99d7e4c408529c,
         type: 3}

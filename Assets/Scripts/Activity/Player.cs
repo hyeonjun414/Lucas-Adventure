@@ -141,6 +141,7 @@ public class Player : MonoBehaviour
         if (moveVelocity != Vector2.zero) CreateDust(); //먼지 효과
         
     }
+    //회피
     void Dash()
     {
         if (zDown)
@@ -150,6 +151,7 @@ public class Player : MonoBehaviour
             rigid.AddForce(moveVelocity * 1000f * Time.deltaTime, ForceMode2D.Impulse);
         }
     }
+    //교체
     void Swap()
     {
         if (isMotion)
@@ -172,7 +174,7 @@ public class Player : MonoBehaviour
             
         }
     }
-
+    //상호작용
     void Interaction()
     {
         if(iDown && nearObject != null)
@@ -186,6 +188,7 @@ public class Player : MonoBehaviour
             }
         }
     }
+    //충돌처리
     void OnTriggerEnter2D(Collider2D other)
     {
         if(other.tag == "Item")
@@ -207,7 +210,6 @@ public class Player : MonoBehaviour
             Destroy(other.gameObject);
         }
     }
-
     void OnTriggerStay2D(Collider2D other)
     {
         if(other.tag == "Weapon")
@@ -224,13 +226,14 @@ public class Player : MonoBehaviour
             nearObject = null;
         }
     }
+    //교체가능
     IEnumerator icanswap()
     {
         isMotion = true;
         yield return new WaitForSeconds(equipWeapon.rate);
         isMotion = false;
     }
-
+    //달리기 효과
     void CreateDust()
     {
         dust.Play();
@@ -238,5 +241,11 @@ public class Player : MonoBehaviour
     void CreateDashEffect()
     {
         dash.Play();
+    }
+
+    public void WeaponEquip(int i)
+    {
+        Transform ArmL = gameObject.transform.Find("ArmL");
+      //  GameObject go = Instantiate(weapons[i], 
     }
 }

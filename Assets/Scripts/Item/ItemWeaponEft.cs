@@ -7,21 +7,29 @@ using UnityEngine;
 public class ItemWeaponEft : ItemEffect
 {
     public Player player;
-    public Item thisitem;
-    public override bool ExecuteRole()
+    public override bool ExecuteRole(string itemName)
     {
         
         player = FindObjectOfType<Player>();
         Debug.Log(player.health);
-        if (!player.hasWeapons[0])
+        GameObject temp1 = player.transform.Find("PlayerGFX").gameObject;
+        GameObject temp2 = temp1.transform.Find("Arm L").gameObject;
+        for (int i=0; i<player.hasWeapons.Length; i++)
         {
-            player.weapons[0] = Resources.Load<GameObject>("Prefabs/items/Weapon/" +thisitem.itemName);
-            return true;
-        }
-        else if (!player.hasWeapons[1])
-        {
-            player.weapons[1] = Resources.Load<GameObject>("Prefabs/items/Weapon/" + thisitem.itemName);
-            return true;
+            if (!player.hasWeapons[i])
+            {
+                GameObject item = Resources.Load<GameObject>("Weapon/" + itemName);
+                GameObject go = Instantiate(item,
+                                temp2.transform.position,
+                                temp2.transform.rotation);
+                go.SetActive(false);
+                go.transform.parent = temp2.transform;
+                player.weapons[i] = go;
+                
+                
+                player.hasWeapons[i] = true;
+                return true;
+            }
         }
         return false;
     }

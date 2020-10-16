@@ -25,7 +25,6 @@ public class GameManager : MonoBehaviour
 
     public Image weapon1Img;
     public Image weapon2Img;
-    public Image weapon3Img;
     public Image posionImg;
 
     bool activeInventory = false;
@@ -117,7 +116,6 @@ public class GameManager : MonoBehaviour
 
         weapon1Img.color = new Color(1, 1, 1, player.hasWeapons[0] ? 1 : 0);
         weapon2Img.color = new Color(1, 1, 1, player.hasWeapons[1] ? 1 : 0);
-        weapon3Img.color = new Color(1, 1, 1, player.hasWeapons[2] ? 1 : 0);
         posionImg.color = new Color(1, 1, 1, 0);
     }
 }

@@ -7,7 +7,7 @@ using UnityEngine;
 public class ItemHealEft : ItemEffect
 {
     public int HealingPoint = 0;
-    public override bool ExecuteRole(string itemName)
+    public override bool ExecuteRole(Item getItem)
     {
         Debug.Log("PlayerHp ass :" + HealingPoint);
         return true;

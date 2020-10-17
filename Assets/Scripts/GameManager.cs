@@ -15,7 +15,6 @@ public class GameManager : MonoBehaviour
     public GameObject gamePanel;
     public GameObject inventoryPanel;
     public GameObject ManuPanel;
-
     public Text stageTxt;
     public Text playTimeTxt;
 
@@ -23,31 +22,31 @@ public class GameManager : MonoBehaviour
     public Text playerCoinTxt;
     public Text playerExpTxt;
 
-    public Image weapon1Img;
-    public Image weapon2Img;
-    public Image posionImg;
+
+    public Image[] quickSlot;
+
+    public Image[] invenQuickSlot;
 
     bool activeInventory = false;
     bool activeManu = false;
 
     public Slot[] slots;
     public Transform slotHolder;
-    public Inventory inven;
+    Inventory inven;
+
+    public ItemDatabase itemDB;
     void Awake()
     {
         
     }
     void Start()
     {
-        Debug.Log("check");
         inven = Inventory.instance;
         slots = slotHolder.GetComponentsInChildren<Slot>();
-        
         inven.onSlotCountChange += SlotChange;
         inven.onChangeItem += RedrawSlotUI;
         inven.SlotCnt = 4;
         inventoryPanel.SetActive(activeInventory);
-        Debug.Log("check2");
 
     }
 
@@ -66,7 +65,6 @@ public class GameManager : MonoBehaviour
 
     private void SlotChange(int val)
     {
-        Debug.Log("slotcnt");
         for (int i = 0; i< slots.Length; i++)
         {
             slots[i].slotnum = i;
@@ -99,6 +97,21 @@ public class GameManager : MonoBehaviour
             ManuPanel.SetActive(activeManu);
         }
     }
+    void quickSlotUpdate()
+    {
+        for(int i = 0; i<player.weapons.Length; i++)
+        {
+            if(player.hasWeapons[i])
+            {
+                Sprite img = player.weapons[i].itemImage;
+                quickSlot[i].sprite = img;
+                quickSlot[i].preserveAspect = true;
+                invenQuickSlot[i].sprite = img;
+                invenQuickSlot[i].preserveAspect = true;
+            }
+        }
+    }
+
     void LateUpdate()
     {
         stageTxt.text = "STAGE " + stage;
@@ -114,8 +127,12 @@ public class GameManager : MonoBehaviour
         playerCoinTxt.text = string.Format("{0:n0}", player.coin);
         playerExpTxt.text = player.exp + " / " + player.maxExp;
 
-        weapon1Img.color = new Color(1, 1, 1, player.hasWeapons[0] ? 1 : 0);
-        weapon2Img.color = new Color(1, 1, 1, player.hasWeapons[1] ? 1 : 0);
-        posionImg.color = new Color(1, 1, 1, 0);
+        quickSlotUpdate();
+        for (int i = 0; i < quickSlot.Length; i++)
+        {
+            quickSlot[i].color = new Color(1, 1, 1, player.hasWeapons[i] ? 1 : 0);
+            invenQuickSlot[i].color =  new Color(1, 1, 1, player.hasWeapons[i] ? 1 : 0);
+        }
+        invenQuickSlot[4].color = new Color(1, 1, 1, player.hasArmor ? 1 : 0);
     }
 }

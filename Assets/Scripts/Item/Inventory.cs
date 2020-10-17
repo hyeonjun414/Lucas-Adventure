@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class Inventory : MonoBehaviour
 {
     #region Singleton
@@ -24,10 +24,9 @@ public class Inventory : MonoBehaviour
     public OnChangeItem onChangeItem;
 
     public List<Item> items = new List<Item>();
-
     public List<Item> equipitems = new List<Item>();
 
-
+    public Player player;
     private int slotCnt;
     public int SlotCnt
     {
@@ -41,6 +40,7 @@ public class Inventory : MonoBehaviour
     void Start()
     {
         slotCnt = 4;
+        player = GetComponentInParent<Player>();
     }
     
     public bool AddItem(Item _item)

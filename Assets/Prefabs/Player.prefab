@@ -225,10 +225,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 400
   weapons:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  hasWeapons: 000000
+  - itemType: 0
+    itemName: 
+    itemImage: {fileID: 0}
+    eft: {fileID: 0}
+  - itemType: 0
+    itemName: 
+    itemImage: {fileID: 0}
+    eft: {fileID: 0}
+  - itemType: 0
+    itemName: 
+    itemImage: {fileID: 0}
+    eft: {fileID: 0}
+  - itemType: 0
+    itemName: 
+    itemImage: {fileID: 0}
+    eft: {fileID: 0}
+  hasWeapons: 00000000
   coin: 100
   health: 100
   exp: 0
@@ -240,6 +253,8 @@ MonoBehaviour:
   dust: {fileID: 0}
   dash: {fileID: 0}
   equipWeapon: {fileID: 0}
+  inven: {fileID: 0}
+  ArmL: {fileID: 779245528519638480}
 --- !u!1 &779245528519638480
 GameObject:
   m_ObjectHideFlags: 0

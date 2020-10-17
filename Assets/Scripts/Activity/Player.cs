@@ -4,48 +4,49 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public float Speed = 5f;
-    public GameObject[] weapons;
-    public bool[] hasWeapons;
+    public float Speed = 5f; //기본 이동속도
+    public Item[] weapons; //무기 장착 슬롯
+    public bool[] hasWeapons; //무기 장착 슬롯에 무기가 있는지 여부
+    public bool hasArmor; //방어구를 장착중인지
 
-    public int coin;
-    public int health;
-    public int exp;
+    public int coin;  //가지고 있는 코인
+    public int health;// 현재 체력
+    public int exp;   // 현재 경험치
 
-    public int maxcoin;
-    public int maxhealth;
-    public int maxExp;
-    public float maxSpeed = 10f;
-    float hAxis, vAxis;
+    public int maxcoin; //최대 소지가능 코인
+    public int maxhealth; // 최대 체력
+    public int maxExp; // 레벨업에 필요한 경험치
+    public float maxSpeed = 10f; //이동속도 제한 : 물리력을 더하는 방식이라 필요
 
-    bool iDown;
-    bool sDown1;
-    bool sDown2;
-    bool sDown3;
-    bool fDown;
-    bool zDown;
+    float hAxis, vAxis; //상하좌우 이동 입력
+    bool iDown; // 인벤토리창 입력
+    bool sDown1; // 교체1
+    bool sDown2; // 교체2
+    bool sDown3; // 교체3
+    bool fDown;  // 공격
+    bool zDown;  // 대쉬
 
-    bool isMotion;
-    bool isFireReady;
-    bool isBorder;
-    public bool isDamage;
+    bool isMotion = false; //현재 행동중인지
+    bool isFireReady; //현재 공격할 준비가 되었는지
+    public bool isDamage; //현재 공격 당하고 있는지
 
+    int equipWeaponIndex = -1; //현재 장착중인 무기슬롯, 장착중인 무기가 없다면 -1
+    float fireDelay = 0; //공격 딜레이
+
+    //필요 컴포넌트
     public ParticleSystem dust;
     public ParticleSystem dash;
     Rigidbody2D rigid;
     SpriteRenderer spriteRenderer;
     Vector3 movement;
-
     Animator anim;
     GameObject nearObject;
     public Weapon equipWeapon;
-    int equipWeaponIndex = -1;
-    float fireDelay;
-
-
+    public Inventory inven;
+    public GameObject ArmL;
+    
     void Start()
     {
-        isMotion = false;
         rigid = gameObject.GetComponent<Rigidbody2D>();
         spriteRenderer = gameObject.GetComponentInChildren<SpriteRenderer>();
         anim = GetComponentInChildren<Animator>();
@@ -55,9 +56,9 @@ public class Player : MonoBehaviour
     {
         GetInput();
         Attack();
-        
         Swap();
         Interaction();
+        // 입력 값에 따라 좌우 이미지 좌우 반전
         if (Input.GetButton("Horizontal"))
             if(Input.GetAxisRaw("Horizontal") > 0)
                 transform.localScale = new Vector3(1, 1, 1);
@@ -65,6 +66,13 @@ public class Player : MonoBehaviour
                 transform.localScale = new Vector3(-1, 1, 1);
                 
     }
+    void FixedUpdate()
+    {
+        Move();
+        Dash();
+    }
+
+    //입력 키 모음
     void GetInput()
     {
         hAxis = Input.GetAxisRaw("Horizontal");
@@ -76,40 +84,36 @@ public class Player : MonoBehaviour
         sDown3 = Input.GetButtonDown("Swap3");
         zDown = Input.GetButtonDown("Dash");
     }
-    void FixedUpdate()
-    {
-        Move();
-        Dash();
-    }
-    
     //공격
     void Attack()
     {
-        if(equipWeapon == null)
-        {
-            return;
-        }
+        if(equipWeapon == null) return; //현재 장착 무기가 없다면 취소
 
+        //공격딜레이시간에 프레임단위로 시간을 측정하고,
         fireDelay += Time.deltaTime;
+        //공격딜레이시간이 장착한 무기의 딜레이보다 커지면 공격 준비
         isFireReady = equipWeapon.rate < fireDelay;
 
+        //공격키가 눌리고 공격준비가 완료되면 공격
         if(fDown && isFireReady)
         {
-            StartCoroutine("icanswap");
-            anim.SetTrigger("isAttack");
-            equipWeapon.Use();
+            StartCoroutine("icantswap"); //공격중에는 교체 불가
+            anim.SetTrigger("isAttack"); //공격 애니메이션의 실행
+            equipWeapon.Use(); //장착무기의 공격루틴 활성화
             
-            fireDelay = 0;
+            fireDelay = 0; //플레이어 공격딜레이를 다시 초기화
+            
         }
     }
     //이동
     void Move()
     {
-        if (isDamage) return;
-        Vector2 moveVelocity = new Vector2(hAxis, vAxis);
-        anim.SetBool("isRun", moveVelocity != Vector2.zero);
-        rigid.AddForce(moveVelocity * Speed * Time.deltaTime, ForceMode2D.Impulse);
+        if (isDamage) return; //공격당하는 중에는 경직, 이동불가
+        Vector2 moveVelocity = new Vector2(hAxis, vAxis); //입력값에 따른 속력의 방향 대입
+        anim.SetBool("isRun", moveVelocity != Vector2.zero); //멈춰있는게 아니라면 달리기 애니메이션 실행
+        rigid.AddForce(moveVelocity * Speed * Time.deltaTime, ForceMode2D.Impulse); //플레이어에 프레임 단위로 속력을 더해줌
 
+        //일정속도 이상으로 올라가지 않도록 속도 제한
         if(hAxis > 0) //x축 이동 계산
         {
             if (rigid.velocity.x > maxSpeed)
@@ -138,7 +142,8 @@ public class Player : MonoBehaviour
                 rigid.velocity = new Vector2(rigid.velocity.x, maxSpeed * -1);
             }
         }
-        if (moveVelocity != Vector2.zero) CreateDust(); //먼지 효과
+
+        if (moveVelocity != Vector2.zero) CreateDust(); //달리기 효과 생성
         
     }
     //회피
@@ -154,23 +159,29 @@ public class Player : MonoBehaviour
     //교체
     void Swap()
     {
-        if (isMotion)
-            return;
+        if (isMotion) return; //움직이는 중에는 취소
+
+        //현재 자신이 장착중인 슬롯으로 교체하려고 하면 취소
         if (sDown1 && (!hasWeapons[0] || equipWeaponIndex == 0))
             return;
         if (sDown2 && (!hasWeapons[1] || equipWeaponIndex == 1))
             return;
+        
         int weaponIndex = -1;
+        //입력된 키에따라 무기순서 부여
         if (sDown1) weaponIndex = 0;
-        if (sDown2) weaponIndex = 1;
-
-        if ((sDown1 || sDown2))
+        else if (sDown2) weaponIndex = 1;
+        if (weaponIndex < 0) return;
+        
+        GameObject go = ArmL.transform.Find(weapons[weaponIndex].itemName+"(Clone)").gameObject;
+        //교체 1번이나 교체 2번이 눌리면 실행
+        if ((sDown1 || sDown2) && go != null)
         {
-            if(equipWeapon != null)
+            if(equipWeapon != null) // 현재 장착중인 무기가 있다면 비활성화
                 equipWeapon.gameObject.SetActive(false);
-            equipWeaponIndex = weaponIndex;
-            equipWeapon = weapons[weaponIndex].GetComponent<Weapon>();
-            equipWeapon.gameObject.SetActive(true);
+            equipWeaponIndex = weaponIndex; //현재 장착한 무기 순서 업데이트
+            equipWeapon = go.GetComponent<Weapon>(); //현재무기를 슬롯의 무기를 불러와 장착
+            equipWeapon.gameObject.SetActive(true); //바꿀 무기 활성화
             
         }
     }
@@ -227,7 +238,7 @@ public class Player : MonoBehaviour
         }
     }
     //교체가능
-    IEnumerator icanswap()
+    IEnumerator icantswap()
     {
         isMotion = true;
         yield return new WaitForSeconds(equipWeapon.rate);

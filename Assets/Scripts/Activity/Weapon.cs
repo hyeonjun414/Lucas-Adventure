@@ -9,11 +9,14 @@ public class Weapon : MonoBehaviour
     public int damage;
     public float rate;
     public BoxCollider2D meleeArea;
-    public Transform bulletPos;
     public GameObject bullet;
-
+    Transform bulletPos;
     GameObject Arm;
     float ro_angle;
+    void Start()
+    {
+        bulletPos = FindObjectOfType<Player>().transform;
+    }
     public void Use() //플레이어가 무기를 사용
     {
         if(type == Type.Melee)

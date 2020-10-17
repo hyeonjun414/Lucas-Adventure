@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5701360356270947116}
   m_Layer: 0
   m_Name: Staff2
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,8 +100,7 @@ MonoBehaviour:
   damage: 20
   rate: 0.3
   meleeArea: {fileID: 5701360356270947116}
-  bulletPos: {fileID: 0}
-  bullet: {fileID: 0}
+  bullet: {fileID: 8717677395532401123, guid: 0f413abe5829ead48803f3c9b49ec7de, type: 3}
 --- !u!61 &5701360356270947116
 BoxCollider2D:
   m_ObjectHideFlags: 0

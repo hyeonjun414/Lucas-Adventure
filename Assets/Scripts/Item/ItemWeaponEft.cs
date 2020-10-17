@@ -7,7 +7,7 @@ using UnityEngine;
 public class ItemWeaponEft : ItemEffect
 {
     public Player player;
-    public override bool ExecuteRole(string itemName)
+    public override bool ExecuteRole(Item getItem)
     {
         
         player = FindObjectOfType<Player>();
@@ -18,13 +18,13 @@ public class ItemWeaponEft : ItemEffect
         {
             if (!player.hasWeapons[i])
             {
-                GameObject item = Resources.Load<GameObject>("Weapon/" + itemName);
+                GameObject item = Resources.Load<GameObject>("Weapon/" + getItem.itemName);
                 GameObject go = Instantiate(item,
                                 temp2.transform.position,
                                 temp2.transform.rotation);
                 go.SetActive(false);
                 go.transform.parent = temp2.transform;
-                player.weapons[i] = go;
+                player.weapons[i] = getItem;
                 
                 
                 player.hasWeapons[i] = true;

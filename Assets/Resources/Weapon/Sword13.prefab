@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5248574614501984098}
   m_Layer: 0
   m_Name: Sword13
-  m_TagString: Weapon
+  m_TagString: Melee
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,7 +100,6 @@ MonoBehaviour:
   damage: 20
   rate: 0.3
   meleeArea: {fileID: 5248574614501984098}
-  bulletPos: {fileID: 0}
   bullet: {fileID: 0}
 --- !u!61 &5248574614501984098
 BoxCollider2D:
@@ -112,7 +111,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.72792244}

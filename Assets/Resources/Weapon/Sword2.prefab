@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6623833700238135652}
   m_Layer: 0
   m_Name: Sword2
-  m_TagString: Weapon
+  m_TagString: Melee
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,7 +100,6 @@ MonoBehaviour:
   damage: 20
   rate: 0.3
   meleeArea: {fileID: 6623833700238135652}
-  bulletPos: {fileID: 0}
   bullet: {fileID: 0}
 --- !u!61 &6623833700238135652
 BoxCollider2D:

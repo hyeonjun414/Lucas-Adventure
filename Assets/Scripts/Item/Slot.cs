@@ -25,6 +25,7 @@ public class Slot : MonoBehaviour, IPointerUpHandler
 
     public void OnPointerUp(PointerEventData eventData)
     {
+        if (item == null) return;
         bool isUse = item.Use(item);
         if (isUse)
         {

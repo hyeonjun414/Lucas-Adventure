@@ -24,6 +24,7 @@ public class ItemWeaponEft : ItemEffect
                                 temp2.transform.rotation);
                 go.SetActive(false);
                 go.transform.parent = temp2.transform;
+                go.transform.localScale = new Vector3(1, 1, 1);
                 player.weapons[i] = getItem;
                 
                 

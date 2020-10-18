@@ -1,0 +1,151 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1612874556812593378
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1612874556812593376}
+  - component: {fileID: 1612874556812593379}
+  m_Layer: 0
+  m_Name: ItemDatabase
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1612874556812593376
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1612874556812593378}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.66, y: -0.5, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1612874556812593379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1612874556812593378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b35d543e874207e438def01e066b3dd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemDB:
+  - itemType: 0
+    itemName: Mace1
+    itemImage: {fileID: -5488275578273347653, guid: 2cfa7aeefe6ecdd4fbada15f32010b94,
+      type: 3}
+    eft: {fileID: 11400000, guid: 1ed36c894d6429048b9ef1ff9d8999fe, type: 2}
+  - itemType: 0
+    itemName: Mace2
+    itemImage: {fileID: -8828447702523197711, guid: 2cfa7aeefe6ecdd4fbada15f32010b94,
+      type: 3}
+    eft: {fileID: 11400000, guid: 1ed36c894d6429048b9ef1ff9d8999fe, type: 2}
+  - itemType: 0
+    itemName: Mace3
+    itemImage: {fileID: -6815691675891187282, guid: 2cfa7aeefe6ecdd4fbada15f32010b94,
+      type: 3}
+    eft: {fileID: 11400000, guid: 1ed36c894d6429048b9ef1ff9d8999fe, type: 2}
+  - itemType: 0
+    itemName: Mace4
+    itemImage: {fileID: -287763524560535101, guid: 2cfa7aeefe6ecdd4fbada15f32010b94,
+      type: 3}
+    eft: {fileID: 11400000, guid: 1ed36c894d6429048b9ef1ff9d8999fe, type: 2}
+  - itemType: 0
+    itemName: Staff1
+    itemImage: {fileID: -4259912358018683720, guid: 2cfa7aeefe6ecdd4fbada15f32010b94,
+      type: 3}
+    eft: {fileID: 11400000, guid: 1ed36c894d6429048b9ef1ff9d8999fe, type: 2}
+  - itemType: 0
+    itemName: Staff2
+    itemImage: {fileID: 2548970649608562601, guid: 2cfa7aeefe6ecdd4fbada15f32010b94,
+      type: 3}
+    eft: {fileID: 11400000, guid: 1ed36c894d6429048b9ef1ff9d8999fe, type: 2}
+  - itemType: 0
+    itemName: Staff3
+    itemImage: {fileID: -3677384104762732385, guid: 2cfa7aeefe6ecdd4fbada15f32010b94,
+      type: 3}
+    eft: {fileID: 11400000, guid: 1ed36c894d6429048b9ef1ff9d8999fe, type: 2}
+  - itemType: 0
+    itemName: Sword1
+    itemImage: {fileID: 8882499839746225672, guid: 2cfa7aeefe6ecdd4fbada15f32010b94,
+      type: 3}
+    eft: {fileID: 11400000, guid: 1ed36c894d6429048b9ef1ff9d8999fe, type: 2}
+  - itemType: 0
+    itemName: Sword2
+    itemImage: {fileID: 1518363075290452430, guid: 2cfa7aeefe6ecdd4fbada15f32010b94,
+      type: 3}
+    eft: {fileID: 11400000, guid: 1ed36c894d6429048b9ef1ff9d8999fe, type: 2}
+  - itemType: 0
+    itemName: Sword3
+    itemImage: {fileID: -6523628323415844430, guid: 2cfa7aeefe6ecdd4fbada15f32010b94,
+      type: 3}
+    eft: {fileID: 11400000, guid: 1ed36c894d6429048b9ef1ff9d8999fe, type: 2}
+  - itemType: 0
+    itemName: Sword4
+    itemImage: {fileID: 6919366548538155999, guid: 2cfa7aeefe6ecdd4fbada15f32010b94,
+      type: 3}
+    eft: {fileID: 11400000, guid: 1ed36c894d6429048b9ef1ff9d8999fe, type: 2}
+  - itemType: 0
+    itemName: Sword5
+    itemImage: {fileID: 3838397555169904295, guid: 2cfa7aeefe6ecdd4fbada15f32010b94,
+      type: 3}
+    eft: {fileID: 11400000, guid: 1ed36c894d6429048b9ef1ff9d8999fe, type: 2}
+  - itemType: 0
+    itemName: Sword6
+    itemImage: {fileID: 4292809995094347320, guid: 2cfa7aeefe6ecdd4fbada15f32010b94,
+      type: 3}
+    eft: {fileID: 11400000, guid: 1ed36c894d6429048b9ef1ff9d8999fe, type: 2}
+  - itemType: 0
+    itemName: Sword7
+    itemImage: {fileID: -7910522835582897167, guid: 2cfa7aeefe6ecdd4fbada15f32010b94,
+      type: 3}
+    eft: {fileID: 11400000, guid: 1ed36c894d6429048b9ef1ff9d8999fe, type: 2}
+  - itemType: 0
+    itemName: Sword8
+    itemImage: {fileID: -1360405840217365432, guid: 2cfa7aeefe6ecdd4fbada15f32010b94,
+      type: 3}
+    eft: {fileID: 11400000, guid: 1ed36c894d6429048b9ef1ff9d8999fe, type: 2}
+  - itemType: 0
+    itemName: Sword9
+    itemImage: {fileID: -2124057790635112801, guid: 2cfa7aeefe6ecdd4fbada15f32010b94,
+      type: 3}
+    eft: {fileID: 11400000, guid: 1ed36c894d6429048b9ef1ff9d8999fe, type: 2}
+  - itemType: 0
+    itemName: Sword10
+    itemImage: {fileID: 634660655487653927, guid: 2cfa7aeefe6ecdd4fbada15f32010b94,
+      type: 3}
+    eft: {fileID: 11400000, guid: 1ed36c894d6429048b9ef1ff9d8999fe, type: 2}
+  - itemType: 0
+    itemName: Sword11
+    itemImage: {fileID: -7617256131967975525, guid: 2cfa7aeefe6ecdd4fbada15f32010b94,
+      type: 3}
+    eft: {fileID: 11400000, guid: 1ed36c894d6429048b9ef1ff9d8999fe, type: 2}
+  - itemType: 0
+    itemName: Sword12
+    itemImage: {fileID: 6941263446265195884, guid: 2cfa7aeefe6ecdd4fbada15f32010b94,
+      type: 3}
+    eft: {fileID: 11400000, guid: 1ed36c894d6429048b9ef1ff9d8999fe, type: 2}
+  - itemType: 0
+    itemName: Sword13
+    itemImage: {fileID: 4698681188867507813, guid: 2cfa7aeefe6ecdd4fbada15f32010b94,
+      type: 3}
+    eft: {fileID: 11400000, guid: 1ed36c894d6429048b9ef1ff9d8999fe, type: 2}
+  fieldItemPrefab: {fileID: 4286782481912221681, guid: 04d46d5fae02e9f4d9064ab4ec1b04ed,
+    type: 3}
+  pos:
+  - {x: 2, y: 0, z: 0}
+  - {x: 1, y: 0, z: 0}

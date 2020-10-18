@@ -25,7 +25,7 @@ public class EnemyHit : MonoBehaviour
         {
             Weapon weapon = other.GetComponent<Weapon>();
             enemy.curHealth -= weapon.damage;
-            Vector2 reactVec = transform.position - other.transform.position;
+            Vector2 reactVec = (transform.position - other.transform.position).normalized;
             StartCoroutine(OnDamage(reactVec));
             Debug.Log("Melee : " + enemy.curHealth);
         }
@@ -42,6 +42,7 @@ public class EnemyHit : MonoBehaviour
     {
 
         mat.color = Color.red;
+        rigid.AddForce(reactVec*10, ForceMode2D.Impulse);
         yield return new WaitForSeconds(0.1f);
 
         if (enemy.curHealth > 0)

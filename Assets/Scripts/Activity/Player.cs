@@ -29,6 +29,7 @@ public class Player : MonoBehaviour
     bool isMotion = false; //현재 행동중인지
     bool isFireReady; //현재 공격할 준비가 되었는지
     public bool isDamage; //현재 공격 당하고 있는지
+    bool isAttack = false;
 
     int equipWeaponIndex = -1; //현재 장착중인 무기슬롯, 장착중인 무기가 없다면 -1
     float fireDelay = 0; //공격 딜레이
@@ -108,7 +109,7 @@ public class Player : MonoBehaviour
     //이동
     void Move()
     {
-        if (isDamage) return; //공격당하는 중에는 경직, 이동불가
+        if (isDamage || isAttack) return; //공격당하는 중에는 경직, 이동불가
         Vector2 moveVelocity = new Vector2(hAxis, vAxis); //입력값에 따른 속력의 방향 대입
         anim.SetBool("isRun", moveVelocity != Vector2.zero); //멈춰있는게 아니라면 달리기 애니메이션 실행
         rigid.AddForce(moveVelocity * Speed * Time.deltaTime, ForceMode2D.Impulse); //플레이어에 프레임 단위로 속력을 더해줌

@@ -6,7 +6,8 @@ public class EnemyHit : MonoBehaviour
 {
     public GameObject obj;
     public Enemy enemy;
-    ItemDrop drop;
+    public GameObject itemDB;
+    ItemDatabase drop;
     Material mat;
     Rigidbody2D rigid;
     Animator anim;
@@ -14,7 +15,7 @@ public class EnemyHit : MonoBehaviour
     {
         rigid = GetComponentInParent<Rigidbody2D>();
         enemy = GetComponentInParent<Enemy>();
-        drop = GetComponentInParent<ItemDrop>();
+        drop = itemDB.GetComponent<ItemDatabase>();
         mat = GetComponent<SpriteRenderer>().material;
         anim = GetComponent<Animator>();
         
@@ -56,7 +57,7 @@ public class EnemyHit : MonoBehaviour
             mat.color = Color.gray;
             gameObject.layer = 9;
             enemy.isDead = true;
-            drop.DropItem();
+            drop.DropItem(gameObject.transform);
             Destroy(obj, 2);
         }
 

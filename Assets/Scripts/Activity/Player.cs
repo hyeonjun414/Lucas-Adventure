@@ -30,6 +30,7 @@ public class Player : MonoBehaviour
     bool isFireReady; //현재 공격할 준비가 되었는지
     public bool isDamage; //현재 공격 당하고 있는지
     bool isAttack = false;
+    bool UIon = false;
 
     int equipWeaponIndex = -1; //현재 장착중인 무기슬롯, 장착중인 무기가 없다면 -1
     float fireDelay = 0; //공격 딜레이
@@ -55,6 +56,7 @@ public class Player : MonoBehaviour
     
     void Update()
     {
+        UiCheck();
         GetInput();
         Attack();
         Swap();
@@ -88,6 +90,7 @@ public class Player : MonoBehaviour
     //공격
     void Attack()
     {
+        if(UIon == true) return;
         if(equipWeapon == null) return; //현재 장착 무기가 없다면 취소
 
         //공격딜레이시간에 프레임단위로 시간을 측정하고,
@@ -259,5 +262,20 @@ public class Player : MonoBehaviour
     {
         Transform ArmL = gameObject.transform.Find("ArmL");
       //  GameObject go = Instantiate(weapons[i], 
+    }
+
+    public void UiCheck()
+    {
+        GameObject[] go = GameObject.FindGameObjectsWithTag("UIpanel");
+        for(int i = 0; i<go.Length; i++)
+        {
+            if (go[i].activeSelf == true)
+            {
+                UIon = true;
+                return;
+            }
+        }
+        UIon = false;
+        return;
     }
 }

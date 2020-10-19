@@ -20,7 +20,9 @@ public class Item
 
     public bool Use(Item getItem)
     {
+        
         bool isUsed = false;
+        if (getItem == null) return isUsed;
         isUsed = eft.ExecuteRole(getItem);
         isUsed = true;
         return isUsed;

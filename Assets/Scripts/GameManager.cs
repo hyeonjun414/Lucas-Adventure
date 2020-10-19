@@ -9,8 +9,6 @@ public class GameManager : MonoBehaviour
     public Player player;
     public Enemy enemy;
     public int stage;
-    public float playTime;
-    public bool isBattle;
 
     public GameObject gamePanel;
     public GameObject inventoryPanel;
@@ -82,10 +80,6 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (isBattle)
-        {
-            playTime += Time.deltaTime;
-        }
         if (Input.GetKeyDown(KeyCode.I))
         {
             activeInventory = !activeInventory;
@@ -115,14 +109,7 @@ public class GameManager : MonoBehaviour
     void LateUpdate()
     {
         stageTxt.text = "STAGE " + stage;
-
-        int hour = (int)(playTime / 3600);
-        int min = (int)((playTime - hour * 3600) / 60);
-        int sec = (int)(playTime % 60);
-        playTimeTxt.text = string.Format("{0:00}", hour) + ":" +
-                           string.Format("{0:00}", min) + ":" + 
-                           string.Format("{0:00}", sec);
-
+        
         playerHealthTxt.text = player.health + " / " + player.maxhealth;
         playerCoinTxt.text = string.Format("{0:n0}", player.coin);
         playerExpTxt.text = player.exp + " / " + player.maxExp;

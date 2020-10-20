@@ -13,6 +13,7 @@ public class Slot : MonoBehaviour, IPointerUpHandler
     public Canvas canvas;
     void Start()
     {
+        
         canvas = FindObjectOfType<Canvas>(); 
     }
     public void UpdateSlotUI()
@@ -34,13 +35,13 @@ public class Slot : MonoBehaviour, IPointerUpHandler
         go.transform.SetParent(canvas.transform);
         ItemPanel ip = go.GetComponent<ItemPanel>();
         ip.slotitem = item;
+        ip.slotnum = slotnum;
         /*
         bool isUse = item.Use(item);
         if (isUse)
         {
             Inventory.instance.RemoveItem(slotnum);
         }*/
-        
     }
 
     public void OnPointerUp(PointerEventData eventData)

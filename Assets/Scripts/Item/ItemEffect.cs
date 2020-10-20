@@ -5,6 +5,6 @@ using UnityEngine;
 public abstract class ItemEffect : ScriptableObject
 {
     
-    public abstract bool ExecuteRole(Item item);
+    public abstract bool ExecuteRole(Item item, int slotnum);
 
 }

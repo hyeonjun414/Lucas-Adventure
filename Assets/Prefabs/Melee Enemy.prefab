@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 2149992542754187601}
   - component: {fileID: 2149992542754187603}
   - component: {fileID: 2149992542754187612}
-  - component: {fileID: 1879266232850309465}
   m_Layer: 8
   m_Name: Melee Enemy
   m_TagString: Enemy
@@ -91,22 +90,7 @@ MonoBehaviour:
   damage: 0
   target: {fileID: 0}
   Bullet: {fileID: 0}
-  coll: {fileID: 0}
   isDead: 0
---- !u!114 &1879266232850309465
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2149992542754187600}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9c00cd8484d29c4f9f9ef9b939085e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Weapon: []
-  Coin: {fileID: 8220115403989457548, guid: a17125128b522e9479d396404f3d5f58, type: 3}
 --- !u!1 &2149992543142275883
 GameObject:
   m_ObjectHideFlags: 0
@@ -225,6 +209,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obj: {fileID: 2149992542754187600}
   enemy: {fileID: 0}
+  itemDB: {fileID: 0}
 --- !u!70 &5449061405176345639
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

@@ -9,6 +9,8 @@ public class Player : MonoBehaviour
     public bool[] hasWeapons; //무기 장착 슬롯에 무기가 있는지 여부
     public bool hasArmor; //방어구를 장착중인지
 
+    public int isWeapon = 0; // 현재 활성화된 무기 슬롯
+
     public int coin;  //가지고 있는 코인
     public int health;// 현재 체력
     public int exp;   // 현재 경험치
@@ -24,13 +26,14 @@ public class Player : MonoBehaviour
     bool sDown2; // 교체2
     bool sDown3; // 교체3
     bool fDown;  // 공격
-    bool zDown;  // 대쉬
+
+    public bool InputAttack = false;
 
     bool isMotion = false; //현재 행동중인지
     bool isFireReady; //현재 공격할 준비가 되었는지
     public bool isDamage; //현재 공격 당하고 있는지
-    bool isAttack = false;
-    bool UIon = false;
+    bool isAttack = false; // 현재 공격중인지
+    bool UIon = false; // 현재 UI가 켜져있는지
 
     int equipWeaponIndex = -1; //현재 장착중인 무기슬롯, 장착중인 무기가 없다면 -1
     float fireDelay = 0; //공격 딜레이
@@ -60,7 +63,6 @@ public class Player : MonoBehaviour
         GetInput();
         Attack();
         Swap();
-        Interaction();
         // 입력 값에 따라 좌우 이미지 좌우 반전
         if (Input.GetButton("Horizontal"))
             if(Input.GetAxisRaw("Horizontal") > 0)
@@ -72,7 +74,6 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
         Move();
-        Dash();
     }
 
     //입력 키 모음
@@ -85,7 +86,6 @@ public class Player : MonoBehaviour
         sDown1 = Input.GetButtonDown("Swap1");
         sDown2 = Input.GetButtonDown("Swap2");
         sDown3 = Input.GetButtonDown("Swap3");
-        zDown = Input.GetButtonDown("Dash");
     }
     //공격
     void Attack()
@@ -99,14 +99,14 @@ public class Player : MonoBehaviour
         isFireReady = equipWeapon.rate < fireDelay;
 
         //공격키가 눌리고 공격준비가 완료되면 공격
-        if(fDown && isFireReady)
+        if((fDown && isFireReady) || (InputAttack && isFireReady))
         {
             StartCoroutine("icantswap"); //공격중에는 교체 불가
             anim.SetTrigger("isAttack"); //공격 애니메이션의 실행
             equipWeapon.Use(); //장착무기의 공격루틴 활성화
             
             fireDelay = 0; //플레이어 공격딜레이를 다시 초기화
-            
+            InputAttack = false;
         }
     }
     //이동
@@ -150,16 +150,6 @@ public class Player : MonoBehaviour
         if (moveVelocity != Vector2.zero) CreateDust(); //달리기 효과 생성
         
     }
-    //회피
-    void Dash()
-    {
-        if (zDown)
-        {
-            Vector2 moveVelocity = new Vector2(hAxis, vAxis);
-            dash.Play();
-            rigid.AddForce(moveVelocity * 1000f * Time.deltaTime, ForceMode2D.Impulse);
-        }
-    }
     //교체
     void Swap()
     {
@@ -189,58 +179,6 @@ public class Player : MonoBehaviour
             
         }
     }
-    //상호작용
-    void Interaction()
-    {
-        if(iDown && nearObject != null)
-        {
-            if(nearObject.tag == "Weapon")
-            {
-                Item2 item = nearObject.GetComponent<Item2>();
-                int weaponIndex = item.value;
-                hasWeapons[weaponIndex] = true;
-                Destroy(nearObject);
-            }
-        }
-    }
-    //충돌처리
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if(other.tag == "Item")
-        {
-            Item2 item = other.GetComponent<Item2>();
-            switch (item.type)
-            {
-                case Item2.Type.Coin:
-                    coin += item.value;
-                    if (coin > maxcoin)
-                        coin = maxcoin;
-                    break;
-                case Item2.Type.Heart:
-                    health += item.value;
-                    if (health > maxhealth)
-                        health = maxhealth;
-                    break;
-            }
-            Destroy(other.gameObject);
-        }
-    }
-    void OnTriggerStay2D(Collider2D other)
-    {
-        if(other.tag == "Weapon")
-        {
-            nearObject = other.gameObject;
-            Debug.Log(nearObject.name);
-        }
-        
-    }
-    void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.tag == "Weapon")
-        {
-            nearObject = null;
-        }
-    }
     //교체가능
     IEnumerator icantswap()
     {
@@ -252,10 +190,6 @@ public class Player : MonoBehaviour
     void CreateDust()
     {
         dust.Play();
-    }
-    void CreateDashEffect()
-    {
-        dash.Play();
     }
 
     public void WeaponEquip(int i)

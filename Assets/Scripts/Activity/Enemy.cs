@@ -19,7 +19,6 @@ public class Enemy : MonoBehaviour
     BoxCollider2D boxCollider;
     Material mat;
     Animator anim;
-    ItemDrop drop; // 적 처치시 아이템 드랍
     bool isTracing = false; // 추적중인가
     bool isDamage = false; // 피해를 입고있는가
     public bool isDead = false; // 죽었는가
@@ -31,7 +30,6 @@ public class Enemy : MonoBehaviour
         boxCollider = GetComponent<BoxCollider2D>();
         mat = GetComponentInChildren<SpriteRenderer>().material;
         anim = GetComponentInChildren<Animator>();
-        drop = GetComponent<ItemDrop>();
     }
     void Start()
     {

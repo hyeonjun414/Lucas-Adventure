@@ -18,13 +18,22 @@ public class Item
     public Sprite itemImage;
     public ItemEffect eft;
 
-    public bool Use(Item getItem)
+    public bool Use(Item getItem, int slotnum)
     {
         
         bool isUsed = false;
         if (getItem == null) return isUsed;
-        isUsed = eft.ExecuteRole(getItem);
+        isUsed = eft.ExecuteRole(getItem, slotnum);
         isUsed = true;
         return isUsed;
+    }
+
+    public bool SwitchWeapon(Item getItem, int slotnum)
+    {
+
+        // 리턴값에 무기정보를 가져가서 기존의 슬롯과 정보를 교환한다.
+
+        bool isSwitch = false;
+        return isSwitch;
     }
 }

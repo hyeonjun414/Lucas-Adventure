@@ -33,6 +33,7 @@ public class Player : MonoBehaviour
     bool isFireReady; //현재 공격할 준비가 되었는지
     public bool isDamage; //현재 공격 당하고 있는지
     bool isAttack = false; // 현재 공격중인지
+    public bool isDead = false;
     bool UIon = false; // 현재 UI가 켜져있는지
 
     int equipWeaponIndex = -1; //현재 장착중인 무기슬롯, 장착중인 무기가 없다면 -1
@@ -49,6 +50,7 @@ public class Player : MonoBehaviour
     public Weapon equipWeapon;
     public Inventory inven;
     public GameObject ArmL;
+    public JoystickValue value;
     
     void Start()
     {
@@ -59,6 +61,7 @@ public class Player : MonoBehaviour
     
     void Update()
     {
+        
         UiCheck();
         GetInput();
         Attack();
@@ -69,7 +72,11 @@ public class Player : MonoBehaviour
                 transform.localScale = new Vector3(1, 1, 1);
             else if(Input.GetAxisRaw("Horizontal") < 0)
                 transform.localScale = new Vector3(-1, 1, 1);
-                
+        if (value.joyTouch.x > 0)
+            transform.localScale = new Vector3(1, 1, 1);
+        else if (value.joyTouch.x < 0)
+            transform.localScale = new Vector3(-1, 1, 1);
+
     }
     void FixedUpdate()
     {
@@ -79,8 +86,17 @@ public class Player : MonoBehaviour
     //입력 키 모음
     void GetInput()
     {
-        hAxis = Input.GetAxisRaw("Horizontal");
-        vAxis = Input.GetAxisRaw("Vertical");
+        if(value.joyTouch == Vector2.zero)
+        {
+            hAxis = Input.GetAxisRaw("Horizontal");
+            vAxis = Input.GetAxisRaw("Vertical");
+        }
+        else
+        {
+            hAxis = value.joyTouch.x;
+            vAxis = value.joyTouch.y;
+        }
+        
         fDown = Input.GetButtonDown("Fire1");
         iDown = Input.GetButtonDown("Interaction");
         sDown1 = Input.GetButtonDown("Swap1");
@@ -179,6 +195,7 @@ public class Player : MonoBehaviour
             
         }
     }
+
     //교체가능
     IEnumerator icantswap()
     {

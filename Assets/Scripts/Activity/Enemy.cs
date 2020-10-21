@@ -115,17 +115,16 @@ public class Enemy : MonoBehaviour
         // 만약 콜라이더의 반경에 플레이어가 들어오면 추적을 시작하고 위치를 받아옴
         if (other.tag == "Player")
         {
-            isTracing = true;
             target = other.transform;
+            StopCoroutine("ChangeMovement");
         }
     }
     void OnTriggerStay2D(Collider2D other)
     {
         // 만약 콜라이더의 반경안에 플레이어가 들어와있다면 위치를 지속적으로 갱신
-        if(other.tag == "Player")
+        if (other.tag == "Player")
         {
             isTracing = true;
-            target = other.transform;
         }
     }
 
@@ -135,8 +134,8 @@ public class Enemy : MonoBehaviour
         if (other.tag == "Player")
         {
             isTracing = false;
-            target = null;
             rigid.velocity = Vector2.zero;
+            StartCoroutine("ChangeMovement");
         }
     }
     IEnumerator ChangeMovement()

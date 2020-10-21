@@ -12,9 +12,10 @@ TagManager:
   - EnemyBullet
   - Melee
   - EnemyGFX
-  - Undefined
   - FieldItem
   - UIpanel
+  - PlayerGFX
+  - Dead
   layers:
   - Default
   - TransparentFX

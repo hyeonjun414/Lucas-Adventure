@@ -19,6 +19,7 @@ public class JoystickM : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, 
     }
     public void OnDrag(PointerEventData eventData)
     {
+        eventData.position = new Vector2(eventData.position.x - ((Screen.width - 1920)/2f), eventData.position.y - ((Screen.height - 1080)/2f));
         touch = (eventData.position - rect.anchoredPosition) / widthHalf;
 
         if (touch.magnitude > 1)

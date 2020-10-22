@@ -13,11 +13,12 @@ public class Player : MonoBehaviour
 
     public int coin;  //가지고 있는 코인
     public int health;// 현재 체력
-    public int exp;   // 현재 경험치
+    public float exp;   // 현재 경험치
+    public int level; // 현재 레벨
 
     public int maxcoin; //최대 소지가능 코인
     public int maxhealth; // 최대 체력
-    public int maxExp; // 레벨업에 필요한 경험치
+    public float maxExp; // 레벨업에 필요한 경험치
     public float maxSpeed = 10f; //이동속도 제한 : 물리력을 더하는 방식이라 필요
 
     float hAxis, vAxis; //상하좌우 이동 입력
@@ -65,6 +66,7 @@ public class Player : MonoBehaviour
         UiCheck();
         GetInput();
         Attack();
+        levelup();
         Swap();
         // 입력 값에 따라 좌우 이미지 좌우 반전
         if (Input.GetButton("Horizontal"))
@@ -209,6 +211,18 @@ public class Player : MonoBehaviour
         dust.Play();
     }
 
+    void levelup()
+    {
+        if (exp >= maxExp)
+        {
+            level++;
+            exp = 0;
+            maxExp *= 1.1f;
+            maxExp = Mathf.Round(maxExp);
+        }
+            
+        
+    }
     public void WeaponEquip(int i)
     {
         Transform ArmL = gameObject.transform.Find("ArmL");
@@ -229,4 +243,5 @@ public class Player : MonoBehaviour
         UIon = false;
         return;
     }
+    
 }

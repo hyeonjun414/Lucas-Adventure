@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public Text stageTxt;
     public Text playTimeTxt;
 
+    public Text playerLevelTxt;
     public Text playerHealthTxt;
     public Text playerCoinTxt;
     public Text playerExpTxt;
@@ -109,7 +110,8 @@ public class GameManager : MonoBehaviour
     void LateUpdate()
     {
         stageTxt.text = "STAGE " + stage;
-        
+
+        playerLevelTxt.text = "Lv." + player.level;
         playerHealthTxt.text = player.health + " / " + player.maxhealth;
         playerCoinTxt.text = string.Format("{0:n0}", player.coin);
         playerExpTxt.text = player.exp + " / " + player.maxExp;

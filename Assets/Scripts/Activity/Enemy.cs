@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     public int maxHealth; // 최대 체력
     public int curHealth; // 현재 체력
     public int damage; // 적 공격력
+    public float exp; // 경험치 획득 량
     public Transform target; // 추적할 대상
     public GameObject Bullet; // 원거리 적이 발사할 탄알 오브젝트
     int movementFlag = 0; // 적의 자율 행동패턴 변수
@@ -46,6 +47,7 @@ public class Enemy : MonoBehaviour
             Move();
             Tracing();
         }
+        EnemyDie();
     }
     void Move()
     {
@@ -108,6 +110,21 @@ public class Enemy : MonoBehaviour
             rigidBullet.velocity = new Vector3(target.position.x - transform.position.x, 
                                                target.position.y - transform.position.y, 0).normalized * 5;
         }
+    }
+
+    void EnemyDie()
+    {
+        if (isDead)
+        {
+            Player player = FindObjectOfType<Player>();
+            if (player != null)
+            {
+                player.exp += exp;
+                exp = 0;
+            }
+                
+        }
+        
     }
 
     void OnTriggerEnter2D(Collider2D other)

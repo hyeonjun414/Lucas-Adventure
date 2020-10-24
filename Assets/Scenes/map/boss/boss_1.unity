@@ -3410,7 +3410,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 1.003273
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -3533,7 +3533,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 764106b26fa76bd478134c6b9d7696e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startPoint: boss_1
+  startPoint: Boss_1_1
   thePlayer: {fileID: 0}
 --- !u!61 &1291574274
 BoxCollider2D:

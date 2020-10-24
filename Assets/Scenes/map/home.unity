@@ -393,7 +393,7 @@ GameObject:
   - component: {fileID: 553546115}
   - component: {fileID: 553546114}
   m_Layer: 0
-  m_Name: MapTransform_ice
+  m_Name: MapTransform_Area__4_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -437,7 +437,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bf577eaccf633240a84e4b63eaffa68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transferMapName: ice_mp
+  transferMapName: Area__4_1
   player: {fileID: 0}
   startingPoint: {fileID: 0}
 --- !u!4 &553546116
@@ -466,7 +466,7 @@ GameObject:
   - component: {fileID: 936440657}
   - component: {fileID: 936440656}
   m_Layer: 0
-  m_Name: MapTransform _desert
+  m_Name: MapTransform _Area__2_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -524,7 +524,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bf577eaccf633240a84e4b63eaffa68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transferMapName: desert_no
+  transferMapName: Area__2_1
   player: {fileID: 0}
   startingPoint: {fileID: 0}
 --- !u!1 &1030618687
@@ -17723,7 +17723,7 @@ GameObject:
   - component: {fileID: 1503513602}
   - component: {fileID: 1503513601}
   m_Layer: 0
-  m_Name: MapTransform_flower
+  m_Name: MapTransform_Area__3_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17781,7 +17781,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bf577eaccf633240a84e4b63eaffa68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transferMapName: flower
+  transferMapName: Area__3_1
   player: {fileID: 0}
   startingPoint: {fileID: 0}
 --- !u!1 &1824165496
@@ -17796,7 +17796,7 @@ GameObject:
   - component: {fileID: 1824165499}
   - component: {fileID: 1824165498}
   m_Layer: 0
-  m_Name: MapTransform _normal
+  m_Name: MapTransform _Area__1_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17854,7 +17854,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bf577eaccf633240a84e4b63eaffa68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transferMapName: normal_map
+  transferMapName: Area__1_1
   player: {fileID: 0}
   startingPoint: {fileID: 0}
 --- !u!1 &1878730297

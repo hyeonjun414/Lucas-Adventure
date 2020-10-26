@@ -4,10 +4,10 @@ using UnityEngine;
 
 public enum ItemType
 {
+    Unique,
     Weapon,
     posion,
-    coin,
-    Etc
+    coin
 }
 
 [System.Serializable]

@@ -11,29 +11,15 @@ public enum ItemType
 }
 
 [System.Serializable]
-public class Item
+public class Item : MonoBehaviour
 {
     public ItemType itemType;
     public string itemName;
     public Sprite itemImage;
-    public ItemEffect eft;
+    public GameObject item;
 
-    public bool Use(Item getItem, int slotnum)
-    {
-        
-        bool isUsed = false;
-        if (getItem == null) return isUsed;
-        isUsed = eft.ExecuteRole(getItem, slotnum);
-        isUsed = true;
-        return isUsed;
-    }
-
-    public bool SwitchWeapon(Item getItem, int slotnum)
+    protected virtual void Use()
     {
 
-        // 리턴값에 무기정보를 가져가서 기존의 슬롯과 정보를 교환한다.
-
-        bool isSwitch = false;
-        return isSwitch;
     }
 }

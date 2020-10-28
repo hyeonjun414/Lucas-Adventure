@@ -5,11 +5,6 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public float Speed = 5f; //기본 이동속도
-    public Item[] weapons; //무기 장착 슬롯
-    public bool[] hasWeapons; //무기 장착 슬롯에 무기가 있는지 여부
-    public bool hasArmor; //방어구를 장착중인지
-
-    public int isWeapon = 0; // 현재 활성화된 무기 슬롯
 
     public int coin;  //가지고 있는 코인
     public int health;// 현재 체력
@@ -23,9 +18,6 @@ public class Player : MonoBehaviour
 
     float hAxis, vAxis; //상하좌우 이동 입력
     bool iDown; // 인벤토리창 입력
-    bool sDown1; // 교체1
-    bool sDown2; // 교체2
-    bool sDown3; // 교체3
     bool fDown;  // 공격
 
     public bool InputAttack = false;
@@ -36,8 +28,7 @@ public class Player : MonoBehaviour
     bool isAttack = false; // 현재 공격중인지
     public bool isDead = false;
     bool UIon = false; // 현재 UI가 켜져있는지
-
-    int equipWeaponIndex = -1; //현재 장착중인 무기슬롯, 장착중인 무기가 없다면 -1
+    
     float fireDelay = 0; //공격 딜레이
 
     //필요 컴포넌트
@@ -62,7 +53,6 @@ public class Player : MonoBehaviour
     
     void Update()
     {
-        
         UiCheck();
         GetInput();
         Attack();
@@ -101,9 +91,6 @@ public class Player : MonoBehaviour
         
         fDown = Input.GetButtonDown("Fire1");
         iDown = Input.GetButtonDown("Interaction");
-        sDown1 = Input.GetButtonDown("Swap1");
-        sDown2 = Input.GetButtonDown("Swap2");
-        sDown3 = Input.GetButtonDown("Swap3");
     }
     //공격
     void Attack()

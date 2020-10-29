@@ -39,7 +39,8 @@ public class Player : MonoBehaviour
     Vector3 movement;
     Animator anim;
     GameObject nearObject;
-    public Weapon equipWeapon;
+    public Item equipWeapon; // 현재 장착중인 무기
+    public Weapon equipWeaponto;
     public Inventory inven;
     public GameObject ArmL;
     public JoystickValue value;
@@ -53,11 +54,13 @@ public class Player : MonoBehaviour
     
     void Update()
     {
+        curWeaponCheck();
         UiCheck();
         GetInput();
         Attack();
         levelup();
         Swap();
+        
         // 입력 값에 따라 좌우 이미지 좌우 반전
         if (Input.GetButton("Horizontal"))
             if(Input.GetAxisRaw("Horizontal") > 0)
@@ -96,19 +99,19 @@ public class Player : MonoBehaviour
     void Attack()
     {
         if(UIon == true) return;
-        if(equipWeapon == null) return; //현재 장착 무기가 없다면 취소
+        if(equipWeaponto == null) return; //현재 장착 무기가 없다면 취소
 
         //공격딜레이시간에 프레임단위로 시간을 측정하고,
         fireDelay += Time.deltaTime;
         //공격딜레이시간이 장착한 무기의 딜레이보다 커지면 공격 준비
-        isFireReady = equipWeapon.rate < fireDelay;
+        isFireReady = equipWeaponto.rate < fireDelay;
 
         //공격키가 눌리고 공격준비가 완료되면 공격
         if((fDown && isFireReady) || (InputAttack && isFireReady))
         {
-            StartCoroutine("icantswap"); //공격중에는 교체 불가
+            StartCoroutine("Icantswap"); //공격중에는 교체 불가
             anim.SetTrigger("isAttack"); //공격 애니메이션의 실행
-            equipWeapon.Use(); //장착무기의 공격루틴 활성화
+            equipWeaponto.Use(); //장착무기의 공격루틴 활성화
             
             fireDelay = 0; //플레이어 공격딜레이를 다시 초기화
             InputAttack = false;
@@ -158,38 +161,13 @@ public class Player : MonoBehaviour
     //교체
     void Swap()
     {
-        if (isMotion) return; //움직이는 중에는 취소
-
-        //현재 자신이 장착중인 슬롯으로 교체하려고 하면 취소
-        if (sDown1 && (!hasWeapons[0] || equipWeaponIndex == 0))
-            return;
-        if (sDown2 && (!hasWeapons[1] || equipWeaponIndex == 1))
-            return;
-        
-        int weaponIndex = -1;
-        //입력된 키에따라 무기순서 부여
-        if (sDown1) weaponIndex = 0;
-        else if (sDown2) weaponIndex = 1;
-        if (weaponIndex < 0) return;
-        
-        GameObject go = ArmL.transform.Find(weapons[weaponIndex].itemName+"(Clone)").gameObject;
-        //교체 1번이나 교체 2번이 눌리면 실행
-        if ((sDown1 || sDown2) && go != null)
-        {
-            if(equipWeapon != null) // 현재 장착중인 무기가 있다면 비활성화
-                equipWeapon.gameObject.SetActive(false);
-            equipWeaponIndex = weaponIndex; //현재 장착한 무기 순서 업데이트
-            equipWeapon = go.GetComponent<Weapon>(); //현재무기를 슬롯의 무기를 불러와 장착
-            equipWeapon.gameObject.SetActive(true); //바꿀 무기 활성화
-            
-        }
     }
 
     //교체가능
-    IEnumerator icantswap()
+    IEnumerator Icantswap()
     {
         isMotion = true;
-        yield return new WaitForSeconds(equipWeapon.rate);
+        yield return new WaitForSeconds(equipWeaponto.rate);
         isMotion = false;
     }
     //달리기 효과
@@ -207,8 +185,6 @@ public class Player : MonoBehaviour
             maxExp *= 1.1f;
             maxExp = Mathf.Round(maxExp);
         }
-            
-        
     }
     public void WeaponEquip(int i)
     {
@@ -229,6 +205,27 @@ public class Player : MonoBehaviour
         }
         UIon = false;
         return;
+    }
+
+    public void curWeaponCheck()
+    {
+        Item curWeapon = inven.equipWeapon[0];
+        Transform go = ArmL.transform.Find(equipWeapon.itemName);
+        if (equipWeapon.itemType != ItemType.Weapon)
+        {
+            equipWeapon = curWeapon;
+            GameObject weapon = (GameObject)Instantiate(Resources.Load("Weapon/" + equipWeapon.itemName),
+                new Vector3(ArmL.transform.position.x, ArmL.transform.position.y,0), ArmL.transform.rotation);
+            weapon.transform.parent = ArmL.transform;
+            Weapon weaponto = weapon.GetComponent<Weapon>();
+            equipWeaponto = weaponto;
+            return;
+        }
+
+        if(equipWeapon != curWeapon)
+        {
+            Destroy(go);
+        }
     }
     
 }

@@ -5,9 +5,8 @@ using UnityEngine;
 public class EnemyHit : MonoBehaviour
 {
     public GameObject obj;
-    public Enemy enemy;
-    public GameObject itemDB;
-    ItemDatabase drop;
+    public GameObject dropitem;
+    Enemy enemy;
     Material mat;
     Rigidbody2D rigid;
     Animator anim;
@@ -16,7 +15,6 @@ public class EnemyHit : MonoBehaviour
         // 컴포넌트의 연결
         rigid = GetComponentInParent<Rigidbody2D>();
         enemy = GetComponentInParent<Enemy>();
-        drop = itemDB.GetComponent<ItemDatabase>();
         mat = GetComponent<SpriteRenderer>().material;
         anim = GetComponent<Animator>();
         
@@ -73,8 +71,9 @@ public class EnemyHit : MonoBehaviour
             mat.color = Color.gray;
             gameObject.layer = 9;
             enemy.isDead = true;
-            drop.DropItem(gameObject.transform);
-            Destroy(obj, 2);
+            Instantiate(dropitem, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
+            
+            Destroy(enemy.gameObject, 2);
         }
 
     }

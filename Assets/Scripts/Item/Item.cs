@@ -11,14 +11,20 @@ public enum ItemType
 }
 
 [System.Serializable]
-public class Item : MonoBehaviour
+public class Item
 {
     public ItemType itemType;
     public string itemName;
     public Sprite itemImage;
-    public GameObject item;
 
-    protected virtual void Use()
+    public Item(ItemType _itype, string _iName, Sprite _iImage)
+    {
+        itemType = _itype;
+        itemName = _iName;
+        itemImage = _iImage;
+    }
+
+    public Item()
     {
 
     }

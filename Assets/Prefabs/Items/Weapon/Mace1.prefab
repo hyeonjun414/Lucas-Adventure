@@ -96,13 +96,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18505fa5d757d4349af659fbfd08ebd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemType: 1
+  itemName: 
+  itemImage: {fileID: 0}
+  item: {fileID: 0}
   type: 0
   damage: 20
   rate: 0.3
   meleeArea: {fileID: 0}
-  trailEffect: {fileID: 0}
-  bulletPos: {fileID: 0}
-  bullet: {fileID: 0}
 --- !u!61 &2775967539729928623
 BoxCollider2D:
   m_ObjectHideFlags: 0

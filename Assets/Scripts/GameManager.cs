@@ -29,8 +29,7 @@ public class GameManager : MonoBehaviour
     bool activeInventory = false;
     bool activeManu = false;
 
-    public Slot[] slots;
-    public Transform slotHolder;
+    
     Inventory inven;
 
     public ItemDatabase itemDB;
@@ -41,14 +40,13 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         inven = Inventory.instance;
-        slots = slotHolder.GetComponentsInChildren<Slot>();
-        inven.onSlotCountChange += SlotChange;
-        inven.onChangeItem += RedrawSlotUI;
-        inven.SlotCnt = 4;
+        //inven.onSlotCountChange += SlotChange;
+        //inven.onChangeItem += RedrawSlotUI;
+        //inven.SlotCnt = 4;
         inventoryPanel.SetActive(activeInventory);
 
     }
-
+    /*
     private void RedrawSlotUI()
     {
         for(int i = 0; i < slots.Length; i++)
@@ -78,7 +76,7 @@ public class GameManager : MonoBehaviour
     {
         inven.SlotCnt++;
     }
-
+    */
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.I))
@@ -94,6 +92,7 @@ public class GameManager : MonoBehaviour
     }
     void quickSlotUpdate()
     {
+        /*
         for(int i = 0; i<player.weapons.Length; i++)
         {
             if(player.hasWeapons[i])
@@ -104,7 +103,7 @@ public class GameManager : MonoBehaviour
                 invenQuickSlot[i].sprite = img;
                 invenQuickSlot[i].preserveAspect = true;
             }
-        }
+        }*/
     }
 
     void LateUpdate()
@@ -116,6 +115,7 @@ public class GameManager : MonoBehaviour
         playerCoinTxt.text = string.Format("{0:n0}", player.coin);
         playerExpTxt.text = player.exp + " / " + player.maxExp;
 
+        /*
         quickSlotUpdate();
         for (int i = 0; i < quickSlot.Length; i++)
         {
@@ -123,5 +123,6 @@ public class GameManager : MonoBehaviour
             invenQuickSlot[i].color =  new Color(1, 1, 1, player.hasWeapons[i] ? 1 : 0);
         }
         invenQuickSlot[4].color = new Color(1, 1, 1, player.hasArmor ? 1 : 0);
+        */
     }
 }

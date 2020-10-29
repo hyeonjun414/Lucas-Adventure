@@ -14,7 +14,7 @@ public class ItemPanel : MonoBehaviour, IPointerClickHandler
     Text txtEquip;
     Text txtDiscard;
     Inventory inven;
-    bool isSwitch = false;
+    //bool isSwitch = false;
 
     void Start()
     {
@@ -27,49 +27,16 @@ public class ItemPanel : MonoBehaviour, IPointerClickHandler
     }
     public void OnClickEquip()
     {
-        if (isSwitch == false)
-        {
-            bool isUse = slotitem.Use(slotitem, slotnum);
-            if (isUse)
-            {
-                Inventory.instance.RemoveItem(slotnum);
-            }
-        }
-            
     }
 
     public void OnClickDiscard()
     {
-        Inventory.instance.RemoveItem(slotnum);
+        //Inventory.instance.RemoveItem(slotnum);
     }
-
-    public void OnClickSwitch()
-    {
-        bool isUse = slotitem.SwitchWeapon(slotitem, slotnum);
-        if (isUse)
-        {
-            Inventory.instance.RemoveItem(slotnum);
-        }
-    }
-    public void OnClickSwitch2()
-    {
-        bool isUse = slotitem.Use(slotitem, slotnum);
-        if (isUse)
-        {
-            Inventory.instance.RemoveItem(slotnum);
-        }
-    }
-
+    
 
     void Update()
     {
-        if (player.hasWeapons[0] == true && player.hasWeapons[1] == true)
-        {
-            isSwitch = true;
-            txtEquip.text = "교체하기";
-        }
-        else
-            isSwitch = false;
         if (Input.GetMouseButton(0))
         {
             Destroy(gameObject, 0.2f);

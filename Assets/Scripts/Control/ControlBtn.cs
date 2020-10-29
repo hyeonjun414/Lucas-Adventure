@@ -12,10 +12,6 @@ public class ControlBtn : MonoBehaviour
     }
     public void OnClickSwap()
     {
-        if (player.isWeapon == 0)
-            player.isWeapon = 1;
-        else if (player.isWeapon == 1)
-            player.isWeapon = 0;
     }
     
     public void OnClickAttack()

@@ -4,10 +4,11 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Slot : MonoBehaviour, IPointerUpHandler
+public class Slot : MonoBehaviour
 {
     public int slotnum;
     public Item item;
+    /*
     public Image itemIcon;
     public GameObject panel;
     public Canvas canvas;
@@ -36,15 +37,15 @@ public class Slot : MonoBehaviour, IPointerUpHandler
         ItemPanel ip = go.GetComponent<ItemPanel>();
         ip.slotitem = item;
         ip.slotnum = slotnum;
-        /*
+        
         bool isUse = item.Use(item);
         if (isUse)
         {
             Inventory.instance.RemoveItem(slotnum);
-        }*/
+        }
     }
-
     public void OnPointerUp(PointerEventData eventData)
     {
     }
+    */
 }

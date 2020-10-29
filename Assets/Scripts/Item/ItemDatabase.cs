@@ -5,30 +5,21 @@ using UnityEngine;
 public class ItemDatabase : MonoBehaviour
 {
     public static ItemDatabase instance;
-    private void Awake()
+    public List<Item> items = new List<Item>();
+
+    void Awake()
     {
         instance = this;
     }
-
-    public List<Item> itemDB = new List<Item>();
-
-    public GameObject fieldItemPrefab;
-    public Vector3[] pos;
-
-    private void Start()
+    void Start()
     {
-        for (int i = 0; i < pos.Length; i++)
-        {
-            GameObject go = Instantiate(fieldItemPrefab, pos[i], Quaternion.AngleAxis(30, new Vector3(0, 0, -1)));
-            go.GetComponent<FieldItem>().SetItem(itemDB[Random.Range(0, 20)]);
-        }
+        Add(ItemType.Weapon, "axe");
+        Add(ItemType.Weapon, "hammer");
+        Add(ItemType.Weapon, "sword");
     }
-    public void DropItem(Transform pos)
+    void Add(ItemType itype, string iName)
     {
-        GameObject go = Instantiate(fieldItemPrefab, 
-                        new Vector3(pos.position.x,
-                                    pos.transform.position.y,
-                                    pos.transform.position.z), Quaternion.AngleAxis(30, new Vector3(0, 0, -1)));
-        go.GetComponent<FieldItem>().SetItem(itemDB[Random.Range(0, 20)]);
+        items.Add(new Item(itype, iName, Resources.Load<Sprite>("ItemImage/" + iName)));
     }
+
 }

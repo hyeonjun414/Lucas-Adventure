@@ -12,6 +12,7 @@ public class ControlBtn : MonoBehaviour
     }
     public void OnClickSwap()
     {
+        player.InputSwap = true;
     }
     
     public void OnClickAttack()

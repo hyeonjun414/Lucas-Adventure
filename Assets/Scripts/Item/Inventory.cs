@@ -14,7 +14,7 @@ public class Inventory : MonoBehaviour
     void Start()
     {
         //기본 장비 지급
-        Item baseItem = new Item(ItemType.Weapon, "knife", 
+        Item baseItem = new Item(ItemType.Weapon, "knife", 999999, 
                                  Resources.Load<Sprite>("ItemImage/" + "knife"));
         AddItem(baseItem);
     }

@@ -113,7 +113,7 @@ public class Player : MonoBehaviour
             StartCoroutine("Icantswap"); //공격중에는 교체 불가
             anim.SetTrigger("isAttack"); //공격 애니메이션의 실행
             equipWeaponto.Use(); //장착무기의 공격루틴 활성화
-            
+            inven.equipWeapon[0].itemCount--;
             fireDelay = 0; //플레이어 공격딜레이를 다시 초기화
             InputAttack = false;
         }
@@ -162,7 +162,14 @@ public class Player : MonoBehaviour
     //교체
     void Swap()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        //만약 현재 무기의 사용횟수가 다 소비되면 파괴
+        if(inven.equipWeapon[0].itemCount == 0)
+        {
+            inven.equipWeapon.RemoveAt(0);
+        }
+
+        //현재 공격중이아니고 스왑버튼이 눌리면 교체 실행
+        if (InputSwap == true && !isMotion)
         {
             Item curWeapon = inven.equipWeapon[0];
             Debug.Log(curWeapon.itemName);
@@ -176,9 +183,9 @@ public class Player : MonoBehaviour
                 }
             }
             inven.equipWeapon[inven.equipWeapon.Count - 1] = curWeapon;
+            InputSwap = false;
         }
     }
-
     //교체가능
     IEnumerator Icantswap()
     {
@@ -191,7 +198,7 @@ public class Player : MonoBehaviour
     {
         dust.Play();
     }
-
+    // 레벨 상승
     void levelup()
     {
         if (exp >= maxExp)
@@ -202,12 +209,7 @@ public class Player : MonoBehaviour
             maxExp = Mathf.Round(maxExp);
         }
     }
-    public void WeaponEquip(int i)
-    {
-        Transform ArmL = gameObject.transform.Find("ArmL");
-      //  GameObject go = Instantiate(weapons[i], 
-    }
-
+    // 인터페이스가 활성화되었는지 확인
     public void UiCheck()
     {
         GameObject[] go = GameObject.FindGameObjectsWithTag("UIpanel");
@@ -222,11 +224,12 @@ public class Player : MonoBehaviour
         UIon = false;
         return;
     }
-
+    // 현재 무기가 어떤건지 확인
     public void curWeaponCheck()
     {
         Item curWeapon = inven.equipWeapon[0];
         Transform go = ArmL.transform.Find(equipWeapon.itemName);
+        //초기 장비 지급
         if (equipWeapon.itemName == "")
         {
             equipWeapon = curWeapon;
@@ -238,7 +241,7 @@ public class Player : MonoBehaviour
             equipWeaponto = weaponto;
             return;
         }
-        
+        //장착중인 무기와 현재 장비가 다르면
         if(equipWeapon.itemName != curWeapon.itemName)
         {
             GameObject equipgo = GameObject.Find(equipWeapon.itemName+"(Clone)");

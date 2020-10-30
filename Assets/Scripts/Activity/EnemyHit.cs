@@ -10,6 +10,7 @@ public class EnemyHit : MonoBehaviour
     Material mat;
     Rigidbody2D rigid;
     Animator anim;
+    bool isDamege; // 중첩피해를 막기위한 무적시간
     void Start()
     {
         // 컴포넌트의 연결
@@ -22,7 +23,7 @@ public class EnemyHit : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         // 충돌하는 객체의 태그가 Melee라면 아래의 코드를 실행.
-        if (other.tag == "Melee" && enemy.isDead == false)
+        if (other.tag == "Melee" && !enemy.isDead && !isDamege)
         {
             // 충돌 객체의 무기 정보를 받아옴
             Weapon weapon = other.GetComponent<Weapon>();
@@ -34,26 +35,13 @@ public class EnemyHit : MonoBehaviour
             StartCoroutine(OnDamage(reactVec));
             Debug.Log("Melee : " + enemy.curHealth);
         }
-        // 충돌하는 객체의 태그가 Bullet이면 아래의 코드를 실행.
-        else if (other.tag == "Bullet")
-        {
-            // 충돌 객체의 탄알 정보를 받아옴.
-            Bullet bullet = other.GetComponent<Bullet>();
-            // 탄알의 공격력만큼 적의 체력을 감소시킴.
-            enemy.curHealth -= bullet.damage;
-            // 공격을 당할때 밀려나는 방향을 계산.
-            Vector2 reactVec = transform.position - other.transform.position;
-            // 피격 코루틴 실행
-            StartCoroutine(OnDamage(reactVec));
-            Debug.Log("Range : " + enemy.curHealth);
-        }
     }
     // 피격 코루틴
     IEnumerator OnDamage(Vector2 reactVec)
     {
         // 피격 코루틴이 실행되면
         mat.color = Color.red;
-
+        isDamege = true;
         // 넉백을 실행.
         rigid.AddForce(reactVec*10, ForceMode2D.Impulse);
         yield return new WaitForSeconds(0.1f);
@@ -75,6 +63,8 @@ public class EnemyHit : MonoBehaviour
             
             Destroy(enemy.gameObject, 2);
         }
+        yield return new WaitForSeconds(0.1f);
+        isDamege = false;
 
     }
 }

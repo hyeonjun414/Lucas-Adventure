@@ -92,10 +92,12 @@ public class GameManager : MonoBehaviour
     }
     void quickSlotUpdate()
     {
+        // 인벤토리 무기에 저장된 무기갯수만큼만 이미지 업데이트
         for(int i = 0; i<inven.equipWeapon.Count; i++)
         {
             if(inven.equipWeapon[i].itemName != null)
             {
+                //인벤토리의 이미지를 받아와 퀵슬롯과 인벤토리무기슬롯에 업데이트
                 Sprite img = inven.equipWeapon[i].itemImage;
                 quickSlot[i].sprite = img;
                 quickSlot[i].preserveAspect = true;
@@ -114,20 +116,23 @@ public class GameManager : MonoBehaviour
         playerCoinTxt.text = string.Format("{0:n0}", player.coin);
         playerExpTxt.text = player.exp + " / " + player.maxExp;
 
+        //무기 이미지를 갱신후
         quickSlotUpdate();
-        for (int i = 0; i < inven.equipWeapon.Count; i++)
+        //여기서 4는 무기의 최대갯수
+        for (int i = 0; i < 4; i++)
         {
-            quickSlot[i].color = new Color(1, 1, 1, inven.equipWeapon[i].itemName != null ? 1 : 0);
-            invenQuickSlot[i].color = new Color(1, 1, 1, inven.equipWeapon[i].itemName != null ? 1 : 0);
+            //무기가 최대갯수가 아니더라도 비어있는 창은 투명
+            if(i < inven.equipWeapon.Count)
+            {
+                quickSlot[i].color = new Color(1, 1, 1, inven.equipWeapon[i].itemName != null ? 1 : 0);
+                invenQuickSlot[i].color = new Color(1, 1, 1, inven.equipWeapon[i].itemName != null ? 1 : 0);
+            }
+            //i가 무기갯수를 넘어가면 다 투명으로 만듬
+            else
+            {
+                quickSlot[i].color = new Color(1, 1, 1, 0);
+                invenQuickSlot[i].color = new Color(1, 1, 1, 0);
+            }
         }
-        /*
-        
-        for (int i = 0; i < quickSlot.Length; i++)
-        {
-            quickSlot[i].color = new Color(1, 1, 1, player.hasWeapons[i] ? 1 : 0);
-            invenQuickSlot[i].color =  new Color(1, 1, 1, player.hasWeapons[i] ? 1 : 0);
-        }
-        invenQuickSlot[4].color = new Color(1, 1, 1, player.hasArmor ? 1 : 0);
-        */
     }
 }

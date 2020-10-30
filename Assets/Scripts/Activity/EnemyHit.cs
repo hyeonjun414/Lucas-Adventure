@@ -22,7 +22,7 @@ public class EnemyHit : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         // 충돌하는 객체의 태그가 Melee라면 아래의 코드를 실행.
-        if (other.tag == "Melee")
+        if (other.tag == "Melee" && enemy.isDead == false)
         {
             // 충돌 객체의 무기 정보를 받아옴
             Weapon weapon = other.GetComponent<Weapon>();

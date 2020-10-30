@@ -24407,12 +24407,6 @@ PrefabInstance:
       propertyPath: itemDB
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 7151145880519997242, guid: b4c6f90e8bc524b4b8514ba974245658,
-        type: 3}
-      propertyPath: dropitem
-      value: 
-      objectReference: {fileID: 4286782481912221681, guid: 04d46d5fae02e9f4d9064ab4ec1b04ed,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4c6f90e8bc524b4b8514ba974245658, type: 3}
 --- !u!1001 &779245527136091975

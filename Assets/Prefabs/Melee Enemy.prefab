@@ -105,9 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b35d543e874207e438def01e066b3dd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemDB: []
-  fieldItemPrefab: {fileID: 0}
-  pos: []
+  items: []
 --- !u!1 &560897449586896793
 GameObject:
   m_ObjectHideFlags: 0
@@ -225,8 +223,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obj: {fileID: 560897448834067938}
-  enemy: {fileID: 0}
-  itemDB: {fileID: 2800230811552048298, guid: 8b03daed9872e0446ac708d65830a906, type: 3}
+  dropitem: {fileID: 4286782481912221681, guid: 04d46d5fae02e9f4d9064ab4ec1b04ed,
+    type: 3}
 --- !u!70 &5872711419763683477
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

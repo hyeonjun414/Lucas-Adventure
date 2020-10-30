@@ -227,28 +227,30 @@ public class Player : MonoBehaviour
     {
         Item curWeapon = inven.equipWeapon[0];
         Transform go = ArmL.transform.Find(equipWeapon.itemName);
-        if (equipWeapon.itemName != null)
+        if (equipWeapon.itemName == "")
         {
             equipWeapon = curWeapon;
             GameObject weapon = (GameObject)Instantiate(Resources.Load("Weapon/" + equipWeapon.itemName),
                 new Vector3(ArmL.transform.position.x, ArmL.transform.position.y,0), ArmL.transform.rotation);
             weapon.transform.parent = ArmL.transform;
+            weapon.transform.localScale = new Vector3(1,1,1);
             Weapon weaponto = weapon.GetComponent<Weapon>();
             equipWeaponto = weaponto;
             return;
         }
-        /*
+        
         if(equipWeapon.itemName != curWeapon.itemName)
         {
-            GameObject equipgo = gameObject.transform.Find(equipWeapon.itemName).gameObject;
+            GameObject equipgo = GameObject.Find(equipWeapon.itemName+"(Clone)");
             Destroy(equipgo);
             equipWeapon = curWeapon;
             GameObject weapon = (GameObject)Instantiate(Resources.Load("Weapon/" + equipWeapon.itemName),
                 new Vector3(ArmL.transform.position.x, ArmL.transform.position.y, 0), ArmL.transform.rotation);
             weapon.transform.parent = ArmL.transform;
+            weapon.transform.localScale = new Vector3(1, 1, 1);
             Weapon weaponto = weapon.GetComponent<Weapon>();
             equipWeaponto = weaponto;
-        }*/
+        }
     }
     
 }

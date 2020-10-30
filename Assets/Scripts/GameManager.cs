@@ -92,18 +92,17 @@ public class GameManager : MonoBehaviour
     }
     void quickSlotUpdate()
     {
-        /*
-        for(int i = 0; i<player.weapons.Length; i++)
+        for(int i = 0; i<inven.equipWeapon.Count; i++)
         {
-            if(player.hasWeapons[i])
+            if(inven.equipWeapon[i].itemName != null)
             {
-                Sprite img = player.weapons[i].itemImage;
+                Sprite img = inven.equipWeapon[i].itemImage;
                 quickSlot[i].sprite = img;
                 quickSlot[i].preserveAspect = true;
                 invenQuickSlot[i].sprite = img;
                 invenQuickSlot[i].preserveAspect = true;
             }
-        }*/
+        }
     }
 
     void LateUpdate()
@@ -115,8 +114,14 @@ public class GameManager : MonoBehaviour
         playerCoinTxt.text = string.Format("{0:n0}", player.coin);
         playerExpTxt.text = player.exp + " / " + player.maxExp;
 
-        /*
         quickSlotUpdate();
+        for (int i = 0; i < inven.equipWeapon.Count; i++)
+        {
+            quickSlot[i].color = new Color(1, 1, 1, inven.equipWeapon[i].itemName != null ? 1 : 0);
+            invenQuickSlot[i].color = new Color(1, 1, 1, inven.equipWeapon[i].itemName != null ? 1 : 0);
+        }
+        /*
+        
         for (int i = 0; i < quickSlot.Length; i++)
         {
             quickSlot[i].color = new Color(1, 1, 1, player.hasWeapons[i] ? 1 : 0);

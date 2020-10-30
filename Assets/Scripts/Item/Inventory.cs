@@ -20,6 +20,7 @@ public class Inventory : MonoBehaviour
     }
     private void Update()
     {
+
     }
     public bool AddItem(Item _item)
     {
@@ -34,7 +35,6 @@ public class Inventory : MonoBehaviour
             return true;
         }
         return false;
-
     }
     private void OnTriggerEnter2D(Collider2D other)
     {

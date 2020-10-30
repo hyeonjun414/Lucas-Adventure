@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
     bool fDown;  // 공격
 
     public bool InputAttack = false;
+    public bool InputSwap = false;
 
     bool isMotion = false; //현재 행동중인지
     bool isFireReady; //현재 공격할 준비가 되었는지
@@ -161,6 +162,21 @@ public class Player : MonoBehaviour
     //교체
     void Swap()
     {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            Item curWeapon = inven.equipWeapon[0];
+            Debug.Log(curWeapon.itemName);
+            inven.equipWeapon[0] = null;
+            for (int i = 1; i < inven.equipWeapon.Count; i++)
+            {
+                if (inven.equipWeapon[i-1] == null)
+                {
+                    inven.equipWeapon[i - 1] = inven.equipWeapon[i];
+                    inven.equipWeapon[i] = null;
+                }
+            }
+            inven.equipWeapon[inven.equipWeapon.Count - 1] = curWeapon;
+        }
     }
 
     //교체가능
@@ -211,7 +227,7 @@ public class Player : MonoBehaviour
     {
         Item curWeapon = inven.equipWeapon[0];
         Transform go = ArmL.transform.Find(equipWeapon.itemName);
-        if (equipWeapon.itemType != ItemType.Weapon)
+        if (equipWeapon.itemName != null)
         {
             equipWeapon = curWeapon;
             GameObject weapon = (GameObject)Instantiate(Resources.Load("Weapon/" + equipWeapon.itemName),
@@ -221,11 +237,18 @@ public class Player : MonoBehaviour
             equipWeaponto = weaponto;
             return;
         }
-
-        if(equipWeapon != curWeapon)
+        /*
+        if(equipWeapon.itemName != curWeapon.itemName)
         {
-            Destroy(go);
-        }
+            GameObject equipgo = gameObject.transform.Find(equipWeapon.itemName).gameObject;
+            Destroy(equipgo);
+            equipWeapon = curWeapon;
+            GameObject weapon = (GameObject)Instantiate(Resources.Load("Weapon/" + equipWeapon.itemName),
+                new Vector3(ArmL.transform.position.x, ArmL.transform.position.y, 0), ArmL.transform.rotation);
+            weapon.transform.parent = ArmL.transform;
+            Weapon weaponto = weapon.GetComponent<Weapon>();
+            equipWeaponto = weaponto;
+        }*/
     }
     
 }

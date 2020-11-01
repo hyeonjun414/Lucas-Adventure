@@ -112,8 +112,7 @@ public class Player : MonoBehaviour
         {
             StartCoroutine("Icantswap"); //공격중에는 교체 불가
             anim.SetTrigger("isAttack"); //공격 애니메이션의 실행
-            equipWeaponto.Use(); //장착무기의 공격루틴 활성화
-            inven.equipWeapon[0].itemCount--;
+            equipWeaponto.Use(inven.equipWeapon[0]); //장착무기의 공격루틴 활성화
             fireDelay = 0; //플레이어 공격딜레이를 다시 초기화
             InputAttack = false;
         }

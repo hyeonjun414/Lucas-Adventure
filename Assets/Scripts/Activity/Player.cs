@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
     public float exp;   // 현재 경험치
     public int level; // 현재 레벨
 
+    public string curMapName;
+
     public int maxcoin; //최대 소지가능 코인
     public int maxhealth; // 최대 체력
     public float maxExp; // 레벨업에 필요한 경험치

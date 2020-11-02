@@ -3761,7 +3761,7 @@ RectTransform:
   - {fileID: 893506886}
   - {fileID: 2095816641}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -5411,6 +5411,7 @@ MonoBehaviour:
   player: {fileID: 779245527136091976}
   enemy: {fileID: 0}
   stage: 0
+  UI: {fileID: 0}
   gamePanel: {fileID: 1122012359}
   inventoryPanel: {fileID: 237811057}
   ManuPanel: {fileID: 456817526}
@@ -8452,7 +8453,7 @@ PrefabInstance:
     - target: {fileID: 560897448834067951, guid: b4c6f90e8bc524b4b8514ba974245658,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 560897448834067951, guid: b4c6f90e8bc524b4b8514ba974245658,
         type: 3}
@@ -9017,7 +9018,7 @@ Transform:
   - {fileID: 1812423448}
   - {fileID: 2020783695}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1207823643
 GameObject:
@@ -24467,7 +24468,7 @@ PrefabInstance:
     - target: {fileID: 560897448834067951, guid: b4c6f90e8bc524b4b8514ba974245658,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 560897448834067951, guid: b4c6f90e8bc524b4b8514ba974245658,
         type: 3}
@@ -24601,7 +24602,7 @@ PrefabInstance:
     - target: {fileID: 779245528229323539, guid: 0067dd47262f52d4da99d7e4c408529c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 779245528229323539, guid: 0067dd47262f52d4da99d7e4c408529c,
         type: 3}
@@ -24880,7 +24881,7 @@ PrefabInstance:
     - target: {fileID: 3360953696773840438, guid: 07fdbd67ddf454a4e925d0ef24d7245f,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3360953696773840438, guid: 07fdbd67ddf454a4e925d0ef24d7245f,
         type: 3}

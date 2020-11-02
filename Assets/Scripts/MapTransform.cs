@@ -17,7 +17,7 @@ public class MapTransform : MonoBehaviour
     {
         if (other.name == "Player")
         {
-            player.currentMapName = transferMapName;
+            player.curMapName = transferMapName;
             SceneManager.LoadScene(transferMapName);
         }
     }

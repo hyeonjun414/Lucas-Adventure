@@ -13,7 +13,7 @@ public class StartingPoint : MonoBehaviour
     {
         thePlayer = FindObjectOfType<Player>();
 
-        if (startPoint == thePlayer.currentMapName)
+        if (startPoint == thePlayer.curMapName)
         {
             thePlayer.transform.position = gameObject.transform.position;
             //카메라위치

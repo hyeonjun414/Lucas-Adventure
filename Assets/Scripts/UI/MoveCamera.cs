@@ -15,6 +15,7 @@ public class MoveCamera : MonoBehaviour
 
      void Awake()
     {
+        DontDestroyOnLoad(gameObject);
         /*
         Camera camera = GetComponent<Camera>();
         Rect rect = camera.rect;

@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     public Enemy enemy;
     public int stage;
 
+    public GameObject Event;
+    public GameObject UI;
     public GameObject gamePanel;
     public GameObject inventoryPanel;
     public GameObject ManuPanel;
@@ -23,7 +25,6 @@ public class GameManager : MonoBehaviour
 
 
     public Image[] quickSlot;
-
     public Image[] invenQuickSlot;
 
     bool activeInventory = false;
@@ -35,7 +36,10 @@ public class GameManager : MonoBehaviour
     public ItemDatabase itemDB;
     void Awake()
     {
-        
+        DontDestroyOnLoad(UI);
+        DontDestroyOnLoad(player);
+        DontDestroyOnLoad(Event);
+        DontDestroyOnLoad(gameObject);
     }
     void Start()
     {

@@ -8,79 +8,79 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/map/home.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/map/stage/area1_ice.unity
     guid: c1d0c4b708a85684fb8ae768ea4b94e8
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/map/stage/area2_desert.unity
     guid: c007770a0eec1c14ea3a50cacb1a610d
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/map/stage/area3_grass.unity
     guid: 781d7ae1a2c9ebd44b2b3d90aad66301
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/map/stage/area4_water.unity
     guid: 6bbc098ccbc90e64f99301de8571d4d2
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/map/stage/desert_no.unity
     guid: fa1ecca0d4cb2924dbfe905d8a51f0dc
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/map/stage/flower.unity
     guid: d56b81a3c1e2f5045b4ad7cb797a8b86
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/map/stage/ice_mp.unity
     guid: 1418ec4a6bbc8df4f9e7e2351addafeb
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/map/stage/normal_map.unity
     guid: 8a9b60721b9a74147bf661616da56b44
   - enabled: 1
     path: Assets/Scenes/map/Shop.unity
     guid: 0c0a0403fc146f64f9048ab4efd9380c
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/map/boss/boss_1.unity
     guid: 9aafd1e76a9fb84419b278547ad2eb00
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/map/boss/boss_2.unity
     guid: 1e548a01df13e6f47917e2cb464fb432
   - enabled: 1
-    path: Assets/Scenes/map/stage/NS/Area__1.unity
+    path: Assets/Scenes/map/stage/Area__1.unity
     guid: bc8396f5795ec96439fe77bd3e55012d
   - enabled: 1
-    path: Assets/Scenes/map/stage/NS/Area__1_1.unity
+    path: Assets/Scenes/map/stage/Area__1_1.unity
     guid: 304e62ad9d6860447955f71f24a86ccc
   - enabled: 1
-    path: Assets/Scenes/map/stage/NS/Area__2.unity
+    path: Assets/Scenes/map/stage/Area__2.unity
     guid: 6b51733e153ccc144880a9186347278d
   - enabled: 1
-    path: Assets/Scenes/map/stage/NS/Area__2_1.unity
+    path: Assets/Scenes/map/stage/Area__2_1.unity
     guid: 5aa82e8983bbadb498d286dae5054699
   - enabled: 1
-    path: Assets/Scenes/map/stage/NS/Area__3.unity
+    path: Assets/Scenes/map/stage/Area__3.unity
     guid: 81630c1b7cb46a0429549551dae18341
   - enabled: 1
-    path: Assets/Scenes/map/boss/NewBoss/Boss_1_1.unity
+    path: Assets/Scenes/map/boss/Boss_1_1.unity
     guid: adeb1acc5cec30044932bf748a807ebc
   - enabled: 1
-    path: Assets/Scenes/map/boss/NewBoss/Boss_2_1.unity
+    path: Assets/Scenes/map/boss/Boss_2_1.unity
     guid: d3fd138254ca6f6419c1db917d65f406
   - enabled: 1
-    path: Assets/Scenes/map/boss/NewBoss/Boss_3_1.unity
+    path: Assets/Scenes/map/boss/Boss_3_1.unity
     guid: da60174b5d678f3478ddd575a9e95c49
   - enabled: 1
-    path: Assets/Scenes/map/boss/NewBoss/Boss_4_1.unity
+    path: Assets/Scenes/map/boss/Boss_4_1.unity
     guid: f87c5285501e5824d994cb00332c9d7c
   - enabled: 1
-    path: Assets/Scenes/map/stage/NS/Area__3_1.unity
+    path: Assets/Scenes/map/stage/Area__3_1.unity
     guid: 643ef4f6ecc0067459853d1a3818f6ed
   - enabled: 1
-    path: Assets/Scenes/map/stage/NS/Area__4.unity
+    path: Assets/Scenes/map/stage/Area__4.unity
     guid: 4fbcc0bf6aa60b640bdb19193ff8c301
   - enabled: 1
-    path: Assets/Scenes/map/stage/NS/Area__4_1.unity
+    path: Assets/Scenes/map/stage/Area__4_1.unity
     guid: 9a03cba1a1f89a04ab61143c330f541e
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/map/boss/boss_3.unity
     guid: 07e1fe9954cd1ef4bb594d617a213c75
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/map/boss/boss_4.unity
     guid: d1e0db74dcc2c004895743bc5e321b0d
   m_configObjects: {}

@@ -15,7 +15,6 @@ public class MoveCamera : MonoBehaviour
 
      void Awake()
     {
-        DontDestroyOnLoad(gameObject);
         /*
         Camera camera = GetComponent<Camera>();
         Rect rect = camera.rect;
@@ -36,6 +35,8 @@ public class MoveCamera : MonoBehaviour
     }
     void Start()
     {
+        target = FindObjectOfType<Player>().transform;
+        gameObject.transform.position = target.position;
         h= Camera.main.orthographicSize;
         w = h * Screen.width / Screen.height;
     }

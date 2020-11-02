@@ -95,9 +95,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18505fa5d757d4349af659fbfd08ebd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
-  damage: 20
-  rate: 0.5
+  type: 4
+  damage: 22
+  rate: 1
   meleeArea: {fileID: 5941678425133388138}
 --- !u!61 &5941678425133388138
 BoxCollider2D:
@@ -112,7 +112,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.11, y: 0.54}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.32486695, y: 0.095228426}

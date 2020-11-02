@@ -255,6 +255,45 @@ public class Player : MonoBehaviour
             Weapon weaponto = weapon.GetComponent<Weapon>();
             equipWeaponto = weaponto;
         }
+        switch (equipWeaponto.type)
+        {
+            case Weapon.Type.ShotSword:
+                anim.SetBool("EquipShotSword", true);
+                anim.SetBool("EquipSword", false);
+                anim.SetBool("EquipHeavyWeapon", false);
+                anim.SetBool("EquipSpear", false);
+                anim.SetBool("EquipMace", false);
+                break;
+            case Weapon.Type.Sword:
+                anim.SetBool("EquipShotSword", false);
+                anim.SetBool("EquipSword", true);
+                anim.SetBool("EquipHeavyWeapon", false);
+                anim.SetBool("EquipSpear", false);
+                anim.SetBool("EquipMace", false);
+                break;
+            case Weapon.Type.HeavyWeapon:
+                anim.SetBool("EquipShotSword", false);
+                anim.SetBool("EquipSword", false);
+                anim.SetBool("EquipHeavyWeapon", true);
+                anim.SetBool("EquipSpear", false);
+                anim.SetBool("EquipMace", false);
+                break;
+            case Weapon.Type.Spear:
+                anim.SetBool("EquipShotSword", false);
+                anim.SetBool("EquipSword", false);
+                anim.SetBool("EquipHeavyWeapon", false);
+                anim.SetBool("EquipSpear", true);
+                anim.SetBool("EquipMace", false);
+                break;
+            case Weapon.Type.Mace:
+                anim.SetBool("EquipShotSword", false);
+                anim.SetBool("EquipSword", false);
+                anim.SetBool("EquipHeavyWeapon", false);
+                anim.SetBool("EquipSpear", false);
+                anim.SetBool("EquipMace", true);
+                break;
+            default: break;
+        }
     }
     
 }

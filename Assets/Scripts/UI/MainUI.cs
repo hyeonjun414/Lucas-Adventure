@@ -12,6 +12,7 @@ public enum BTNType
     Quit,
     Inventory,
     Manu,
+    Status,
 }
 
 public class MainUI : MonoBehaviour

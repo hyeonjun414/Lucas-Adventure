@@ -25,7 +25,7 @@ public class ItemDatabase : MonoBehaviour
         Add(ItemType.Weapon, "rusty_sword", 10);
         
         //Mace
-        Add(ItemType.Weapon, "batom_with_spike", 7);
+        Add(ItemType.Weapon, "baton_with_spike", 7);
         Add(ItemType.Weapon, "big_hammer", 7);
         Add(ItemType.Weapon, "axe", 7);
         Add(ItemType.Weapon, "hammer", 7);

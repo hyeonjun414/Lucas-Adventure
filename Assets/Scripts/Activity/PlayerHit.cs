@@ -27,7 +27,8 @@ public class PlayerHit : MonoBehaviour
             {
                 // 충돌객체의 정보에서 공격력을 가져와 피격을 계산
                 Enemy enemy = other.gameObject.GetComponentInParent<Enemy>();
-                player.health -= enemy.damage;
+                int resultdamage = enemy.damage - player.armor;
+                player.health -= resultdamage<=0 ? 0 : resultdamage;
                 if (player.health <= 0)
                     player.health = 0;
                 // 넉백 방향 계산
@@ -47,6 +48,8 @@ public class PlayerHit : MonoBehaviour
             {
                 // 충돌객체의 정보에서 공격력을 가져와 피격을 계산
                 Bullet enemyBullet = other.GetComponent<Bullet>();
+                int resultdamage = enemyBullet.damage - player.armor;
+                player.health -= resultdamage <= 0 ? 0 : resultdamage;
                 player.health -= enemyBullet.damage;
                 if (player.health <= 0)
                     player.health = 0;

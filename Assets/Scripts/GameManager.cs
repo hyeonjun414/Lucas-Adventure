@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject Event;
     public GameObject UI;
+    public GameObject statusPanel;
     public GameObject gamePanel;
     public GameObject inventoryPanel;
     public GameObject ManuPanel;
@@ -23,6 +24,10 @@ public class GameManager : MonoBehaviour
     public Text playerCoinTxt;
     public Text playerExpTxt;
 
+    public Text statusHealthTxt;
+    public Text statusDamageTxt;
+    public Text statusArmorTxt;
+    public Text statusSpeedTxt;
 
     public Image[] quickSlot;
     public Image[] invenQuickSlot;
@@ -44,43 +49,9 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         inven = Inventory.instance;
-        //inven.onSlotCountChange += SlotChange;
-        //inven.onChangeItem += RedrawSlotUI;
-        //inven.SlotCnt = 4;
         inventoryPanel.SetActive(activeInventory);
 
     }
-    /*
-    private void RedrawSlotUI()
-    {
-        for(int i = 0; i < slots.Length; i++)
-        {
-            slots[i].RemoveSlot();
-        }
-        for(int i = 0; i < inven.items.Count; i++)
-        {
-            slots[i].item = inven.items[i];
-            slots[i].UpdateSlotUI();
-        }
-    }
-
-    private void SlotChange(int val)
-    {
-        for (int i = 0; i< slots.Length; i++)
-        {
-            slots[i].slotnum = i;
-            if (i < inven.SlotCnt)
-                slots[i].GetComponent<Button>().interactable = true;
-            else
-                slots[i].GetComponent<Button>().interactable = false;
-        }
-    }
-
-    public void AddSlot()
-    {
-        inven.SlotCnt++;
-    }
-    */
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.I))
@@ -119,6 +90,12 @@ public class GameManager : MonoBehaviour
         playerHealthTxt.text = player.health + " / " + player.maxhealth;
         playerCoinTxt.text = string.Format("{0:n0}", player.coin);
         playerExpTxt.text = player.exp + " / " + player.maxExp;
+
+        statusHealthTxt.text = player.health + " / " + player.maxhealth;
+        statusDamageTxt.text = player.damage.ToString();
+        statusArmorTxt.text = player.armor.ToString();
+        statusSpeedTxt.text = player.maxSpeed.ToString();
+
 
         //무기 이미지를 갱신후
         quickSlotUpdate();

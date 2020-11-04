@@ -20,6 +20,9 @@ public class BtnType : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public GameObject ManuPanel;
     bool activeManu = false;
 
+    public GameObject StatusPanel;
+    bool activeStatus = false;
+
     bool isSound = true;
 
     private void Start()
@@ -73,6 +76,10 @@ public class BtnType : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             case BTNType.Manu:
                 activeManu = !activeManu;
                 ManuPanel.SetActive(activeManu);
+                break;
+            case BTNType.Status:
+                activeStatus = !activeStatus;
+                StatusPanel.SetActive(activeStatus);
                 break;
 
         }

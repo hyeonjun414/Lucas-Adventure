@@ -6,6 +6,10 @@ public class Player : MonoBehaviour
 {
     public float Speed = 5f; //기본 이동속도
 
+    public int damage = 10;
+    public int armor = 0;
+
+
     public int coin;  //가지고 있는 코인
     public int health;// 현재 체력
     public float exp;   // 현재 경험치
@@ -41,7 +45,6 @@ public class Player : MonoBehaviour
     SpriteRenderer spriteRenderer;
     Vector3 movement;
     Animator anim;
-    GameObject nearObject;
     public Item equipWeapon; // 현재 장착중인 무기
     public Weapon equipWeaponto;
     public Inventory inven;
@@ -63,17 +66,21 @@ public class Player : MonoBehaviour
         Attack();
         levelup();
         Swap();
-        
+
         // 입력 값에 따라 좌우 이미지 좌우 반전
-        if (Input.GetButton("Horizontal"))
-            if(Input.GetAxisRaw("Horizontal") > 0)
+        if (!isAttack)
+        {
+            if (Input.GetButton("Horizontal"))
+                if (Input.GetAxisRaw("Horizontal") > 0)
+                    transform.localScale = new Vector3(1, 1, 1);
+                else if (Input.GetAxisRaw("Horizontal") < 0)
+                    transform.localScale = new Vector3(-1, 1, 1);
+            if (value.joyTouch.x > 0)
                 transform.localScale = new Vector3(1, 1, 1);
-            else if(Input.GetAxisRaw("Horizontal") < 0)
+            else if (value.joyTouch.x < 0)
                 transform.localScale = new Vector3(-1, 1, 1);
-        if (value.joyTouch.x > 0)
-            transform.localScale = new Vector3(1, 1, 1);
-        else if (value.joyTouch.x < 0)
-            transform.localScale = new Vector3(-1, 1, 1);
+        }
+        
 
     }
     void FixedUpdate()
@@ -110,19 +117,19 @@ public class Player : MonoBehaviour
         isFireReady = equipWeaponto.rate < fireDelay;
 
         //공격키가 눌리고 공격준비가 완료되면 공격
-        if((fDown && isFireReady) || (InputAttack && isFireReady))
+        if((fDown && isFireReady) || (InputAttack && isFireReady) && !isAttack)
         {
             StartCoroutine("Icantswap"); //공격중에는 교체 불가
             anim.SetTrigger("isAttack"); //공격 애니메이션의 실행
             equipWeaponto.Use(inven.equipWeapon[0]); //장착무기의 공격루틴 활성화
             fireDelay = 0; //플레이어 공격딜레이를 다시 초기화
-            InputAttack = false;
+            
         }
     }
     //이동
     void Move()
     {
-        if (isDamage || isAttack) return; //공격당하는 중에는 경직, 이동불가
+        if (isDamage) return; //공격당하는 중에는 경직, 이동불가
         Vector2 moveVelocity = new Vector2(hAxis, vAxis); //입력값에 따른 속력의 방향 대입
         anim.SetBool("isRun", moveVelocity != Vector2.zero); //멈춰있는게 아니라면 달리기 애니메이션 실행
         rigid.AddForce(moveVelocity * Speed * Time.deltaTime, ForceMode2D.Impulse); //플레이어에 프레임 단위로 속력을 더해줌
@@ -191,8 +198,12 @@ public class Player : MonoBehaviour
     IEnumerator Icantswap()
     {
         isMotion = true;
+        isAttack = true;
         yield return new WaitForSeconds(equipWeaponto.rate);
         isMotion = false;
+        isAttack = false;
+        InputAttack = false; // 공격이 끝나야 공격입력을 받음
+
     }
     //달리기 효과
     void CreateDust()
@@ -208,6 +219,9 @@ public class Player : MonoBehaviour
             exp = 0;
             maxExp *= 1.1f;
             maxExp = Mathf.Round(maxExp);
+            damage += 5;
+            armor += 2;
+            equipWeaponto.damage += 5;
         }
     }
     // 인터페이스가 활성화되었는지 확인
@@ -240,6 +254,7 @@ public class Player : MonoBehaviour
             weapon.transform.localScale = new Vector3(1,1,1);
             Weapon weaponto = weapon.GetComponent<Weapon>();
             equipWeaponto = weaponto;
+            equipWeaponto.damage += damage;
             return;
         }
         //장착중인 무기와 현재 장비가 다르면
@@ -254,6 +269,7 @@ public class Player : MonoBehaviour
             weapon.transform.localScale = new Vector3(1, 1, 1);
             Weapon weaponto = weapon.GetComponent<Weapon>();
             equipWeaponto = weaponto;
+            equipWeaponto.damage += damage;
         }
         switch (equipWeaponto.type)
         {

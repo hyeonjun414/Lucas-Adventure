@@ -12,12 +12,14 @@ public class ControlBtn : MonoBehaviour
     }
     public void OnClickSwap()
     {
-        player.InputSwap = true;
+        if(!player.InputSwap)
+            player.InputSwap = true;
     }
     
     public void OnClickAttack()
     {
-        player.InputAttack = true;
+        if(!player.InputAttack)
+            player.InputAttack = true;
     }
     // Update is called once per frame
     void Update()

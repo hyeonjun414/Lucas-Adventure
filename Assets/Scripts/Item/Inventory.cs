@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class Inventory : MonoBehaviour
 {
     public static Inventory instance;
-    public List<Item> itemScripts = new List<Item>();
+    public List<Item> uniqueitems = new List<Item>();
     public List<Item> equipWeapon = new List<Item>();
     void Awake()
     {
@@ -31,7 +31,7 @@ public class Inventory : MonoBehaviour
         }
         else if(_item.itemType == ItemType.Unique)
         {
-            itemScripts.Add(_item);
+            uniqueitems.Add(_item);
             return true;
         }
         return false;

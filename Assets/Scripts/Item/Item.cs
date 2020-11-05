@@ -26,8 +26,11 @@ public class Item
         itemImage = _iImage;
     }
 
-    public Item()
+    public Item(ItemType _itype, string _iName, Sprite _iImage)
     {
-
+        itemType = _itype;
+        itemName = _iName;
+        itemCount = -1;
+        itemImage = _iImage;
     }
 }

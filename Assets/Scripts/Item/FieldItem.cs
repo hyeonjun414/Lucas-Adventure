@@ -11,7 +11,8 @@ public class FieldItem : MonoBehaviour
     private void Start()
     {
         itemDB = FindObjectOfType<ItemDatabase>();
-        Item getItem = itemDB.items[Random.Range(0, itemDB.items.Count)];
+        //Item getItem = itemDB.items[Random.Range(0, itemDB.items.Count)];
+        Item getItem = itemDB.unique[Random.Range(0, itemDB.unique.Count)];
         SetItem(getItem);
     }
 

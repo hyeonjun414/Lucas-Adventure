@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
 
     public Image[] quickSlot;
     public Image[] invenQuickSlot;
+    public Image[] uniqueSlot;
 
     bool activeInventory = false;
     bool activeManu = false;
@@ -80,6 +81,17 @@ public class GameManager : MonoBehaviour
                 invenQuickSlot[i].preserveAspect = true;
             }
         }
+        for (int i = 0; i < inven.uniqueitems.Count; i++)
+        {
+            if (inven.uniqueitems[i].itemName != null)
+            {
+                //인벤토리의 이미지를 받아와 퀵슬롯과 인벤토리무기슬롯에 업데이트
+                Sprite img = inven.uniqueitems[i].itemImage;
+                uniqueSlot[i].sprite = img;
+                uniqueSlot[i].preserveAspect = true;
+            }
+        }
+
     }
 
     void LateUpdate()
@@ -114,6 +126,18 @@ public class GameManager : MonoBehaviour
                 quickSlot[i].color = new Color(1, 1, 1, 0);
                 invenQuickSlot[i].color = new Color(1, 1, 1, 0);
             }
+        }
+        for (int i = 0; i < 8; i++)
+        {
+            if (i < inven.uniqueitems.Count)
+            {
+                uniqueSlot[i].color = new Color(1, 1, 1, inven.uniqueitems[i].itemName != null ? 1 : 0);
+            }
+            else
+            {
+                uniqueSlot[i].color = new Color(1, 1, 1, 0);
+            }
+            
         }
     }
 }

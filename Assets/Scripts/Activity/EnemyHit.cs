@@ -6,6 +6,7 @@ public class EnemyHit : MonoBehaviour
 {
     public GameObject obj;
     public GameObject dropitem;
+    public GameObject damageText;
     Enemy enemy;
     Material mat;
     Rigidbody2D rigid;
@@ -28,12 +29,16 @@ public class EnemyHit : MonoBehaviour
             // 충돌 객체의 무기 정보를 받아옴
             Weapon weapon = other.GetComponent<Weapon>();
             // 무기의 공격력만큼 적의 체력을 감소시킴.
-            enemy.curHealth -= weapon.damage;
+            int damage = Random.Range(weapon.damage - weapon.damage / 10, weapon.damage + weapon.damage / 10);
+            enemy.curHealth -= damage;
             // 공격을 당할때 밀려나는 방향을 계산.
-            Vector2 reactVec = (transform.position - other.transform.position).normalized;
+            Debug.Log(other.transform.parent.parent.name);
+            Vector2 reactVec = (transform.position - other.transform.parent.parent.position).normalized;
             // 피격 코루틴 실행.
             StartCoroutine(OnDamage(reactVec));
             Debug.Log("Melee : " + enemy.curHealth);
+            GameObject hudText = Instantiate(damageText, new Vector3(transform.position.x, transform.position.y+0.5f, 0), Quaternion.identity);
+            hudText.GetComponent<DamageText>().damage = damage;
         }
     }
     // 피격 코루틴
@@ -43,7 +48,7 @@ public class EnemyHit : MonoBehaviour
         mat.color = Color.red;
         isDamege = true;
         // 넉백을 실행.
-        rigid.AddForce(reactVec*10, ForceMode2D.Impulse);
+        rigid.AddForce(reactVec*100*Time.deltaTime, ForceMode2D.Impulse);
         yield return new WaitForSeconds(0.1f);
 
         if (enemy.curHealth > 0)
@@ -63,7 +68,7 @@ public class EnemyHit : MonoBehaviour
             
             Destroy(enemy.gameObject, 2);
         }
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.3f);
         isDamege = false;
 
     }

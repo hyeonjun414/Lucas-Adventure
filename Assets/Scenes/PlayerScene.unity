@@ -19696,6 +19696,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MeleeEnemy1
       objectReference: {fileID: 0}
+    - target: {fileID: 560897448834067938, guid: 257d1a91bcb3b0548b2cfe6176c62f30,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 560897448834067951, guid: 257d1a91bcb3b0548b2cfe6176c62f30,
         type: 3}
       propertyPath: m_LocalPosition.x

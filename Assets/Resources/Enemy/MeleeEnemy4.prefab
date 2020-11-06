@@ -106,6 +106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   items: []
+  unique: []
 --- !u!1 &2144150701505852019
 GameObject:
   m_ObjectHideFlags: 0
@@ -224,6 +225,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obj: {fileID: 2144150701084307464}
   dropitem: {fileID: 4286782481912221681, guid: 04d46d5fae02e9f4d9064ab4ec1b04ed,
+    type: 3}
+  damageText: {fileID: 6752262327075515371, guid: 92d903407038603458e0849ee45b0054,
     type: 3}
 --- !u!70 &5442942209483697535
 CapsuleCollider2D:

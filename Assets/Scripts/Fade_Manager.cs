@@ -25,7 +25,7 @@ public class Fade_Manager : MonoBehaviour
         {
             color.a += _speed;
             black.color = color;
-            // yield return new WaitForSeconds(0.01f);
+           
             yield return waitTime;
         }
 
@@ -44,7 +44,7 @@ public class Fade_Manager : MonoBehaviour
         {
             color.a -= _speed;
             black.color = color;
-            //yield return new WaitForSeconds(0.01f);
+           
             yield return waitTime;
 
         }

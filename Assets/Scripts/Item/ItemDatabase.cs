@@ -15,7 +15,7 @@ public class ItemDatabase : MonoBehaviour
     void Start()
     {
         //특수 아이템
-        UniqueAdd(ItemType.Unique, "healthUp");
+        UniqueAdd(ItemType.Unique, "healthUp", 0);
 
 
 
@@ -56,9 +56,9 @@ public class ItemDatabase : MonoBehaviour
         items.Add(new Item(itype, iName, iCount,Resources.Load<Sprite>("ItemImage/" + iName)));
     }
 
-    void UniqueAdd(ItemType itype, string iName)
+    void UniqueAdd(ItemType itype, string iName, int iValue)
     {
-        unique.Add(new Item(itype, iName, 0, Resources.Load<Sprite>("ItemImage/" + iName)));
+        unique.Add(new Item(itype, iName, iValue, Resources.Load<Sprite>("ItemImage/" + iName)));
     }
 
 }

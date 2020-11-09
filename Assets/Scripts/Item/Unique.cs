@@ -51,7 +51,7 @@ public class Unique : MonoBehaviour
                     uniqueList[0].itemindex = i;
                     if(uniqueList[0].check == false)
                     {
-                        healthUp(100);
+                        HealthUp(100);
                     }
                     uniqueList[0].check = true;
                     break;
@@ -59,7 +59,7 @@ public class Unique : MonoBehaviour
                     uniqueList[1].itemindex = i;
                     if (uniqueList[1].check == false)
                     {
-                        healthUp(100);
+                        DamageUp(10);
                     }
                     uniqueList[1].check = true;
                     break;
@@ -67,7 +67,7 @@ public class Unique : MonoBehaviour
                     uniqueList[2].itemindex = i;
                     if (uniqueList[2].check == false)
                     {
-                        healthUp(100);
+                        ArmorUp(5);
                     }
                     uniqueList[2].check = true;
                     break;
@@ -75,7 +75,7 @@ public class Unique : MonoBehaviour
                     uniqueList[3].itemindex = i;
                     if (uniqueList[3].check == false)
                     {
-                        healthUp(100);
+                        SpeedUp(5);
                     }
                     uniqueList[3].check = true;
                     break;
@@ -83,21 +83,22 @@ public class Unique : MonoBehaviour
         }
     }
 
-    void healthUp(int value)
+    void HealthUp(int value)
     {
         player.health += value;
         player.maxhealth += value;
     }
-    void DamageUp()
+    void DamageUp(int value)
     {
+        player.damage += value;
+    }
+    void ArmorUp(int value)
+    {
+        player.armor += value;
 
     }
-    void ArmorUp()
+    void SpeedUp(int value)
     {
-
-    }
-    void SpeedUp()
-    {
-
+        player.maxSpeed += value;
     }
 }

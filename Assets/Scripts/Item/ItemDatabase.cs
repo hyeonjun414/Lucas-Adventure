@@ -16,6 +16,9 @@ public class ItemDatabase : MonoBehaviour
     {
         //특수 아이템
         UniqueAdd(ItemType.Unique, "healthUp", 0);
+        UniqueAdd(ItemType.Unique, "damageUp", 1);
+        UniqueAdd(ItemType.Unique, "armorUp", 2);
+        UniqueAdd(ItemType.Unique, "SpeedUp", 3);
 
 
 

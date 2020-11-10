@@ -15,6 +15,20 @@ public enum BTNType
     Status,
 }
 
+public enum BTNShop
+{
+    Shop,
+    ShopExit,
+    UniqueTab,
+    PotionTab,
+    BuyItem,
+}
+public enum BTNSlot
+{
+    Unique,
+    Potion,
+}
+
 public class MainUI : MonoBehaviour
 {
 

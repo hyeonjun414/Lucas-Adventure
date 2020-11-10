@@ -23,6 +23,8 @@ public class BtnType : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public GameObject StatusPanel;
     bool activeStatus = false;
 
+    public GameObject ShopPanel;
+
     bool isSound = true;
 
     private void Start()

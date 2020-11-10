@@ -16,6 +16,7 @@ TagManager:
   - UIpanel
   - PlayerGFX
   - Dead
+  - Store
   layers:
   - Default
   - TransparentFX

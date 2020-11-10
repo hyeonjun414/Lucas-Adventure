@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
 
     public bool InputAttack = false;
     public bool InputSwap = false;
+    public GameObject InteractionBtn;
 
     bool isMotion = false; //현재 행동중인지
     bool isFireReady; //현재 공격할 준비가 되었는지
@@ -216,7 +217,7 @@ public class Player : MonoBehaviour
         if (exp >= maxExp)
         {
             level++;
-            exp = 0;
+            exp = exp-maxExp;
             maxExp *= 1.1f;
             maxExp = Mathf.Round(maxExp);
             damage += 5;
@@ -311,5 +312,22 @@ public class Player : MonoBehaviour
             default: break;
         }
     }
-    
+
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Store"))
+        {
+            InteractionBtn.SetActive(true);
+        }
+    }
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Store"))
+        {
+            InteractionBtn.SetActive(false);
+        }
+    }
+
 }
+

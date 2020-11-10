@@ -7,6 +7,9 @@ public class Inventory : MonoBehaviour
     public static Inventory instance;
     public List<Item> uniqueitems = new List<Item>();
     public List<Item> equipWeapon = new List<Item>();
+
+    public int Coin;
+    public int maxCoin = 9999;
     void Awake()
     {
         instance = this;
@@ -17,6 +20,7 @@ public class Inventory : MonoBehaviour
         Item baseItem = new Item(ItemType.Weapon, "regular_sword", 999999, 
                                  Resources.Load<Sprite>("ItemImage/" + "regular_sword"));
         AddItem(baseItem);
+        Coin = 500;
     }
     private void Update()
     {

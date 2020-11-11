@@ -825,7 +825,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   btntype: 4
-  buttonScale: {fileID: 0}
+  buttonScale: {fileID: 623713486}
   OptionPanel: {fileID: 0}
 --- !u!114 &623713488
 MonoBehaviour:

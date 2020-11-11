@@ -4,15 +4,8 @@ using UnityEngine;
 
 public enum BTNType
 {
-    New,
-    Continue,
-    Option,
-    Sound,
-    Back,
-    Quit,
-    Inventory,
-    Manu,
-    Status,
+    
+    
 }
 
 public enum BTNShop
@@ -22,6 +15,24 @@ public enum BTNShop
     UniqueTab,
     PotionTab,
     BuyItem,
+}
+public enum BTNMain
+{
+    New,
+    Continue,
+    Option,
+    OptionExit,
+    Quit,
+}
+public enum BTNInGame
+{
+    Exit,
+    Manu,
+    ManuExit,
+    Status,
+    Inventory,
+    Option,
+    OptionExit,
 }
 public enum BTNSlot
 {

@@ -11,6 +11,7 @@ public class ItemDatabase : MonoBehaviour
     void Awake()
     {
         instance = this;
+        DontDestroyOnLoad(gameObject);
     }
     void Start()
     {
@@ -19,9 +20,7 @@ public class ItemDatabase : MonoBehaviour
         UniqueAdd(ItemType.Unique, "damageUp", 1, 200,"공격력 10 증가");
         UniqueAdd(ItemType.Unique, "armorUp", 2, 300,"방어력 5 증가");
         UniqueAdd(ItemType.Unique, "speedUp", 3, 200,"이동속도 2 증가");
-
-
-
+        
         //ShotSword
         WeaponAdd(ItemType.Weapon, "machete", 20);
 
@@ -58,7 +57,6 @@ public class ItemDatabase : MonoBehaviour
     {
         items.Add(new Item(itype, iName, iCount,Resources.Load<Sprite>("ItemImage/" + iName)));
     }
-
     void UniqueAdd(ItemType itype, string iName, int iCount, int iValue,string info)
     {
         unique.Add(new Item(itype, iName, iCount, iValue, Resources.Load<Sprite>("ItemImage/" + iName), info));

@@ -22,10 +22,6 @@ public class Inventory : MonoBehaviour
         AddItem(baseItem);
         Coin = 500;
     }
-    private void Update()
-    {
-
-    }
     public bool AddItem(Item _item)
     {
         if (_item.itemType == ItemType.Weapon)

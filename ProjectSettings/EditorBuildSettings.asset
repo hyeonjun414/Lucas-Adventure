@@ -6,41 +6,17 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/map/home.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 0
-    path: Assets/Scenes/map/stage/area1_ice.unity
-    guid: c1d0c4b708a85684fb8ae768ea4b94e8
-  - enabled: 0
-    path: Assets/Scenes/map/stage/area2_desert.unity
-    guid: c007770a0eec1c14ea3a50cacb1a610d
-  - enabled: 0
-    path: Assets/Scenes/map/stage/area3_grass.unity
-    guid: 781d7ae1a2c9ebd44b2b3d90aad66301
-  - enabled: 0
-    path: Assets/Scenes/map/stage/area4_water.unity
-    guid: 6bbc098ccbc90e64f99301de8571d4d2
-  - enabled: 0
-    path: Assets/Scenes/map/stage/desert_no.unity
-    guid: fa1ecca0d4cb2924dbfe905d8a51f0dc
-  - enabled: 0
-    path: Assets/Scenes/map/stage/flower.unity
-    guid: d56b81a3c1e2f5045b4ad7cb797a8b86
-  - enabled: 0
-    path: Assets/Scenes/map/stage/ice_mp.unity
-    guid: 1418ec4a6bbc8df4f9e7e2351addafeb
-  - enabled: 0
-    path: Assets/Scenes/map/stage/normal_map.unity
-    guid: 8a9b60721b9a74147bf661616da56b44
+    path: Assets/Scenes/StartScene.unity
+    guid: 089c58c54a0b9014492309168eacbaf5
   - enabled: 1
-    path: Assets/Scenes/map/Shop.unity
-    guid: 0c0a0403fc146f64f9048ab4efd9380c
-  - enabled: 0
-    path: Assets/Scenes/map/boss/boss_1.unity
-    guid: 9aafd1e76a9fb84419b278547ad2eb00
-  - enabled: 0
-    path: Assets/Scenes/map/boss/boss_2.unity
-    guid: 1e548a01df13e6f47917e2cb464fb432
+    path: Assets/Scenes/map/home.unity
+    guid: 10b011158745bfc42a45aba56c69b45b
+  - enabled: 1
+    path: Assets/Scenes/LoadingScene.unity
+    guid: 27b46befcce2cea45bc4f32779eb7c73
+  - enabled: 1
+    path: Assets/Scenes/PlayerScene.unity
+    guid: 9c5c9a03241897d4f91ec9a487d78f53
   - enabled: 1
     path: Assets/Scenes/map/stage/Area__1.unity
     guid: bc8396f5795ec96439fe77bd3e55012d
@@ -78,9 +54,24 @@ EditorBuildSettings:
     path: Assets/Scenes/map/stage/Area__4_1.unity
     guid: 9a03cba1a1f89a04ab61143c330f541e
   - enabled: 0
-    path: Assets/Scenes/map/boss/boss_3.unity
-    guid: 07e1fe9954cd1ef4bb594d617a213c75
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 0
-    path: Assets/Scenes/map/boss/boss_4.unity
-    guid: d1e0db74dcc2c004895743bc5e321b0d
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects: {}

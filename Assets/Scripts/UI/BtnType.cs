@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class BtnType : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
@@ -34,9 +35,11 @@ public class BtnType : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     }
     public void OnBtnClick()
     {
+        /*
         switch (currentType)
         {
             case BTNType.New:
+                SceneLoad.LoadSceneHandle("home", 0);
                 Debug.Log("새 게임");
                 break;
             case BTNType.Continue:
@@ -44,32 +47,19 @@ public class BtnType : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 Debug.Log("이어하기");
                 break;
             case BTNType.Option:
-                CanvasGroupOn(optionGroup);
-                CanvasGroupOff(mainGroup);
                 Debug.Log("환경설정");
                 break;
             case BTNType.Sound:
-                if (isSound)
-                {
-                    isSound = !isSound;
-                    mytext.text = "음향 꺼짐";
-                    Debug.Log("음향 끄기");
-                }
-                else
-                {
-                    isSound = !isSound;
-                    mytext.text = "음향 켜짐";
-                    Debug.Log("음향 켜기");
-                }
-                    
                 break;
             case BTNType.Back:
-                CanvasGroupOn(mainGroup);
-                CanvasGroupOff(optionGroup);
                 Debug.Log("뒤로가기");
                 break;
             case BTNType.Quit:
                 Debug.Log("나가기");
+                Application.Quit();
+                break;
+            case BTNType.InGameExit:
+                SceneManager.LoadScene("StartScene");
                 break;
             case BTNType.Inventory:
                 activeInventory = !activeInventory;
@@ -84,23 +74,8 @@ public class BtnType : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 StatusPanel.SetActive(activeStatus);
                 break;
 
-        }
+        }*/
     }
-
-    public void CanvasGroupOn(CanvasGroup cg)
-    {
-        cg.alpha = 1;
-        cg.interactable = true;
-        cg.blocksRaycasts = true;
-    }
-    public void CanvasGroupOff(CanvasGroup cg)
-    {
-        cg.alpha = 0;
-        cg.interactable = false;
-        cg.blocksRaycasts = false;
-    }
-
-
     public void OnPointerEnter(PointerEventData eventData)
     {
         buttonScale.localScale = defaultScale * 1.1f;

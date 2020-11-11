@@ -109,7 +109,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 779245528229323528}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.65, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 779245528571678764}
@@ -130,7 +130,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 10
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -153,7 +153,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.3
+  m_Radius: 1
 --- !u!114 &779245528229323543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,29 +166,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d406d1a2f5dd6894fbf64741a6469ef6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 400
+  Speed: 50
+  damage: 10
+  armor: 0
   coin: 100
   health: 100
   exp: 0
-  level: 0
+  level: 1
+  curMapName: 
   maxcoin: 99999
   maxhealth: 100
-  maxExp: 0
-  maxSpeed: 10
+  maxExp: 100
+  maxSpeed: 5
   InputAttack: 0
   InputSwap: 0
+  InteractionBtn: {fileID: 0}
   isDamage: 0
   isDead: 0
-  dust: {fileID: 0}
-  dash: {fileID: 0}
+  dust: {fileID: 2311801362155680650}
   equipWeapon:
     itemType: 0
     itemName: 
+    itemInfo: 
     itemImage: {fileID: 0}
+    itemCount: 0
+    itemValue: 0
   equipWeaponto: {fileID: 0}
-  inven: {fileID: 0}
+  inven: {fileID: 1336578260}
   ArmL: {fileID: 779245528519638480}
-  value: {fileID: 0}
+  value: {fileID: 11400000, guid: 65386e2aab60ef74aa6ccf12a4273f13, type: 2}
 --- !u!1 &779245528519638480
 GameObject:
   m_ObjectHideFlags: 0
@@ -213,13 +219,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 779245528519638480}
-  m_LocalRotation: {x: -0, y: -0, z: -0.08715578, w: 0.9961947}
+  m_LocalRotation: {x: 0, y: 0, z: -0.258819, w: 0.9659259}
   m_LocalPosition: {x: 0.3499999, y: -0.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 779245528571678764}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -10}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -30}
 --- !u!212 &779245528519638494
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -258,7 +264,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 5938012242645255967, guid: ea2c7086c8248574abf968765c1345fa,
     type: 3}
   m_Color: {r: 0.44705886, g: 0.83921576, b: 0.8078432, a: 1}
@@ -282,6 +288,10 @@ GameObject:
   - component: {fileID: 779245528571678764}
   - component: {fileID: 779245528571678763}
   - component: {fileID: 779245528571678762}
+  - component: {fileID: 1336578258}
+  - component: {fileID: 1336578256}
+  - component: {fileID: 1336578260}
+  - component: {fileID: 1336578261}
   m_Layer: 0
   m_Name: PlayerGFX
   m_TagString: PlayerGFX
@@ -341,7 +351,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
+  m_SortingLayerID: -1509802555
   m_SortingLayer: 0
   m_SortingOrder: 10
   m_Sprite: {fileID: -2311659948842064771, guid: fcdfdf244b68313478ca88a571571f41,
@@ -375,6 +385,62 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!70 &1336578258
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 779245528571678765}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.5, y: 0.7}
+  m_Direction: 0
+--- !u!114 &1336578256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 779245528571678765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ed48211badad4a4cb58839a46d4f4a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1336578260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 779245528571678765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3321b0a356d74d74098a724846b9f73e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueitems: []
+  equipWeapon: []
+  Coin: 0
+  maxCoin: 9999
+--- !u!114 &1336578261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 779245528571678765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57cf711f6da84e141a4c268fa6b38690, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6198639278299216397
 GameObject:
   m_ObjectHideFlags: 0
@@ -5103,9 +5169,9 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1509802555
+  m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -5
+  m_SortingOrder: -1
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0

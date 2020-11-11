@@ -41,7 +41,6 @@ public class Player : MonoBehaviour
 
     //필요 컴포넌트
     public ParticleSystem dust;
-    public ParticleSystem dash;
     Rigidbody2D rigid;
     SpriteRenderer spriteRenderer;
     Vector3 movement;
@@ -328,6 +327,5 @@ public class Player : MonoBehaviour
             InteractionBtn.SetActive(false);
         }
     }
-
 }
 

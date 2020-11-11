@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class SceneLoad : MonoBehaviour
 {
@@ -21,8 +22,7 @@ public class SceneLoad : MonoBehaviour
         loadType = _loadType;
         SceneManager.LoadScene("LoadingScene");
     }
-
-
+    
     IEnumerator LoadScene()
     {
         yield return null;
@@ -51,14 +51,15 @@ public class SceneLoad : MonoBehaviour
 
             if(progressbar.value >= 1f)
             {
-                loadtext.text = "스페이스바를 누르세요";
+                loadtext.text = "화면을 터치하세요.";
             }
 
-            if (Input.GetKeyDown(KeyCode.Space) && progressbar.value >= 1f && operation.progress >= 0.9f)
+            if (Input.GetMouseButton(0) && progressbar.value >= 1f && operation.progress >= 0.9f)
             {
                 operation.allowSceneActivation = true;
             }
 
         }
     }
+    
 }

@@ -3,15 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public Player player;
-    public Enemy enemy;
-    public int stage;
+    public string stage;
 
     public GameObject Event;
     public GameObject UI;
+    public GameObject ItemDB;
     public GameObject statusPanel;
     public GameObject gamePanel;
     public GameObject inventoryPanel;
@@ -35,15 +36,15 @@ public class GameManager : MonoBehaviour
 
     bool activeInventory = false;
     bool activeManu = false;
-
     
     Inventory inven;
 
     public ItemDatabase itemDB;
+
     void Awake()
     {
-        DontDestroyOnLoad(UI);
         DontDestroyOnLoad(player);
+        DontDestroyOnLoad(UI);
         DontDestroyOnLoad(Event);
         DontDestroyOnLoad(gameObject);
     }
@@ -55,6 +56,8 @@ public class GameManager : MonoBehaviour
     }
     void Update()
     {
+        stage = SceneManager.GetActiveScene().name;
+        SelfDestroy();
         if (Input.GetKeyDown(KeyCode.I))
         {
             activeInventory = !activeInventory;
@@ -81,6 +84,7 @@ public class GameManager : MonoBehaviour
                 invenQuickSlot[i].preserveAspect = true;
             }
         }
+
         for (int i = 0; i < inven.uniqueitems.Count; i++)
         {
             if (inven.uniqueitems[i].itemName != null)
@@ -91,7 +95,6 @@ public class GameManager : MonoBehaviour
                 uniqueSlot[i].preserveAspect = true;
             }
         }
-
     }
 
     void LateUpdate()
@@ -100,15 +103,14 @@ public class GameManager : MonoBehaviour
 
         playerLevelTxt.text = "Lv." + player.level;
         playerHealthTxt.text = player.health + " / " + player.maxhealth;
-        playerCoinTxt.text = string.Format("{0:n0}", player.coin);
+        playerCoinTxt.text = string.Format("{0:n0}", inven.Coin);
         playerExpTxt.text = player.exp + " / " + player.maxExp;
 
         statusHealthTxt.text = player.health + " / " + player.maxhealth;
         statusDamageTxt.text = player.damage.ToString();
         statusArmorTxt.text = player.armor.ToString();
         statusSpeedTxt.text = player.maxSpeed.ToString();
-
-
+        
         //무기 이미지를 갱신후
         quickSlotUpdate();
         //여기서 4는 무기의 최대갯수
@@ -127,6 +129,7 @@ public class GameManager : MonoBehaviour
                 invenQuickSlot[i].color = new Color(1, 1, 1, 0);
             }
         }
+
         for (int i = 0; i < 8; i++)
         {
             if (i < inven.uniqueitems.Count)
@@ -137,7 +140,17 @@ public class GameManager : MonoBehaviour
             {
                 uniqueSlot[i].color = new Color(1, 1, 1, 0);
             }
-            
+        }
+    }
+    void SelfDestroy()
+    {
+        if(SceneManager.GetActiveScene().name == "StartScene")
+        {
+            Destroy(player.gameObject);
+            Destroy(UI);
+            Destroy(ItemDB);
+            Destroy(Event);
+            Destroy(gameObject);
         }
     }
 }

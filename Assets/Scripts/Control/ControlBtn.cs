@@ -5,7 +5,6 @@ using UnityEngine;
 public class ControlBtn : MonoBehaviour
 {
     public Player player;
-    // Start is called before the first frame update
     void Start()
     {
         player = FindObjectOfType<Player>();
@@ -20,10 +19,5 @@ public class ControlBtn : MonoBehaviour
     {
         if(!player.InputAttack)
             player.InputAttack = true;
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

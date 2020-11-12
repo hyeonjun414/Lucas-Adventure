@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+
+    static public Player instance;  //선언된 변수의 값을 공유
+
     public float Speed = 5f; //기본 이동속도
 
     public int coin;  //가지고 있는 코인
@@ -50,9 +53,19 @@ public class Player : MonoBehaviour
     
     void Start()
     {
-        rigid = gameObject.GetComponent<Rigidbody2D>();
-        spriteRenderer = gameObject.GetComponentInChildren<SpriteRenderer>();
-        anim = GetComponentInChildren<Animator>();
+        if (instance == null)//
+        {
+            rigid = gameObject.GetComponent<Rigidbody2D>();
+            spriteRenderer = gameObject.GetComponentInChildren<SpriteRenderer>();
+            anim = GetComponentInChildren<Animator>();
+            instance = this;//
+        }
+        else//
+        {
+            Destroy(this.gameObject);//
+        }
+
+       
     }
     
     void Update()

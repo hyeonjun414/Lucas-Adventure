@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class MapTransform : MonoBehaviour
 {
+    
     public string transferMapName; //이동맵
     public Player player;
     public GameObject startingPoint;
@@ -27,9 +28,8 @@ public class MapTransform : MonoBehaviour
     IEnumerator TransferCoroutine()
     {
         fade.FadeOut(0.1f);
-        yield return new WaitForSeconds(0.2f);
-        player.curMapName = transferMapName;
-
+        yield return new WaitForSeconds(0.5f);
+        player.curMapName = transferMapName;  
         SceneManager.LoadScene(transferMapName);
         fade.FadeIn(0.1f);
     }

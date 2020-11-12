@@ -75,7 +75,7 @@ public class Shop : MonoBehaviour
                 switch (pickPotion.itemCount)
                 {
                     case 0:
-                        if(player.health == player.maxhealth)
+                        if(player.health != player.maxhealth)
                         {
                             if (pickPotion.itemName == "HP-Potion1")
                             {

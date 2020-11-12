@@ -14,11 +14,9 @@ public class GameManager : MonoBehaviour
     public GameObject UI;
     public GameObject ItemDB;
     public GameObject statusPanel;
-    public GameObject gamePanel;
     public GameObject inventoryPanel;
     public GameObject ManuPanel;
     public Text stageTxt;
-    public Text playTimeTxt;
 
     public Text playerLevelTxt;
     public Text playerHealthTxt;

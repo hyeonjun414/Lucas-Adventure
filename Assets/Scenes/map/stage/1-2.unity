@@ -7868,7 +7868,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 764106b26fa76bd478134c6b9d7696e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startPoint: Area__1
+  startPoint: 1-2
   thePlayer: {fileID: 0}
 --- !u!61 &300830898
 BoxCollider2D:
@@ -7951,7 +7951,6 @@ MonoBehaviour:
   - {fileID: 1854968747}
   - {fileID: 2095062474}
   Enemy1: {fileID: 560897448834067938, guid: b4c6f90e8bc524b4b8514ba974245658, type: 3}
-  Enemy2: {fileID: 3360953696773840441, guid: 07fdbd67ddf454a4e925d0ef24d7245f, type: 3}
 --- !u!4 &351039056
 Transform:
   m_ObjectHideFlags: 0
@@ -7960,7 +7959,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 351039054}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.19610351, y: -0.45388195, z: -307.205}
+  m_LocalPosition: {x: -0.19610351, y: -0.45388195, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 616720742}
@@ -8421,7 +8420,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bf577eaccf633240a84e4b63eaffa68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transferMapName: Boss_1_1
+  transferMapName: 1-Boss
   player: {fileID: 0}
   startingPoint: {fileID: 0}
   fade: {fileID: 0}

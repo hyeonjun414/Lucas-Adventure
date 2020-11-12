@@ -49,11 +49,9 @@ MonoBehaviour:
   UI: {fileID: 0}
   ItemDB: {fileID: 0}
   statusPanel: {fileID: 0}
-  gamePanel: {fileID: 0}
   inventoryPanel: {fileID: 0}
   ManuPanel: {fileID: 0}
   stageTxt: {fileID: 0}
-  playTimeTxt: {fileID: 0}
   playerLevelTxt: {fileID: 0}
   playerHealthTxt: {fileID: 0}
   playerCoinTxt: {fileID: 0}

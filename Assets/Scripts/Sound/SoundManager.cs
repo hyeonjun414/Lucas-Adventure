@@ -20,20 +20,13 @@ public class SoundManager : MonoBehaviour
 
     private void Start()
     {
-        sound = FindObjectsOfType<AudioSource>();
-        for(int i=0; i<sound.Length; i++)
-        {
-            if (sound[i].CompareTag("Effect"))
-            {
-                Effect.Add(sound[i]);
-            }
-            else
-            {
-                Bgm.Add(sound[i]);
-            }
-        }
+        FindSound();
     }
     private void Update()
+    {
+        
+    }
+    private void LateUpdate()
     {
         SetMusicVolume();
         SetEffectVolume();
@@ -65,5 +58,22 @@ public class SoundManager : MonoBehaviour
             Effect[i].volume = eftSlider.value;
         }
     }
+    public void FindSound()
+    {
+        Effect.RemoveRange(0, Effect.Count);
+        Bgm.RemoveRange(0, Bgm.Count);
 
+        sound = FindObjectsOfType<AudioSource>();
+        for (int i = 0; i < sound.Length; i++)
+        {
+            if (sound[i].CompareTag("Effect"))
+            {
+                Effect.Add(sound[i]);
+            }
+            else
+            {
+                Bgm.Add(sound[i]);
+            }
+        }
+    }
 }

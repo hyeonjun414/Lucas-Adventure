@@ -7,9 +7,11 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    private static bool GMExists;
+
     public Player player;
     public string stage;
-
+    
     public GameObject Event;
     public GameObject UI;
     public GameObject ItemDB;
@@ -36,25 +38,40 @@ public class GameManager : MonoBehaviour
     bool activeManu = false;
     
     Inventory inven;
-    
+    SoundManager sound;
 
-    void Awake()
+    private void Awake()
     {
-        DontDestroyOnLoad(player);
-        DontDestroyOnLoad(UI);
-        DontDestroyOnLoad(ItemDB);
-        DontDestroyOnLoad(Event);
-        DontDestroyOnLoad(gameObject);
+        
+        if (!GMExists)
+        {
+            GMExists = true;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
     void Start()
     {
+        if(FindObjectOfType<Player>() == null)
+        {
+
+        }
         inven = Inventory.instance;
         inventoryPanel.SetActive(activeInventory);
-
+        sound = GetComponentInChildren<SoundManager>();
+        
     }
     void Update()
     {
-        stage = SceneManager.GetActiveScene().name;
+        if(stage != SceneManager.GetActiveScene().name)
+        {
+            stage = SceneManager.GetActiveScene().name;
+            sound.FindSound();
+        }
+        
         SelfDestroy();
         if (Input.GetKeyDown(KeyCode.I))
         {
@@ -144,10 +161,7 @@ public class GameManager : MonoBehaviour
     {
         if(SceneManager.GetActiveScene().name == "StartScene")
         {
-            Destroy(player.gameObject);
-            Destroy(UI);
-            Destroy(ItemDB);
-            Destroy(Event);
+            GMExists = false;
             Destroy(gameObject);
         }
     }

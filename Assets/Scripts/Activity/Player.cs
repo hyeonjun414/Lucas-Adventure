@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
+    private static bool playerExists;
 
     static public Player instance;  //선언된 변수의 값을 공유
 
@@ -56,23 +58,24 @@ public class Player : MonoBehaviour
     
     void Start()
     {
-        if (instance == null)//
+        rigid = gameObject.GetComponent<Rigidbody2D>();
+        spriteRenderer = gameObject.GetComponentInChildren<SpriteRenderer>();
+        anim = GetComponentInChildren<Animator>();
+        
+        if (!playerExists)
         {
-            rigid = gameObject.GetComponent<Rigidbody2D>();
-            spriteRenderer = gameObject.GetComponentInChildren<SpriteRenderer>();
-            anim = GetComponentInChildren<Animator>();
-            instance = this;//
+            playerExists = true;
+            DontDestroyOnLoad(transform.gameObject);
         }
-        else//
+        else
         {
-            Destroy(this.gameObject);//
+            Destroy(gameObject);
         }
-
-       
     }
     
     void Update()
     {
+        SelfDestroy();
         curWeaponCheck();
         UiCheck();
         GetInput();
@@ -338,6 +341,14 @@ public class Player : MonoBehaviour
         if (other.CompareTag("Store"))
         {
             InteractionBtn.SetActive(false);
+        }
+    }
+    void SelfDestroy()
+    {
+        if (SceneManager.GetActiveScene().name == "StartScene")
+        {
+            playerExists = false;
+            Destroy(gameObject);
         }
     }
 }

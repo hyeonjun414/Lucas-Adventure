@@ -27,7 +27,10 @@ public class Shop : MonoBehaviour
     public Text pickPotionValue;
 
     public Text curCoin;
-
+    private void Awake()
+    {
+        
+    }
     void Start()
     {
         player = FindObjectOfType<Player>();

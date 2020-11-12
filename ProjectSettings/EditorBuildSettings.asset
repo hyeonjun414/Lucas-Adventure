@@ -42,40 +42,40 @@ EditorBuildSettings:
     path: Assets/Scenes/map/boss/boss_2.unity
     guid: 1e548a01df13e6f47917e2cb464fb432
   - enabled: 1
-    path: Assets/Scenes/map/stage/Area__1.unity
+    path: Assets/Scenes/map/stage/1-2.unity
     guid: bc8396f5795ec96439fe77bd3e55012d
   - enabled: 1
-    path: Assets/Scenes/map/stage/Area__1_1.unity
+    path: Assets/Scenes/map/stage/1-1.unity
     guid: 304e62ad9d6860447955f71f24a86ccc
   - enabled: 1
-    path: Assets/Scenes/map/stage/Area__2.unity
+    path: Assets/Scenes/map/stage/2-2.unity
     guid: 6b51733e153ccc144880a9186347278d
   - enabled: 1
-    path: Assets/Scenes/map/stage/Area__2_1.unity
+    path: Assets/Scenes/map/stage/2-1.unity
     guid: 5aa82e8983bbadb498d286dae5054699
   - enabled: 1
-    path: Assets/Scenes/map/stage/Area__3.unity
+    path: Assets/Scenes/map/stage/3-2.unity
     guid: 81630c1b7cb46a0429549551dae18341
   - enabled: 1
-    path: Assets/Scenes/map/boss/Boss_1_1.unity
+    path: Assets/Scenes/map/boss/1-Boss.unity
     guid: adeb1acc5cec30044932bf748a807ebc
   - enabled: 1
-    path: Assets/Scenes/map/boss/Boss_2_1.unity
+    path: Assets/Scenes/map/boss/2-Boss.unity
     guid: d3fd138254ca6f6419c1db917d65f406
   - enabled: 1
-    path: Assets/Scenes/map/boss/Boss_3_1.unity
+    path: Assets/Scenes/map/boss/3-Boss.unity
     guid: da60174b5d678f3478ddd575a9e95c49
   - enabled: 1
-    path: Assets/Scenes/map/boss/Boss_4_1.unity
+    path: Assets/Scenes/map/boss/4-Boss.unity
     guid: f87c5285501e5824d994cb00332c9d7c
   - enabled: 1
-    path: Assets/Scenes/map/stage/Area__3_1.unity
+    path: Assets/Scenes/map/stage/3-1.unity
     guid: 643ef4f6ecc0067459853d1a3818f6ed
   - enabled: 1
-    path: Assets/Scenes/map/stage/Area__4.unity
+    path: Assets/Scenes/map/stage/4-2.unity
     guid: 4fbcc0bf6aa60b640bdb19193ff8c301
   - enabled: 1
-    path: Assets/Scenes/map/stage/Area__4_1.unity
+    path: Assets/Scenes/map/stage/4-1.unity
     guid: 9a03cba1a1f89a04ab61143c330f541e
   - enabled: 0
     path: Assets/Scenes/map/boss/boss_3.unity

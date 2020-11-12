@@ -40,6 +40,8 @@ public class GameManager : MonoBehaviour
     Inventory inven;
     SoundManager sound;
 
+    public ShopBtn itrBtn;
+
     private void Awake()
     {
         
@@ -55,13 +57,10 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-        if(FindObjectOfType<Player>() == null)
-        {
-
-        }
         inven = Inventory.instance;
         inventoryPanel.SetActive(activeInventory);
         sound = GetComponentInChildren<SoundManager>();
+        
         
     }
     void Update()
@@ -71,7 +70,7 @@ public class GameManager : MonoBehaviour
             stage = SceneManager.GetActiveScene().name;
             sound.FindSound();
         }
-        
+        IsShop();
         SelfDestroy();
         if (Input.GetKeyDown(KeyCode.I))
         {
@@ -163,6 +162,17 @@ public class GameManager : MonoBehaviour
         {
             GMExists = false;
             Destroy(gameObject);
+        }
+    }
+    void IsShop()
+    {
+        if (SceneManager.GetActiveScene().name == "home")
+        {
+            itrBtn.ShopPanel = GameObject.Find("ShopUI").transform.Find("Shop Panel").gameObject;
+        }
+        else
+        {
+            itrBtn.ShopPanel = null;
         }
     }
 }

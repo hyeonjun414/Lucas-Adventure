@@ -13,7 +13,6 @@ public class MainBtn : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     Vector3 defaultScale;
 
     public GameObject OptionPanel;
-    bool activeOption = false;
 
     private void Start()
     {

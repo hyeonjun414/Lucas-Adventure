@@ -36,13 +36,13 @@ public class GameManager : MonoBehaviour
     bool activeManu = false;
     
     Inventory inven;
-
-    public ItemDatabase itemDB;
+    
 
     void Awake()
     {
         DontDestroyOnLoad(player);
         DontDestroyOnLoad(UI);
+        DontDestroyOnLoad(ItemDB);
         DontDestroyOnLoad(Event);
         DontDestroyOnLoad(gameObject);
     }

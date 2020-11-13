@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public Player player;
+    
     public string stage;
 
     public GameObject Event;
@@ -41,10 +42,13 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
+        
         DontDestroyOnLoad(player);
         DontDestroyOnLoad(UI);
         DontDestroyOnLoad(Event);
         DontDestroyOnLoad(gameObject);
+        
+        
     }
     void Start()
     {

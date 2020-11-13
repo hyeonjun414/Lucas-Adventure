@@ -7941,7 +7941,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxCount: 5
   enemyCount: 0
-  spwanTime: 3
+  spwanTime: 0
   curTime: 0
   isSpawn: 
   spawnPoints:

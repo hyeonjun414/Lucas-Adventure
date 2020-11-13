@@ -39,6 +39,12 @@ EditorBuildSettings:
     path: Assets/Scenes/map/stage/3-2.unity
     guid: 81630c1b7cb46a0429549551dae18341
   - enabled: 1
+    path: Assets/Scenes/map/test1.unity
+    guid: 4e09a1321c0943d448c8afdd217741cf
+  - enabled: 1
+    path: Assets/Scenes/map/test2.unity
+    guid: 41a51e314662aa04ebe4e22ae50b3415
+  - enabled: 1
     path: Assets/Scenes/map/boss/3-Boss.unity
     guid: da60174b5d678f3478ddd575a9e95c49
   - enabled: 1

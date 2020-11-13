@@ -92,6 +92,7 @@ MonoBehaviour:
   target: {fileID: 0}
   Bullet: {fileID: 233296031657346121, guid: c0def31bbb2127d46829f1b012a48d6e, type: 3}
   isDead: 0
+  cnt: 0
 --- !u!1 &3360953697801349002
 GameObject:
   m_ObjectHideFlags: 0
@@ -208,7 +209,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obj: {fileID: 3360953696773840441}
-  dropitem: {fileID: 0}
+  dropitem: {fileID: 4286782481912221681, guid: 04d46d5fae02e9f4d9064ab4ec1b04ed,
+    type: 3}
+  damageText: {fileID: 6752262327075515371, guid: 92d903407038603458e0849ee45b0054,
+    type: 3}
 --- !u!70 &3176335091457678512
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

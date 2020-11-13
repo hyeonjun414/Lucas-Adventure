@@ -17,6 +17,8 @@ TagManager:
   - PlayerGFX
   - Dead
   - Store
+  - Effect
+  - Bgm
   layers:
   - Default
   - TransparentFX

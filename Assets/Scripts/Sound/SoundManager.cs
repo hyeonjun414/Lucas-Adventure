@@ -1,19 +1,79 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SoundManager : MonoBehaviour
 {
-    public AudioSource bgm; //오디오소스
-    public AudioSource effect;
-    public void SetMusicVolume(float volume)
+    public AudioSource[] sound; 
+    public List<AudioSource> Effect = new List<AudioSource>();
+    public List<AudioSource> Bgm = new List<AudioSource>();
+    public Slider eftSlider;
+    public Slider bgmSlider;
+    public Toggle eftToggle;
+    public Toggle bgmToggle;
+    public float eftVolume;
+    public float bgmVolume;
+    bool activeEft;
+    bool activeBgm;
+
+
+    private void Start()
     {
-        bgm.volume = volume;
+        FindSound();
+    }
+    private void Update()
+    {
+        
+    }
+    private void LateUpdate()
+    {
+        SetMusicVolume();
+        SetEffectVolume();
+    }
+    public void SetMusicVolume()
+    {
+        for(int i=0; i<Bgm.Count; i++)
+        {
+            if(bgmToggle.isOn == false)
+            {
+                Bgm[i].mute = true;
+                continue;
+            }
+            Bgm[i].mute = false;
+            Bgm[i].volume = bgmSlider.value;
+        }
     }
 
     public void SetEffectVolume()
     {
-        effect.Play();
+        for (int i = 0; i < Effect.Count; i++)
+        {
+            if (eftToggle.isOn == false)
+            {
+                Effect[i].mute = true;
+                continue;
+            }
+            Effect[i].mute = false;
+            Effect[i].volume = eftSlider.value;
+        }
     }
+    public void FindSound()
+    {
+        Effect.RemoveRange(0, Effect.Count);
+        Bgm.RemoveRange(0, Bgm.Count);
 
+        sound = FindObjectsOfType<AudioSource>();
+        for (int i = 0; i < sound.Length; i++)
+        {
+            if (sound[i].CompareTag("Effect"))
+            {
+                Effect.Add(sound[i]);
+            }
+            else
+            {
+                Bgm.Add(sound[i]);
+            }
+        }
+    }
 }

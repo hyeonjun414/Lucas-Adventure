@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+
+    private static bool GMExists;
     public Player player;
     
     public string stage;
@@ -39,26 +41,36 @@ public class GameManager : MonoBehaviour
     Inventory inven;
 
     public ItemDatabase itemDB;
+    SoundManager sound;
+    public ShopBtn itrBtn;
 
     void Awake()
     {
-        
-        DontDestroyOnLoad(player);
-        DontDestroyOnLoad(UI);
-        DontDestroyOnLoad(Event);
-        DontDestroyOnLoad(gameObject);
-        
-        
+        if (!GMExists)
+        {
+            GMExists = true;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
     void Start()
     {
         inven = Inventory.instance;
         inventoryPanel.SetActive(activeInventory);
+        sound = GetComponentInChildren<SoundManager>();
 
     }
     void Update()
     {
-        stage = SceneManager.GetActiveScene().name;
+        if (stage != SceneManager.GetActiveScene().name)
+        {
+            stage = SceneManager.GetActiveScene().name;
+            sound.FindSound();
+        }
+        IsShop();
         SelfDestroy();
         if (Input.GetKeyDown(KeyCode.I))
         {
@@ -148,11 +160,19 @@ public class GameManager : MonoBehaviour
     {
         if(SceneManager.GetActiveScene().name == "StartScene")
         {
-            Destroy(player.gameObject);
-            Destroy(UI);
-            Destroy(ItemDB);
-            Destroy(Event);
+            GMExists = false;
             Destroy(gameObject);
+        }
+    }
+    void IsShop()
+    {
+        if (SceneManager.GetActiveScene().name == "home")
+        {
+            itrBtn.ShopPanel = GameObject.Find("ShopUI").transform.Find("Shop Panel").gameObject;
+        }
+        else
+        {
+            itrBtn.ShopPanel = null;
         }
     }
 }

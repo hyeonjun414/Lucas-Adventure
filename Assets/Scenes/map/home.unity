@@ -19272,6 +19272,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1779675098148699305, guid: c476aa572368bb241a12f111f6deb21e,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1779675098218534129, guid: c476aa572368bb241a12f111f6deb21e,
         type: 3}
       propertyPath: shop

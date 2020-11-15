@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
 
     private static bool GMExists;
     public Player player;
+    public Boss boss;
     
     public string stage;
 
@@ -19,8 +20,9 @@ public class GameManager : MonoBehaviour
     public GameObject statusPanel;
     public GameObject inventoryPanel;
     public GameObject ManuPanel;
-    public Text stageTxt;
+    public GameObject BossPanel;
 
+    public Text stageTxt;
     public Text playerLevelTxt;
     public Text playerHealthTxt;
     public Text playerCoinTxt;
@@ -58,6 +60,7 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
+        player = FindObjectOfType<Player>();
         inven = Inventory.instance;
         inventoryPanel.SetActive(activeInventory);
         sound = GetComponentInChildren<SoundManager>();
@@ -69,6 +72,16 @@ public class GameManager : MonoBehaviour
         {
             stage = SceneManager.GetActiveScene().name;
             sound.FindSound();
+          /*  if (FindObjectOfType<Boss>())
+            {
+                boss = FindObjectOfType<Boss>();
+                BossPanel.SetActive(true);
+            }
+            else
+            {
+                boss = null;
+                BossPanel.SetActive(true);
+            }*/
         }
         IsShop();
         SelfDestroy();

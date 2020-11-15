@@ -66,10 +66,6 @@ public class Player : MonoBehaviour
 
         if (!playerExists)
         {
-            rigid = gameObject.GetComponent<Rigidbody2D>();
-            spriteRenderer = gameObject.GetComponentInChildren<SpriteRenderer>();
-            anim = GetComponentInChildren<Animator>();
-            instance = this;//
             playerExists = true;
             DontDestroyOnLoad(transform.gameObject);
         }

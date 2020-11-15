@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  boss: {fileID: 0}
   stage: 0
   Event: {fileID: 2100133461}
   UI: {fileID: 7772778675810658545}
@@ -55,6 +56,7 @@ MonoBehaviour:
   statusPanel: {fileID: 7772778677656322618}
   inventoryPanel: {fileID: 7772778676480193999}
   ManuPanel: {fileID: 7772778676260961224}
+  BossPanel: {fileID: 0}
   stageTxt: {fileID: 7772778675876186407}
   playerLevelTxt: {fileID: 7772778676704055926}
   playerHealthTxt: {fileID: 7772778676780364031}
@@ -83,6 +85,8 @@ MonoBehaviour:
   - {fileID: 7772778676169603092}
   - {fileID: 7772778676132488506}
   - {fileID: 7772778675633424570}
+  itemDB: {fileID: 0}
+  itrBtn: {fileID: 7772778675622930136}
 --- !u!1001 &44917743
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -190,6 +194,11 @@ PrefabInstance:
         type: 3}
       propertyPath: shop
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7153275714022154177, guid: 74646bc8ee595e941bcd0d114f5ee997,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 562.1504
       objectReference: {fileID: 0}
     - target: {fileID: 7153275714042269413, guid: 74646bc8ee595e941bcd0d114f5ee997,
         type: 3}
@@ -449,6 +458,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7772778675622930136 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7153275714390483649, guid: 74646bc8ee595e941bcd0d114f5ee997,
+    type: 3}
+  m_PrefabInstance: {fileID: 620370139305477145}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cc78d159af63164aa951fc6892d9255, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7772778676480193999 stripped

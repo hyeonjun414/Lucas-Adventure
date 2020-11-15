@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyHit : MonoBehaviour
+public class BossHit : MonoBehaviour
 {
-    public GameObject obj;
     public GameObject dropitem;
     public GameObject damageText;
-    private Enemy enemy;
+    private Boss boss;
     private Material mat;
     private Rigidbody2D rigid;
     private Animator anim;
@@ -16,28 +15,28 @@ public class EnemyHit : MonoBehaviour
     {
         // 컴포넌트의 연결
         rigid = GetComponentInParent<Rigidbody2D>();
-        enemy = GetComponentInParent<Enemy>();
+        boss = GetComponentInParent<Boss>();
         mat = GetComponent<SpriteRenderer>().material;
         anim = GetComponent<Animator>();
-        
+
     }
     public void OnTriggerEnter2D(Collider2D other)
     {
         // 충돌하는 객체의 태그가 Melee라면 아래의 코드를 실행.
-        if (other.tag == "Melee" && !enemy.isDead && !isDamege)
+        if (other.tag == "Melee" && !boss.isDead && !isDamege)
         {
             // 충돌 객체의 무기 정보를 받아옴
             Weapon weapon = other.GetComponent<Weapon>();
             // 무기의 공격력만큼 적의 체력을 감소시킴.
             int damage = Random.Range(weapon.damage - weapon.damage / 10, weapon.damage + weapon.damage / 10);
-            enemy.curHealth -= damage;
+            boss.curHealth -= damage;
             // 공격을 당할때 밀려나는 방향을 계산.
             Debug.Log(other.transform.parent.parent.name);
             Vector2 reactVec = (transform.position - other.transform.parent.parent.position).normalized;
             // 피격 코루틴 실행.
             StartCoroutine(OnDamage(reactVec));
-            Debug.Log("Melee : " + enemy.curHealth);
-            GameObject hudText = Instantiate(damageText, new Vector3(transform.position.x, transform.position.y+0.5f, 0), Quaternion.identity);
+            Debug.Log("Melee : " + boss.curHealth);
+            GameObject hudText = Instantiate(damageText, new Vector3(transform.position.x, transform.position.y + 0.5f, 0), Quaternion.identity);
             hudText.GetComponent<DamageText>().damage = damage;
         }
     }
@@ -48,10 +47,10 @@ public class EnemyHit : MonoBehaviour
         mat.color = Color.red;
         isDamege = true;
         // 넉백을 실행.
-        rigid.AddForce(reactVec*100*Time.deltaTime, ForceMode2D.Impulse);
+        rigid.AddForce(reactVec * 100 * Time.deltaTime, ForceMode2D.Impulse);
         yield return new WaitForSeconds(0.1f);
 
-        if (enemy.curHealth > 0)
+        if (boss.curHealth > 0)
         {
             // 체력이 남아있다면 다시 원래색으로 돌려놓음.
             mat.color = Color.white;
@@ -63,10 +62,10 @@ public class EnemyHit : MonoBehaviour
             anim.SetBool("isRun", false);
             mat.color = Color.gray;
             gameObject.layer = 9;
-            enemy.isDead = true;
+            boss.isDead = true;
             Instantiate(dropitem, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
-            
-            Destroy(enemy.gameObject, 2);
+
+            Destroy(boss.gameObject, 2);
         }
         yield return new WaitForSeconds(0.3f);
         isDamege = false;

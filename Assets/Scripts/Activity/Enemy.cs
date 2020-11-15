@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 public class Enemy : MonoBehaviour
 {
-    public enum Type { Melee, Range }; // 적 타입
+    public enum Type { Melee, Range, Boss }; // 적 타입
     public Type type; // 적 타입에 접근할 변수
 
     public float speed = 5f; // 적 추적속도
@@ -169,5 +169,9 @@ public class Enemy : MonoBehaviour
         yield return new WaitForSeconds(3f);
 
         StartCoroutine("ChangeMovement");
+    }
+    void BossRoutine()
+    {
+
     }
 }

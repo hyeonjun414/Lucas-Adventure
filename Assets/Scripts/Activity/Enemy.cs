@@ -119,7 +119,7 @@ public class Enemy : MonoBehaviour
         if (isDead)
         {
             
-            Gate_set._instance.EnemyCnt--;//몬스터가 죽을시 enemycount 차감
+            //Gate_set._instance.countdown();//몬스터가 죽을시 enemycount 차감
            // Gate_set._instance.isSpawn[int .Parse(transform.parent.name) -1] = false;
 
             Player player = FindObjectOfType<Player>();

@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 764106b26fa76bd478134c6b9d7696e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startPoint: Boss_4_1
+  startPoint: 4-Boss
   thePlayer: {fileID: 0}
 --- !u!61 &148180431
 BoxCollider2D:

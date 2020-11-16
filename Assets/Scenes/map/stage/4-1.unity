@@ -260,7 +260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bf577eaccf633240a84e4b63eaffa68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transferMapName: Area__4
+  transferMapName: 4-2
   player: {fileID: 0}
   startingPoint: {fileID: 0}
   fade: {fileID: 0}
@@ -5859,7 +5859,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 764106b26fa76bd478134c6b9d7696e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startPoint: Area__4_1
+  startPoint: 4-1
   thePlayer: {fileID: 0}
 --- !u!61 &1930335296
 BoxCollider2D:

@@ -11,7 +11,7 @@ public class Gate_set : MonoBehaviour
     public GameObject enemy_range;
 
     public int Max;//몬스터 최대 생성 가능한 수
-    public int EnemyCnt; //몬스터 카운트
+    public int EnemyCnt=0; //몬스터 카운트
     public int EnemyCnt_range;
     public bool[] isSpawn;
 
@@ -26,19 +26,28 @@ public class Gate_set : MonoBehaviour
             isSpawn[i] = false;
         }
         _instance = this;
+
+        for(;EnemyCnt<Max;)
+        {
+            int x = Random.Range(0, spawnpoints.Length); //0~max수까지
+            if (!isSpawn[x]) //해당위치가 false이면 그 위치에 생성
+                SpawnEnemy(x); // 몬스터 생성
+        }
+                /*
+        if (EnemyCnt < Max) //Max보다 작으면 생성
+        {
+            int x = Random.Range(0, spawnpoints.Length); //0~max수까지
+            if (!isSpawn[x]) //해당위치가 false이면 그 위치에 생성
+                SpawnEnemy(x); // 몬스터 생성
+        }*/
+
     }
 
 
     // Update is called once per frame
     private void Update()
     {
-        if (EnemyCnt < Max) //Max보다 작으면 생성
-        { 
-            int x = Random.Range(0, spawnpoints.Length); //0~max수까지
-            if(!isSpawn[x]) //해당위치가 false이면 그 위치에 생성
-            SpawnEnemy(x); // 몬스터 생성
-        }
-
+        
         if (EnemyCnt<=0) //EnemyCnt값이 -495이하이면 게이트가 열린다.
         {
             gate.OpenGate();

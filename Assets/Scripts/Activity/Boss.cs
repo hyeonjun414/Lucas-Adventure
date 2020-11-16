@@ -24,6 +24,7 @@ public class Boss : MonoBehaviour
     public LineRenderer lr;
 
     Vector3 moveVelo;
+    Coroutine bossroutine;
     void Awake()
     {
         lr = GetComponent<LineRenderer>();
@@ -35,9 +36,10 @@ public class Boss : MonoBehaviour
     }
     void Start()
     {
+        BossHpbar = GameObject.Find("BossUI").transform.Find("Boss Group").transform.Find("Image").transform.Find("Boss Health Image").gameObject.GetComponent<RectTransform>();
         target = FindObjectOfType<Player>().transform;
         //적의 행동패턴을 시작
-        StartCoroutine(BossRoutine());
+        StartCoroutine(Waiting());
     }
 
     void FixedUpdate()
@@ -83,8 +85,15 @@ public class Boss : MonoBehaviour
                 player.exp += exp;
                 exp = 0;
             }
+            StopCoroutine(bossroutine);
+            DrawAttackDelete();
 
         }
+    }
+    IEnumerator Waiting()
+    {
+        yield return new WaitForSeconds(2f);
+        bossroutine = StartCoroutine(BossRoutine());
     }
     IEnumerator BossRoutine()
     {
@@ -121,7 +130,7 @@ public class Boss : MonoBehaviour
         rigid.constraints = RigidbodyConstraints2D.FreezeRotation;
 
 
-        StartCoroutine(BossRoutine());
+        bossroutine = StartCoroutine(BossRoutine());
     }
     void HPbarUpdate()
     {

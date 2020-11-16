@@ -65,7 +65,7 @@ public class EnemyHit : MonoBehaviour
             gameObject.layer = 9;
             enemy.isDead = true;
             Instantiate(dropitem, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
-            
+            Gate_set._instance.countdown();
             Destroy(enemy.gameObject, 2);
         }
         yield return new WaitForSeconds(0.3f);

@@ -24,7 +24,7 @@ public class Enemy : MonoBehaviour
     bool isDamage = false; // 피해를 입고있는가
     public bool isDead = false; // 죽었는가
 
-    public int cnt;//몬스터 죽은 수
+  
 
     void Awake()
     {
@@ -118,9 +118,9 @@ public class Enemy : MonoBehaviour
     {
         if (isDead)
         {
-            cnt++; 
-            Mons_spawn._instance.enemyCount--;//몬스터가 죽을시 enemycount 차감
-            Mons_spawn._instance.isSpawn[int .Parse(transform.parent.name) -1] = false;
+            
+            //Gate_set._instance.countdown();//몬스터가 죽을시 enemycount 차감
+           // Gate_set._instance.isSpawn[int .Parse(transform.parent.name) -1] = false;
 
             Player player = FindObjectOfType<Player>();
             if (player != null)

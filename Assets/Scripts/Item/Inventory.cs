@@ -7,6 +7,8 @@ public class Inventory : MonoBehaviour
     public static Inventory instance;
     public List<Item> uniqueitems = new List<Item>();
     public List<Item> equipWeapon = new List<Item>();
+    public int maxWeapon = 4;
+    public int maxUnique = 8;
 
     public int Coin;
     public int maxCoin = 9999;
@@ -26,11 +28,13 @@ public class Inventory : MonoBehaviour
     {
         if (_item.itemType == ItemType.Weapon)
         {
+            if(equipWeapon.Count == maxWeapon) return false;
             equipWeapon.Add(_item);
             return true;
         }
         else if(_item.itemType == ItemType.Unique)
         {
+            if(uniqueitems.Count == maxUnique) return false;
             uniqueitems.Add(_item);
             return true;
         }

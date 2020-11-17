@@ -22,14 +22,14 @@ public class ItemDatabase : MonoBehaviour
         UniqueAdd(ItemType.Unique, "speedUp", 3, 200,"이동속도 2 증가");
         
         //ShotSword
-        WeaponAdd(ItemType.Weapon, "machete", 20);
+        //WeaponAdd(ItemType.Weapon, "machete", 20);
 
         //Sword
         WeaponAdd(ItemType.Weapon, "duel_sword", 10);
         WeaponAdd(ItemType.Weapon, "golden_sword", 10);
         WeaponAdd(ItemType.Weapon, "katana", 10);
         WeaponAdd(ItemType.Weapon, "red_gem_sword", 10);
-        WeaponAdd(ItemType.Weapon, "regular_sword", 10);
+        //WeaponAdd(ItemType.Weapon, "regular_sword", 10);
         WeaponAdd(ItemType.Weapon, "rusty_sword", 10);
 
         //Mace

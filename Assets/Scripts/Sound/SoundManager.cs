@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class SoundManager : MonoBehaviour
 {
+
     public AudioSource[] sound; 
     public List<AudioSource> Effect = new List<AudioSource>();
     public List<AudioSource> Bgm = new List<AudioSource>();
@@ -17,10 +18,13 @@ public class SoundManager : MonoBehaviour
     bool activeEft;
     bool activeBgm;
 
+    
+
 
     private void Start()
     {
         FindSound();
+        
     }
     private void Update()
     {
@@ -62,7 +66,8 @@ public class SoundManager : MonoBehaviour
     {
         Effect.RemoveRange(0, Effect.Count);
         Bgm.RemoveRange(0, Bgm.Count);
-
+        
+        
         sound = FindObjectsOfType<AudioSource>();
         for (int i = 0; i < sound.Length; i++)
         {

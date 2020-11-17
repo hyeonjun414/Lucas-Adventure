@@ -25,16 +25,31 @@ public class PlayerHit : MonoBehaviour
             // 플레이어가 피격중이라면 무효처리
             if (!player.isDamage && !player.isDead)
             {
-                // 충돌객체의 정보에서 공격력을 가져와 피격을 계산
-                Enemy enemy = other.gameObject.GetComponentInParent<Enemy>();
-                int resultdamage = enemy.damage - player.armor;
-                player.health -= resultdamage<=0 ? 0 : resultdamage;
-                if (player.health <= 0)
-                    player.health = 0;
-                // 넉백 방향 계산
-                Vector2 vec = (player.transform.position - enemy.transform.position);
-                // 피격 코루틴 실행
-                StartCoroutine(OnDamage(vec));
+                if(other.gameObject.GetComponentInParent<Enemy>()){
+                    // 충돌객체의 정보에서 공격력을 가져와 피격을 계산
+                    Enemy enemy = other.gameObject.GetComponentInParent<Enemy>();
+                    int resultdamage = enemy.damage - player.armor;
+                    player.health -= resultdamage<=0 ? 0 : resultdamage;
+                    if (player.health <= 0)
+                        player.health = 0;
+                    // 넉백 방향 계산
+                    Vector2 vec = (player.transform.position - enemy.transform.position);
+                    // 피격 코루틴 실행
+                    StartCoroutine(OnDamage(vec));
+                }
+                else
+                {
+                    Boss enemy = other.gameObject.GetComponentInParent<Boss>();
+                    int resultdamage = enemy.damage - player.armor;
+                    player.health -= resultdamage<=0 ? 0 : resultdamage;
+                    if (player.health <= 0)
+                        player.health = 0;
+                    // 넉백 방향 계산
+                    Vector2 vec = (player.transform.position - enemy.transform.position);
+                    // 피격 코루틴 실행
+                    StartCoroutine(OnDamage(vec));
+                }
+                
             }
         }
     }

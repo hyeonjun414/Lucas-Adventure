@@ -65,7 +65,7 @@ public class Boss : MonoBehaviour
 
         //방향에 일정한 속도를 더해줌
         //rigid.AddForce(moveVelo * 3000 *Time.deltaTime, ForceMode2D.Impulse);
-        rigid.velocity = moveVelo * 1000 * Time.deltaTime;
+        rigid.velocity = moveVelo * 3000 * Time.deltaTime;
             // 속력의 방향에 따라 이미지의 좌우 방향을 정해줌
         if (rigid.velocity.x >= 0.01f)
             transform.localScale = new Vector3(-1f, 1f, 1f);

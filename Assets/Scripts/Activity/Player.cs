@@ -268,7 +268,7 @@ public class Player : MonoBehaviour
             GameObject weapon = (GameObject)Instantiate(Resources.Load("Weapon/" + equipWeapon.itemName),
                 new Vector3(ArmL.transform.position.x, ArmL.transform.position.y,0), ArmL.transform.rotation);
             weapon.transform.parent = ArmL.transform;
-            weapon.transform.localScale = new Vector3(1,1,1);
+            weapon.transform.localScale = new Vector3(1.5f, 1.5f, 1);
             Weapon weaponto = weapon.GetComponent<Weapon>();
             equipWeaponto = weaponto;
             equipWeaponto.damage += damage;
@@ -283,7 +283,7 @@ public class Player : MonoBehaviour
             GameObject weapon = (GameObject)Instantiate(Resources.Load("Weapon/" + equipWeapon.itemName),
                 new Vector3(ArmL.transform.position.x, ArmL.transform.position.y, 0), ArmL.transform.rotation);
             weapon.transform.parent = ArmL.transform;
-            weapon.transform.localScale = new Vector3(1, 1, 1);
+            weapon.transform.localScale = new Vector3(1.5f, 1.5f, 1);
             Weapon weaponto = weapon.GetComponent<Weapon>();
             equipWeaponto = weaponto;
             equipWeaponto.damage += damage;

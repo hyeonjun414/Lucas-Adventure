@@ -54,16 +54,16 @@ public class Shop : MonoBehaviour
 
     void Update()
     {
-        curCoin.text = "현재 코인 : " + inven.Coin;
+        curCoin.text = "현재 코인 : " + inven.curCoin;
     }
 
     public void SellItem(int value)
     {
         if(value == 0)
         {
-            if (inven.Coin >= pickUnique.itemValue)
+            if (inven.curCoin >= pickUnique.itemValue)
             {
-                inven.Coin -= pickUnique.itemValue;
+                inven.curCoin -= pickUnique.itemValue;
                 inven.uniqueitems.Add(pickUnique);
                 Debug.Log("구입 성공!");
 
@@ -73,7 +73,7 @@ public class Shop : MonoBehaviour
         }
         else
         {
-            if(inven.Coin >= pickPotion.itemValue)
+            if(inven.curCoin >= pickPotion.itemValue)
             {
                 switch (pickPotion.itemCount)
                 {
@@ -85,14 +85,14 @@ public class Shop : MonoBehaviour
                                 int temp = player.health + 15;
                                 temp = temp > player.maxhealth ? player.maxhealth : temp;
                                 player.health = temp;
-                                inven.Coin -= pickPotion.itemValue;
+                                inven.curCoin -= pickPotion.itemValue;
                             }
                             else
                             {
                                 int temp = player.health + 30;
                                 temp = temp > player.maxhealth ? player.maxhealth : temp;
                                 player.health = temp;
-                                inven.Coin -= pickPotion.itemValue;
+                                inven.curCoin -= pickPotion.itemValue;
 
                             }
                         }
@@ -108,12 +108,12 @@ public class Shop : MonoBehaviour
                         if (pickPotion.itemName == "EXP-Potion1")
                         {
                             player.exp += 25;
-                            inven.Coin -= pickPotion.itemValue;
+                            inven.curCoin -= pickPotion.itemValue;
                         }
                         else
                         {
                             player.exp += 50;
-                            inven.Coin -= pickPotion.itemValue;
+                            inven.curCoin -= pickPotion.itemValue;
                         }
                         break;
                 }

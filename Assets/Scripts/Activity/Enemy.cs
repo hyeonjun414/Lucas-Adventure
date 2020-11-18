@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
     public enum Type { Melee, Range, Boss }; // 적 타입
     public Type type; // 적 타입에 접근할 변수
 
-    public float speed = 5f; // 적 추적속도
+    public float speed; // 적 추적속도
     public int maxHealth; // 최대 체력
     public int curHealth; // 현재 체력
     public int damage; // 적 공격력

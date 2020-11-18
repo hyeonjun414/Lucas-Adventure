@@ -6,6 +6,7 @@ public class EnemyHit : MonoBehaviour
 {
     public GameObject obj;
     public GameObject dropitem;
+    public GameObject Coins;
     public GameObject damageText;
     private Enemy enemy;
     private Material mat;
@@ -64,6 +65,11 @@ public class EnemyHit : MonoBehaviour
             mat.color = Color.gray;
             gameObject.layer = 9;
             enemy.isDead = true;
+            int coinNum = Random.Range(5, 11);
+            for(int i=0; i<coinNum; i++){
+                Instantiate(Coins, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
+            }
+            
             Instantiate(dropitem, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
             Gate_set._instance.countdown();
             Destroy(enemy.gameObject, 2);

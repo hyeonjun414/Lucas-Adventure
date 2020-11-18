@@ -130,7 +130,7 @@ public class GameManager : MonoBehaviour
 
         playerLevelTxt.text = "Lv." + player.level;
         playerHealthTxt.text = player.health + " / " + player.maxhealth;
-        playerCoinTxt.text = string.Format("{0:n0}", inven.Coin);
+        playerCoinTxt.text = string.Format("{0:n0}", inven.curCoin);
         playerExpTxt.text = player.exp + " / " + player.maxExp;
 
         statusHealthTxt.text = player.health + " / " + player.maxhealth;

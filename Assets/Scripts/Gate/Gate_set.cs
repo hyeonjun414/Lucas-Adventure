@@ -33,13 +33,7 @@ public class Gate_set : MonoBehaviour
             if (!isSpawn[x]) //해당위치가 false이면 그 위치에 생성
                 SpawnEnemy(x); // 몬스터 생성
         }
-                /*
-        if (EnemyCnt < Max) //Max보다 작으면 생성
-        {
-            int x = Random.Range(0, spawnpoints.Length); //0~max수까지
-            if (!isSpawn[x]) //해당위치가 false이면 그 위치에 생성
-                SpawnEnemy(x); // 몬스터 생성
-        }*/
+                
 
     }
 

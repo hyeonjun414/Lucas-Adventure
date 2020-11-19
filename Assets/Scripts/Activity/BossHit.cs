@@ -65,6 +65,7 @@ public class BossHit : MonoBehaviour
             boss.isDead = true;
             Instantiate(dropitem, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
             Gate_set._instance.countdown();
+            
             anim.enabled = false;
             //Destroy(boss.gameObject, 2);
         }

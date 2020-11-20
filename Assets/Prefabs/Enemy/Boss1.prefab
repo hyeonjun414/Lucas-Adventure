@@ -196,6 +196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5c16f53eb51fff4d9e7de72af540d49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bossName: 0
   speed: 5
   maxHealth: 400
   curHealth: 400
@@ -205,9 +206,8 @@ MonoBehaviour:
   Bullet: {fileID: 233296031657346121, guid: a501cc332653998418694e33017c50ff, type: 3}
   isDead: 0
   BossHpbar: {fileID: 0}
-  AttackReader: {fileID: 8973025584808108000, guid: 078abe24ef16785428430e26c8409d52,
-    type: 3}
   lr: {fileID: 0}
+  monster: {fileID: 3674438260730056435, guid: e2c8bb8789707c6458a6dffdd4eee581, type: 3}
 --- !u!1 &5583654352803690261
 GameObject:
   m_ObjectHideFlags: 0

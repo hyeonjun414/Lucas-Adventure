@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 public class Enemy : MonoBehaviour
 {
-    public enum Type { Melee, Range, Boss }; // 적 타입
+    public enum Type { Melee, Range,  BMonster}; // 적 타입
     public Type type; // 적 타입에 접근할 변수
 
     public float speed; // 적 추적속도

@@ -9,7 +9,7 @@ public class Boss : MonoBehaviour
         Area1,
         Area2,
     }
-    public BossName bossName;
+    public BossName bossName; // 어디의 보스인지 확인하는 열거형 변수
     public float speed = 5f; // 적 추적속도
     public int maxHealth; // 최대 체력
     public int curHealth; // 현재 체력
@@ -18,23 +18,24 @@ public class Boss : MonoBehaviour
     public Transform target; // 추적할 대상
     public GameObject Bullet; // 원거리 적이 발사할 탄알 오브젝트
 
-    Rigidbody2D rigid;
-    BoxCollider2D boxCollider;
-    Material mat;
+    Rigidbody2D rigid; //물리 연산 담당
+    BoxCollider2D boxCollider; // 충돌 담당
+    Material mat; //
     Animator anim;
     bool isDamage = false; // 피해를 입고있는가
     public bool isDead = false; // 죽었는가
 
-    public RectTransform BossHpbar;
-    public GameObject AttackReader;
-    public LineRenderer lr;
+    public RectTransform BossHpbar; //보스 UI의 체력바와 연동
+ 
+    public LineRenderer lr; // 공격 방향을 표기해주는 라인렌더러
 
-    Vector3 moveVelo;
-    Coroutine bossroutine;
+    Vector3 moveVelo; // 보스몬스터 또는 탄환의 방향을 지정
+    Coroutine bossroutine; // 현재 코루틴이 들어가는 변수
+    public GameObject monster; // 소환할 몬스터
     void Awake()
     {
+        //보스 생성시 컴포넌트들의 연결을 해줌
         lr = GetComponent<LineRenderer>();
-        //적 생성시 컴포넌트들의 연결을 해줌
         rigid = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
         mat = GetComponentInChildren<SpriteRenderer>().material;
@@ -42,23 +43,22 @@ public class Boss : MonoBehaviour
     }
     void Start()
     {
+        // 보스 체력바와 플레이어의 위치를 연결
         BossHpbar = GameObject.Find("BossUI").transform.Find("Boss Group").transform.Find("Image").transform.Find("Boss Health Image").gameObject.GetComponent<RectTransform>();
         target = FindObjectOfType<Player>().transform;
+
         //적의 행동패턴을 시작
         StartCoroutine(Waiting());
     }
 
     void FixedUpdate()
     {
+        //지속적으로 체력바의 갱신 애니메이션 상태, 죽음 여부를 판단
         anim.SetBool("isRun", rigid.velocity != Vector2.zero);
         HPbarUpdate();
         EnemyDie();
     }
     
-    
-    
-    
-
     void EnemyDie()
     {
         if (isDead)
@@ -85,7 +85,7 @@ public class Boss : MonoBehaviour
     }
     IEnumerator BossRoutine()
     {
-        int routineflag = Random.Range(0, 2);
+        int routineflag = Random.Range(1, 3);
         
         switch (routineflag)
         {
@@ -110,6 +110,13 @@ public class Boss : MonoBehaviour
                     rigid.constraints = RigidbodyConstraints2D.FreezeRotation;
                     DrawAttackDelete();
                 }
+                break;
+            case 2 : // 근접 몬스터 소환 패턴
+                transform.position = Vector2.zero;
+                yield return new WaitForSeconds(1f);
+                Instantiate(monster, new Vector2(transform.position.x-2, transform.position.y), Quaternion.identity);
+                Instantiate(monster, new Vector2(transform.position.x+2, transform.position.y), Quaternion.identity);
+
                 break;
         }
         rigid.constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
@@ -147,11 +154,11 @@ public class Boss : MonoBehaviour
                     DrawAttackDelete();
                 }
                 break;  
-            case 2: // 탄알 발사
+            case 2: // 광역 탄알 발사
                 transform.position = Vector2.zero;
                 yield return new WaitForSeconds(1f);
                 //DrawAttack();
-                for(int j = 0; j<360; j+=5){
+                for(int j = 60; j<300; j+=15){
                     ShotingWithoutTracing(j);
                     yield return new WaitForSeconds(0.1f);
                 }
@@ -173,6 +180,7 @@ public class Boss : MonoBehaviour
 
     void DrawAttack()
     {
+        // 공격 방향 그리기
         moveVelo = new Vector3(target.position.x - transform.position.x,
                                target.position.y - transform.position.y, 0).normalized;
         lr.SetPosition(0, transform.position);
@@ -180,6 +188,7 @@ public class Boss : MonoBehaviour
     }
     void DrawAttackDelete()
     {
+        //공격 방향 지우기
         moveVelo = Vector3.zero;
         lr.SetPosition(0, moveVelo);
         lr.SetPosition(1, moveVelo);
@@ -199,7 +208,7 @@ public class Boss : MonoBehaviour
         GameObject instantBullet = Instantiate(Bullet, transform.position, transform.rotation);
         instantBullet.transform.Rotate(0,0,angle);
         Rigidbody2D rigidBullet = instantBullet.GetComponent<Rigidbody2D>();
-        rigidBullet.velocity = instantBullet.transform.up * 2;
+        rigidBullet.velocity = instantBullet.transform.up * 10;
     }
     void Dash()
     {

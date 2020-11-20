@@ -175,6 +175,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4522539577809990086}
     m_Modifications:
+    - target: {fileID: 7153275713144096407, guid: 74646bc8ee595e941bcd0d114f5ee997,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0.83137256
+      objectReference: {fileID: 0}
+    - target: {fileID: 7153275713224747375, guid: 74646bc8ee595e941bcd0d114f5ee997,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0.49803922
+      objectReference: {fileID: 0}
     - target: {fileID: 7153275713337839842, guid: 74646bc8ee595e941bcd0d114f5ee997,
         type: 3}
       propertyPath: shop
@@ -195,6 +205,11 @@ PrefabInstance:
       propertyPath: shop
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 7153275714022154176, guid: 74646bc8ee595e941bcd0d114f5ee997,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0.5803922
+      objectReference: {fileID: 0}
     - target: {fileID: 7153275714022154177, guid: 74646bc8ee595e941bcd0d114f5ee997,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -204,6 +219,11 @@ PrefabInstance:
         type: 3}
       propertyPath: shop
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7153275714102181668, guid: 74646bc8ee595e941bcd0d114f5ee997,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0.49803922
       objectReference: {fileID: 0}
     - target: {fileID: 7153275714218633253, guid: 74646bc8ee595e941bcd0d114f5ee997,
         type: 3}
@@ -320,6 +340,16 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7153275714410917692, guid: 74646bc8ee595e941bcd0d114f5ee997,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0.83137256
+      objectReference: {fileID: 0}
+    - target: {fileID: 7153275714431877963, guid: 74646bc8ee595e941bcd0d114f5ee997,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0.49803922
+      objectReference: {fileID: 0}
     - target: {fileID: 7153275714459713575, guid: 74646bc8ee595e941bcd0d114f5ee997,
         type: 3}
       propertyPath: shop
@@ -329,6 +359,11 @@ PrefabInstance:
         type: 3}
       propertyPath: shop
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7153275714633483344, guid: 74646bc8ee595e941bcd0d114f5ee997,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0.83137256
       objectReference: {fileID: 0}
     - target: {fileID: 7153275714702956823, guid: 74646bc8ee595e941bcd0d114f5ee997,
         type: 3}

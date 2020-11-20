@@ -66,12 +66,13 @@ public class EnemyHit : MonoBehaviour
             gameObject.layer = 9;
             enemy.isDead = true;
             int coinNum = Random.Range(5, 11);
-            for(int i=0; i<coinNum; i++){
-                Instantiate(Coins, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
+            if(enemy.type != Enemy.Type.BMonster){
+                for(int i=0; i<coinNum; i++){
+                    Instantiate(Coins, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
+                }
+                Instantiate(dropitem, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
+                Gate_set._instance.countdown();
             }
-            
-            Instantiate(dropitem, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
-            Gate_set._instance.countdown();
             Destroy(enemy.gameObject, 2);
         }
         yield return new WaitForSeconds(0.3f);

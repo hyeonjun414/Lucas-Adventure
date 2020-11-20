@@ -12,7 +12,7 @@ public class ItemActive : MonoBehaviour
     private void Update()
     {
 
-        if (Gate_set._instance.EnemyCnt <= 0) //EnemyCnt값이 -495이하이면 게이트가 열린다.
+        if (Gate_set._instance.EnemyCnt <= 0) 
         {
             reward.ItemVisible();
         }

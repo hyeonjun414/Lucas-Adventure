@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     private static bool GMExists;
     public Player player;
     public Boss boss;
+
+    public bool[] clear; //클리어
     
     public string stage;
 

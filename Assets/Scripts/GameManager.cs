@@ -72,16 +72,7 @@ public class GameManager : MonoBehaviour
         {
             stage = SceneManager.GetActiveScene().name;
             sound.FindSound();
-          /*  if (FindObjectOfType<Boss>())
-            {
-                boss = FindObjectOfType<Boss>();
-                BossPanel.SetActive(true);
-            }
-            else
-            {
-                boss = null;
-                BossPanel.SetActive(true);
-            }*/
+            
         }
         IsShop();
         SelfDestroy();
@@ -95,6 +86,8 @@ public class GameManager : MonoBehaviour
             activeManu = !activeManu;
             ManuPanel.SetActive(activeManu);
         }
+        
+        
     }
     void quickSlotUpdate()
     {

@@ -207,7 +207,7 @@ MonoBehaviour:
   isDead: 0
   BossHpbar: {fileID: 0}
   lr: {fileID: 0}
-  monster: {fileID: 5583654352549885294}
+  monster: {fileID: 3674438260730056435, guid: e2c8bb8789707c6458a6dffdd4eee581, type: 3}
 --- !u!1 &5583654352803690261
 GameObject:
   m_ObjectHideFlags: 0
@@ -221,7 +221,7 @@ GameObject:
   - component: {fileID: 5583654352803690248}
   - component: {fileID: 1960643246418110489}
   - component: {fileID: 838001248}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Boss1GFX
   m_TagString: Enemy
   m_Icon: {fileID: 0}

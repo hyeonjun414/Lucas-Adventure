@@ -54,7 +54,7 @@ public class Inventory : MonoBehaviour
         {
             Coin coins = other.GetComponent<Coin>();
             curCoin += coins.value;
-            coins.pick = true;
+            coins.picked();
             
         }
     }

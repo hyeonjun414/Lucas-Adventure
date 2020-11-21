@@ -105,9 +105,9 @@ GameObject:
   - component: {fileID: 3360953698558648122}
   - component: {fileID: 9185705620481603947}
   - component: {fileID: 3176335091457678512}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RangeEnemy1GFX
-  m_TagString: Enemy
+  m_TagString: EnemyGFX
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -213,6 +213,7 @@ MonoBehaviour:
   Coins: {fileID: 8220115403989457548, guid: a17125128b522e9479d396404f3d5f58, type: 3}
   damageText: {fileID: 6752262327075515371, guid: 92d903407038603458e0849ee45b0054,
     type: 3}
+  isDamege: 0
 --- !u!70 &3176335091457678512
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

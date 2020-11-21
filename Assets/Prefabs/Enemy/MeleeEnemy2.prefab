@@ -106,6 +106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   items: []
+  unique: []
 --- !u!1 &3674438261281557640
 GameObject:
   m_ObjectHideFlags: 0
@@ -119,7 +120,7 @@ GameObject:
   - component: {fileID: 3674438261281557653}
   - component: {fileID: 6200179232612701227}
   - component: {fileID: 7257129173802734468}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: MeleeEnemy2GFX
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -225,6 +226,9 @@ MonoBehaviour:
   obj: {fileID: 3674438260730056435}
   dropitem: {fileID: 4286782481912221681, guid: 04d46d5fae02e9f4d9064ab4ec1b04ed,
     type: 3}
+  Coins: {fileID: 0}
+  damageText: {fileID: 0}
+  isDamege: 0
 --- !u!70 &7257129173802734468
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

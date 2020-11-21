@@ -57,6 +57,9 @@ public class Player : MonoBehaviour
     public Inventory inven;
     public GameObject ArmL;
     public JoystickValue value;
+    public AudioSource swap;
+    public AudioSource swing;
+    public AudioSource breakweapon;
 
     void Start()
     {
@@ -136,6 +139,7 @@ public class Player : MonoBehaviour
         //공격키가 눌리고 공격준비가 완료되면 공격
         if((fDown && isFireReady) || (InputAttack && isFireReady) && !isAttack)
         {
+            swing.Play();
             StartCoroutine("Icantswap"); //공격중에는 교체 불가
             anim.SetTrigger("isAttack"); //공격 애니메이션의 실행
             equipWeaponto.Use(inven.equipWeapon[0]); //장착무기의 공격루틴 활성화
@@ -190,12 +194,14 @@ public class Player : MonoBehaviour
         //만약 현재 무기의 사용횟수가 다 소비되면 파괴
         if(inven.equipWeapon[0].itemCount == 0)
         {
+            breakweapon.Play();
             inven.equipWeapon.RemoveAt(0);
         }
 
         //현재 공격중이아니고 스왑버튼이 눌리면 교체 실행
         if (InputSwap == true && !isMotion)
         {
+            swap.Play();
             Item curWeapon = inven.equipWeapon[0];
             Debug.Log(curWeapon.itemName);
             inven.equipWeapon[0] = null;

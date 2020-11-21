@@ -99,6 +99,8 @@ MonoBehaviour:
   damage: 13
   rate: 1
   meleeArea: {fileID: 7760765829935685981}
+  eft: {fileID: 708073975406954228, guid: 7e3b8f19447a36b45beb9e969dd1f7d7, type: 3}
+  eftSound: {fileID: 62407240457495411, guid: 4412cae37c4dcdb4b9fbcea48a6b10ec, type: 3}
 --- !u!61 &7760765829935685981
 BoxCollider2D:
   m_ObjectHideFlags: 0

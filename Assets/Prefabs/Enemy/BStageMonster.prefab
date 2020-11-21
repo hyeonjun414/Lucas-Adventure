@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 3674438261281557653}
   - component: {fileID: 6200179232612701227}
   - component: {fileID: 7257129173802734468}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: MeleeEnemy2GFX
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -228,6 +228,7 @@ MonoBehaviour:
   Coins: {fileID: 0}
   damageText: {fileID: 6752262327075515371, guid: 92d903407038603458e0849ee45b0054,
     type: 3}
+  isDamege: 0
 --- !u!70 &7257129173802734468
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

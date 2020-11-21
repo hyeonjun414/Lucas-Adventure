@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 6120689152202090517}
   - component: {fileID: 373694685045411396}
   - component: {fileID: 6215271096094649247}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RangeEnemy5GFX
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -210,6 +210,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obj: {fileID: 6120689150534723862}
   dropitem: {fileID: 0}
+  Coins: {fileID: 0}
+  damageText: {fileID: 0}
+  isDamege: 0
 --- !u!70 &6215271096094649247
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

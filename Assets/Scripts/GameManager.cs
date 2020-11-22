@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
     public ItemDatabase itemDB;
     SoundManager sound;
     public ShopBtn itrBtn;
-
+    public Fade_Manager fm;
     void Awake()
     {
         if (!GMExists)
@@ -86,6 +86,7 @@ public class GameManager : MonoBehaviour
             activeManu = !activeManu;
             ManuPanel.SetActive(activeManu);
         }
+        if (player.isDead) StartCoroutine(PlayerDie());
         
         
     }
@@ -180,5 +181,16 @@ public class GameManager : MonoBehaviour
         {
             itrBtn.ShopPanel = null;
         }
+    }
+    IEnumerator PlayerDie()
+    {
+        yield return new WaitForSeconds(1f);
+        
+        GMExists = false;
+        player.PlayerDie();
+        SceneLoad.LoadSceneHandle("home", 0);
+        Destroy(player.gameObject);
+        Destroy(gameObject);
+        
     }
 }

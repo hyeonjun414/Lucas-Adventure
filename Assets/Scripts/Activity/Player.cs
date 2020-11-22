@@ -79,14 +79,14 @@ public class Player : MonoBehaviour
     }
     void Update()
     {
-            SelfDestroy();
-            curWeaponCheck();
+        SelfDestroy();
+        curWeaponCheck();
         UiCheck();
         GetInput();
         Attack();
         levelup();
         Swap();
-
+        
         // 입력 값에 따라 좌우 이미지 좌우 반전
         if (!isAttack)
         {
@@ -357,6 +357,14 @@ public class Player : MonoBehaviour
             playerExists = false;
             Destroy(gameObject);
         }
+    }
+    public void PlayerDie()
+    {
+        if (isDead)
+        {
+            playerExists = false;
+        }
+
     }
 }
 

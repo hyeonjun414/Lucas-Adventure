@@ -10986,6 +10986,18 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &491309435 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 620370139691949905, guid: aa799645a7b593148a32fa0842d135b5,
+    type: 3}
+  m_PrefabInstance: {fileID: 1492065439}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6f4d14f7941d9347acdced8e4fff524, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &545005160 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1779675097754590113, guid: c476aa572368bb241a12f111f6deb21e,
@@ -11303,7 +11315,7 @@ PrefabInstance:
     - target: {fileID: 779245528229323543, guid: 0067dd47262f52d4da99d7e4c408529c,
         type: 3}
       propertyPath: health
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 779245528229323543, guid: 0067dd47262f52d4da99d7e4c408529c,
         type: 3}
@@ -18987,6 +18999,11 @@ PrefabInstance:
       propertyPath: itrBtn
       value: 
       objectReference: {fileID: 1224852244}
+    - target: {fileID: 4522539577809990085, guid: aa799645a7b593148a32fa0842d135b5,
+        type: 3}
+      propertyPath: fm
+      value: 
+      objectReference: {fileID: 491309435}
     - target: {fileID: 4522539577809990086, guid: aa799645a7b593148a32fa0842d135b5,
         type: 3}
       propertyPath: m_LocalPosition.x

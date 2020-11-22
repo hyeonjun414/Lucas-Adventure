@@ -81,7 +81,7 @@ public class Enemy : MonoBehaviour
     void Tracing()
     {
         //만약 추적중이고 근거리 적이라면 실행
-        if (isTracing && type == Type.Melee)
+        if (isTracing && (type == Type.Melee || type == Type.BMonster))
         {
             // 타겟의 위치에서 자신의 위치를 빼서 방향을 계산함
             Vector3 movevelo = new Vector3(target.position.x - transform.position.x, 

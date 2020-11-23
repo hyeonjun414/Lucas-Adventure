@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
     public Text statusSpeedTxt;
 
     public Image[] quickSlot;
+    public Text[] weaponCntTxt;
     public Image[] invenQuickSlot;
     public Image[] uniqueSlot;
 
@@ -103,6 +104,8 @@ public class GameManager : MonoBehaviour
                 quickSlot[i].preserveAspect = true;
                 invenQuickSlot[i].sprite = img;
                 invenQuickSlot[i].preserveAspect = true;
+                weaponCntTxt[i].text = inven.equipWeapon[i].itemCount < 100 ?
+                                        inven.equipWeapon[i].itemCount.ToString() : "-"; 
             }
         }
 

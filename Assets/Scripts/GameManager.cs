@@ -12,8 +12,13 @@ public class GameManager : MonoBehaviour
     public Player player;
     public Boss boss;
 
-    public bool[] clear; //클리어
+    // public bool[] clear; //클리어
+    //==================//
+    public bool Cnt;//보스가 죽으면 카운트
+    [SerializeField] private Block block1;
+    public static GameManager _instance;
     
+    //==============//
     public string stage;
 
     public GameObject Event;
@@ -66,6 +71,7 @@ public class GameManager : MonoBehaviour
         inven = Inventory.instance;
         inventoryPanel.SetActive(activeInventory);
         sound = GetComponentInChildren<SoundManager>();
+        Cnt = true;
 
     }
     void Update()
@@ -97,7 +103,26 @@ public class GameManager : MonoBehaviour
             activeManu = !activeManu;
             ManuPanel.SetActive(activeManu);
         }
+
+        //=============================
+        if (Cnt ==true)
+        {
+            block1.BlockArea();//블록활성화
+        }
+       
+        //=============================
+
     }
+
+
+    //============================
+
+    public void Bcount()
+    {
+        Cnt = true;
+    }
+    //============================
+
     void quickSlotUpdate()
     {
         // 인벤토리 무기에 저장된 무기갯수만큼만 이미지 업데이트

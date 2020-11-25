@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 577199625501125548}
   - component: {fileID: 7852003996009198354}
   - component: {fileID: 6794272304199365821}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: MeleeEnemy3GFX
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -119,6 +119,9 @@ MonoBehaviour:
   obj: {fileID: 577199625951930826}
   dropitem: {fileID: 4286782481912221681, guid: 04d46d5fae02e9f4d9064ab4ec1b04ed,
     type: 3}
+  Coins: {fileID: 0}
+  damageText: {fileID: 0}
+  isDamege: 0
 --- !u!70 &6794272304199365821
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -241,3 +244,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   items: []
+  unique: []

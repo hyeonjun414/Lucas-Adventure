@@ -9,6 +9,9 @@ public class Weapon : MonoBehaviour
     public int damage; // 무기 공격력
     public float rate; // 공격 딜레이
     public BoxCollider2D meleeArea; // 근접 무기의 공격 반경
+    public GameObject eft;
+    public GameObject eftSound;
+   // public ContactPoint2D[] contact = new ContactPoint2D[1100];
     private void Awake()
     {
         switch (type)
@@ -45,4 +48,26 @@ public class Weapon : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         item.itemCount--;
     }
+    public void makeEft(Vector3 vec)
+    {
+        Debug.Log("hitchack - weapon");
+        GameObject go1 = Instantiate(eftSound, vec, Quaternion.identity);
+        GameObject go2 = Instantiate(eft, vec,Quaternion.identity);
+        Destroy(go1, 0.5f);
+        Destroy(go2, 0.5f);
+    }
+    /*private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag =="EnemyGFX")
+        {
+            EnemyHit enemy = other.GetComponent<EnemyHit>();
+            if (!enemy.isDamege)
+            {
+                ;
+
+            }
+        }
+            
+    }*/
+
 }

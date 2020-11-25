@@ -91,6 +91,7 @@ public class Unique : MonoBehaviour
     void DamageUp(int value)
     {
         player.damage += value;
+        player.equipWeaponto.damage += value;
     }
     void ArmorUp(int value)
     {

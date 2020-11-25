@@ -10,7 +10,7 @@ public class Inventory : MonoBehaviour
     public int maxWeapon = 4;
     public int maxUnique = 8;
 
-    public int Coin;
+    public int curCoin;
     public int maxCoin = 9999;
     void Awake()
     {
@@ -22,7 +22,7 @@ public class Inventory : MonoBehaviour
         Item baseItem = new Item(ItemType.Weapon, "regular_sword", 999999, 
                                  Resources.Load<Sprite>("ItemImage/" + "regular_sword"));
         AddItem(baseItem);
-        Coin = 500;
+        curCoin = 500;
     }
     public bool AddItem(Item _item)
     {
@@ -50,13 +50,12 @@ public class Inventory : MonoBehaviour
                 fieldItems.DestroyItem();
             }
         }
-        if (other.CompareTag("FieldItem"))
+        else if (other.CompareTag("Coin"))
         {
-            RewardUnic fieldItems = other.GetComponent<RewardUnic>();
-            if (AddItem(fieldItems.GetItem()))
-            {
-                fieldItems.DestroyItem();
-            }
+            Coin coins = other.GetComponent<Coin>();
+            curCoin += coins.value;
+            coins.picked();
+            
         }
     }
     

@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
     public Text statusSpeedTxt;
 
     public Image[] quickSlot;
+    public Text[] weaponCntTxt;
     public Image[] invenQuickSlot;
     public Image[] uniqueSlot;
 
@@ -52,7 +53,7 @@ public class GameManager : MonoBehaviour
     public ItemDatabase itemDB;
     SoundManager sound;
     public ShopBtn itrBtn;
-
+    public Fade_Manager fm;
     void Awake()
     {
         if (!GMExists)
@@ -80,16 +81,7 @@ public class GameManager : MonoBehaviour
         {
             stage = SceneManager.GetActiveScene().name;
             sound.FindSound();
-          /*  if (FindObjectOfType<Boss>())
-            {
-                boss = FindObjectOfType<Boss>();
-                BossPanel.SetActive(true);
-            }
-            else
-            {
-                boss = null;
-                BossPanel.SetActive(true);
-            }*/
+            
         }
         IsShop();
         SelfDestroy();
@@ -112,6 +104,9 @@ public class GameManager : MonoBehaviour
        
         //=============================
 
+        if (player.isDead) StartCoroutine(PlayerDie());
+        
+        
     }
 
 
@@ -136,6 +131,8 @@ public class GameManager : MonoBehaviour
                 quickSlot[i].preserveAspect = true;
                 invenQuickSlot[i].sprite = img;
                 invenQuickSlot[i].preserveAspect = true;
+                weaponCntTxt[i].text = inven.equipWeapon[i].itemCount < 100 ?
+                                        inven.equipWeapon[i].itemCount.ToString() : "-"; 
             }
         }
 
@@ -157,7 +154,7 @@ public class GameManager : MonoBehaviour
 
         playerLevelTxt.text = "Lv." + player.level;
         playerHealthTxt.text = player.health + " / " + player.maxhealth;
-        playerCoinTxt.text = string.Format("{0:n0}", inven.Coin);
+        playerCoinTxt.text = string.Format("{0:n0}", inven.curCoin);
         playerExpTxt.text = player.exp + " / " + player.maxExp;
 
         statusHealthTxt.text = player.health + " / " + player.maxhealth;
@@ -215,8 +212,15 @@ public class GameManager : MonoBehaviour
             itrBtn.ShopPanel = null;
         }
     }
-
-
-
-
+    IEnumerator PlayerDie()
+    {
+        yield return new WaitForSeconds(1f);
+        
+        GMExists = false;
+        player.PlayerDie();
+        SceneLoad.LoadSceneHandle("home", 0);
+        Destroy(player.gameObject);
+        Destroy(gameObject);
+        
+    }
 }

@@ -57,6 +57,9 @@ public class Player : MonoBehaviour
     public Inventory inven;
     public GameObject ArmL;
     public JoystickValue value;
+    public AudioSource swap;
+    public AudioSource swing;
+    public AudioSource breakweapon;
 
     void Start()
     {
@@ -76,14 +79,14 @@ public class Player : MonoBehaviour
     }
     void Update()
     {
-            SelfDestroy();
-            curWeaponCheck();
+        SelfDestroy();
+        curWeaponCheck();
         UiCheck();
         GetInput();
         Attack();
         levelup();
         Swap();
-
+        
         // 입력 값에 따라 좌우 이미지 좌우 반전
         if (!isAttack)
         {
@@ -136,6 +139,7 @@ public class Player : MonoBehaviour
         //공격키가 눌리고 공격준비가 완료되면 공격
         if((fDown && isFireReady) || (InputAttack && isFireReady) && !isAttack)
         {
+            swing.Play();
             StartCoroutine("Icantswap"); //공격중에는 교체 불가
             anim.SetTrigger("isAttack"); //공격 애니메이션의 실행
             equipWeaponto.Use(inven.equipWeapon[0]); //장착무기의 공격루틴 활성화
@@ -190,12 +194,14 @@ public class Player : MonoBehaviour
         //만약 현재 무기의 사용횟수가 다 소비되면 파괴
         if(inven.equipWeapon[0].itemCount == 0)
         {
+            breakweapon.Play();
             inven.equipWeapon.RemoveAt(0);
         }
 
         //현재 공격중이아니고 스왑버튼이 눌리면 교체 실행
         if (InputSwap == true && !isMotion)
         {
+            swap.Play();
             Item curWeapon = inven.equipWeapon[0];
             Debug.Log(curWeapon.itemName);
             inven.equipWeapon[0] = null;
@@ -268,7 +274,7 @@ public class Player : MonoBehaviour
             GameObject weapon = (GameObject)Instantiate(Resources.Load("Weapon/" + equipWeapon.itemName),
                 new Vector3(ArmL.transform.position.x, ArmL.transform.position.y,0), ArmL.transform.rotation);
             weapon.transform.parent = ArmL.transform;
-            weapon.transform.localScale = new Vector3(1,1,1);
+            weapon.transform.localScale = new Vector3(1.5f, 1.5f, 1);
             Weapon weaponto = weapon.GetComponent<Weapon>();
             equipWeaponto = weaponto;
             equipWeaponto.damage += damage;
@@ -283,7 +289,7 @@ public class Player : MonoBehaviour
             GameObject weapon = (GameObject)Instantiate(Resources.Load("Weapon/" + equipWeapon.itemName),
                 new Vector3(ArmL.transform.position.x, ArmL.transform.position.y, 0), ArmL.transform.rotation);
             weapon.transform.parent = ArmL.transform;
-            weapon.transform.localScale = new Vector3(1, 1, 1);
+            weapon.transform.localScale = new Vector3(1.5f, 1.5f, 1);
             Weapon weaponto = weapon.GetComponent<Weapon>();
             equipWeaponto = weaponto;
             equipWeaponto.damage += damage;
@@ -351,6 +357,14 @@ public class Player : MonoBehaviour
             playerExists = false;
             Destroy(gameObject);
         }
+    }
+    public void PlayerDie()
+    {
+        if (isDead)
+        {
+            playerExists = false;
+        }
+
     }
 }
 

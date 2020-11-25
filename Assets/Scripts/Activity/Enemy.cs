@@ -4,10 +4,10 @@ using UnityEngine;
 using UnityEngine.AI;
 public class Enemy : MonoBehaviour
 {
-    public enum Type { Melee, Range, Boss }; // 적 타입
+    public enum Type { Melee, Range,  BMonster}; // 적 타입
     public Type type; // 적 타입에 접근할 변수
 
-    public float speed = 5f; // 적 추적속도
+    public float speed; // 적 추적속도
     public int maxHealth; // 최대 체력
     public int curHealth; // 현재 체력
     public int damage; // 적 공격력
@@ -81,7 +81,7 @@ public class Enemy : MonoBehaviour
     void Tracing()
     {
         //만약 추적중이고 근거리 적이라면 실행
-        if (isTracing && type == Type.Melee)
+        if (isTracing && (type == Type.Melee || type == Type.BMonster))
         {
             // 타겟의 위치에서 자신의 위치를 빼서 방향을 계산함
             Vector3 movevelo = new Vector3(target.position.x - transform.position.x, 

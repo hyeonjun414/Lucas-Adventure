@@ -19,6 +19,7 @@ TagManager:
   - Store
   - Effect
   - Bgm
+  - Coin
   layers:
   - Default
   - TransparentFX

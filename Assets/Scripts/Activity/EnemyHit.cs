@@ -6,12 +6,13 @@ public class EnemyHit : MonoBehaviour
 {
     public GameObject obj;
     public GameObject dropitem;
+    public GameObject Coins;
     public GameObject damageText;
     private Enemy enemy;
     private Material mat;
     private Rigidbody2D rigid;
     private Animator anim;
-    private bool isDamege; // 중첩피해를 막기위한 무적시간
+    public bool isDamege; // 중첩피해를 막기위한 무적시간
     void Start()
     {
         // 컴포넌트의 연결
@@ -31,6 +32,7 @@ public class EnemyHit : MonoBehaviour
             // 무기의 공격력만큼 적의 체력을 감소시킴.
             int damage = Random.Range(weapon.damage - weapon.damage / 10, weapon.damage + weapon.damage / 10);
             enemy.curHealth -= damage;
+            weapon.makeEft(other.bounds.ClosestPoint(transform.position));
             // 공격을 당할때 밀려나는 방향을 계산.
             Debug.Log(other.transform.parent.parent.name);
             Vector2 reactVec = (transform.position - other.transform.parent.parent.position).normalized;
@@ -64,8 +66,14 @@ public class EnemyHit : MonoBehaviour
             mat.color = Color.gray;
             gameObject.layer = 9;
             enemy.isDead = true;
-            Instantiate(dropitem, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
-            Gate_set._instance.countdown();
+            int coinNum = Random.Range(5, 11);
+            if(enemy.type != Enemy.Type.BMonster){
+                for(int i=0; i<coinNum; i++){
+                    Instantiate(Coins, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
+                }
+                Instantiate(dropitem, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
+                Gate_set._instance.countdown();
+            }
             Destroy(enemy.gameObject, 2);
         }
         yield return new WaitForSeconds(0.3f);

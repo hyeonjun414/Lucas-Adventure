@@ -55,11 +55,15 @@ public class Gate_set : MonoBehaviour
         EnemyCnt++; //생성될때마다 몬스터 수 카운트
         if (EnemyCnt_range != 0)
         { 
-            Instantiate(enemy_range, spawnpoints[randNum]);
+            Instantiate(enemy_range, new Vector2(spawnpoints[randNum].position.x,
+                                                 spawnpoints[randNum].position.y),
+                                                 Quaternion.identity);
             EnemyCnt_range--;
         }
         else
-            Instantiate(enemy, spawnpoints[randNum]);   //몬스터소환, 랜덤위치 생성
+            Instantiate(enemy, new Vector2(spawnpoints[randNum].position.x,
+                                                 spawnpoints[randNum].position.y),
+                                                 Quaternion.identity);   //몬스터소환, 랜덤위치 생성
         isSpawn[randNum] = true; //해당위치가 true이면 그 위치에 자동생성 x
     }
     public void countdown()

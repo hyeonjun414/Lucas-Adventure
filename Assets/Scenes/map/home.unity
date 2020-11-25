@@ -11245,7 +11245,9 @@ MonoBehaviour:
   transferMapName: 3-1
   player: {fileID: 0}
   startingPoint: {fileID: 0}
+  GM: {fileID: 0}
   fade: {fileID: 0}
+  areaNum: 3
 --- !u!114 &724899721 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7668279841572555658, guid: 5ad65bfb59de9144e8f28e686bf7cc9f,
@@ -18955,7 +18957,9 @@ MonoBehaviour:
   transferMapName: 2-1
   player: {fileID: 0}
   startingPoint: {fileID: 0}
+  GM: {fileID: 0}
   fade: {fileID: 0}
+  areaNum: 2
 --- !u!114 &1241526602 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1779675099532194947, guid: c476aa572368bb241a12f111f6deb21e,
@@ -19065,7 +19069,9 @@ MonoBehaviour:
   transferMapName: 4-1
   player: {fileID: 0}
   startingPoint: {fileID: 0}
+  GM: {fileID: 0}
   fade: {fileID: 0}
+  areaNum: 4
 --- !u!114 &1278803554 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1779675099562097579, guid: c476aa572368bb241a12f111f6deb21e,
@@ -19396,7 +19402,9 @@ MonoBehaviour:
   transferMapName: 1-1
   player: {fileID: 0}
   startingPoint: {fileID: 0}
+  GM: {fileID: 0}
   fade: {fileID: 0}
+  areaNum: 1
 --- !u!114 &1677590540 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1779675098853623237, guid: c476aa572368bb241a12f111f6deb21e,

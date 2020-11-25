@@ -8,13 +8,24 @@ public class MapTransform : MonoBehaviour
     public string transferMapName; //이동맵
     public Player player;
     public GameObject startingPoint;
+    public GameManager GM;
     public Fade_Manager fade;
+    public int areaNum;
     //private OrderManager theOrder;
     // Update is called once per frame
     void Start()
     {
+        GM = FindObjectOfType<GameManager>();
         player = FindObjectOfType<Player>();
         fade = FindObjectOfType<Fade_Manager>();
+    }
+    private void Update()
+    {
+        if(SceneManager.GetActiveScene().name == "home")
+        {
+            if (areaNum <= GM.clearArea)
+                gameObject.SetActive(false);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)

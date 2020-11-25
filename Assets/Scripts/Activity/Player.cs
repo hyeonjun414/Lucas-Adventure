@@ -294,6 +294,7 @@ public class Player : MonoBehaviour
             equipWeaponto = weaponto;
             equipWeaponto.damage += damage;
         }
+        //현재 들고있는 무기에 따라 애니메이션 결정
         switch (equipWeaponto.type)
         {
             case Weapon.Type.ShotSword:

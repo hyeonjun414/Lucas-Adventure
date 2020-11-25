@@ -11,6 +11,8 @@ public class BossHit : MonoBehaviour
     private Rigidbody2D rigid;
     private Animator anim;
     private bool isDamege; // 중첩피해를 막기위한 무적시간
+    //===========//
+    
 
     //=======================================//
     [SerializeField] private GameManager GM;
@@ -69,7 +71,8 @@ public class BossHit : MonoBehaviour
             boss.isDead = true;
             Instantiate(dropitem, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
             Gate_set._instance.countdown();
-            GameManager._instance.Bcount();//gm count
+            //GameManager._instance.Bcount();//gm count
+            
             anim.enabled = false;
             //Destroy(boss.gameObject, 2);
         }

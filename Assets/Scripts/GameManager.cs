@@ -215,4 +215,8 @@ public class GameManager : MonoBehaviour
             itrBtn.ShopPanel = null;
         }
     }
+
+
+
+
 }

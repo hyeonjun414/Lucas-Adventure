@@ -19386,6 +19386,11 @@ PrefabInstance:
       propertyPath: block
       value: 
       objectReference: {fileID: 69843653}
+    - target: {fileID: 4522539577809990085, guid: aa799645a7b593148a32fa0842d135b5,
+        type: 3}
+      propertyPath: block1
+      value: 
+      objectReference: {fileID: 69843658}
     - target: {fileID: 4522539577809990086, guid: aa799645a7b593148a32fa0842d135b5,
         type: 3}
       propertyPath: m_LocalPosition.x

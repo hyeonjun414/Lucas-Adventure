@@ -71,7 +71,7 @@ public class GameManager : MonoBehaviour
         inven = Inventory.instance;
         inventoryPanel.SetActive(activeInventory);
         sound = GetComponentInChildren<SoundManager>();
-        Cnt = true;
+        Cnt = false;
 
     }
     void Update()

@@ -50,6 +50,14 @@ public class Inventory : MonoBehaviour
                 fieldItems.DestroyItem();
             }
         }
+        if (other.CompareTag("FieldItem"))
+        {
+            RewardUnic fieldItems = other.GetComponent<RewardUnic>();
+            if (AddItem(fieldItems.GetItem()))
+            {
+                fieldItems.DestroyItem();
+            }
+        }
     }
     
 

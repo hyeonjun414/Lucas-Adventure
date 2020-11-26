@@ -1620,9 +1620,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ecbd4c3952de9749a759d76dd7a2bb0, type: 3}
---- !u!4 &1034655811 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1227293759957336564, guid: 2ecbd4c3952de9749a759d76dd7a2bb0,
+--- !u!1 &1034655811 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2060568755818152554, guid: 2ecbd4c3952de9749a759d76dd7a2bb0,
     type: 3}
   m_PrefabInstance: {fileID: 1034655810}
   m_PrefabAsset: {fileID: 0}
@@ -5688,6 +5688,11 @@ PrefabInstance:
     - target: {fileID: 4418181546030418131, guid: 05e30127c1b1f2c499a69f63b1429836,
         type: 3}
       propertyPath: spawnpoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4418181546030418131, guid: 05e30127c1b1f2c499a69f63b1429836,
+        type: 3}
+      propertyPath: enemy
       value: 
       objectReference: {fileID: 1034655811}
     - target: {fileID: 4418181546030418132, guid: 05e30127c1b1f2c499a69f63b1429836,

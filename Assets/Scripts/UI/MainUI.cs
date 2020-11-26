@@ -19,6 +19,7 @@ public enum BTNShop
 public enum BTNMain
 {
     New,
+    Save,//저장
     Continue,
     Option,
     OptionExit,

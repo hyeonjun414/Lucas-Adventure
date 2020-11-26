@@ -29,7 +29,8 @@ public class MainBtn : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 break;
             
              case BTNMain.Save:
-                SceneLoad.LoadSceneHandle("1-1", 0);
+               // SceneLoad.LoadSceneHandle("1-1", 0);
+               
                 Debug.Log("저장하기");
                 break;
            

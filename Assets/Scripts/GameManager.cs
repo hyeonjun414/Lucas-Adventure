@@ -67,7 +67,9 @@ public class GameManager : MonoBehaviour
         }
     }
     void Start()
+
     {
+        Load();//불러오기
         player = FindObjectOfType<Player>();
         inven = Inventory.instance;
         inventoryPanel.SetActive(activeInventory);
@@ -222,5 +224,21 @@ public class GameManager : MonoBehaviour
         Destroy(player.gameObject);
         Destroy(gameObject);
         
+    }
+
+    //==============================//
+    public void Save()
+    {
+        PlayerPrefs.SetFloat("PlayerX", player.transform.position.x); //Player X축 위치
+        PlayerPrefs.SetFloat("PlayerY", player.transform.position.y); //Player Y축 위치
+        PlayerPrefs.Save();
+        
+    }
+
+    public void Load()
+    {
+        float x = PlayerPrefs.GetFloat("PlayerX");
+        float y = PlayerPrefs.GetFloat("PlayerY");
+        player.transform.position = new Vector3(x, y, 0);
     }
 }

@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
 
     //스테이지 관리
     public string stage;
-    public int clearArea = 0;
+    public int clearArea;
 
     // UI 연동
     public GameObject Event;

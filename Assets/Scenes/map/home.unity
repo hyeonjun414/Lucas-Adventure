@@ -19145,6 +19145,11 @@ PrefabInstance:
       propertyPath: weaponCntTxt.Array.data[3]
       value: 
       objectReference: {fileID: 1074821425}
+    - target: {fileID: 4522539577809990085, guid: aa799645a7b593148a32fa0842d135b5,
+        type: 3}
+      propertyPath: clearArea
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4522539577809990086, guid: aa799645a7b593148a32fa0842d135b5,
         type: 3}
       propertyPath: m_LocalPosition.x

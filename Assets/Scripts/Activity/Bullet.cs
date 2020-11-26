@@ -8,7 +8,7 @@ public class Bullet : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Enemy" || other.tag == "Wall" || 
+        if (other.tag == "Wall" || 
             (gameObject.name == "EnemyBullet(Clone)" && other.tag == "Player"))
         {
             Destroy(gameObject, 0.2f);

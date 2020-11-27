@@ -19,7 +19,7 @@ public enum BTNShop
 public enum BTNMain
 {
     New,
-    Save,//저장
+    
     Continue,
     Option,
     OptionExit,
@@ -31,6 +31,7 @@ public enum BTNInGame
     Manu,
     ManuExit,
     Status,
+    Save,//저장
     Inventory,
     Option,
     OptionExit,

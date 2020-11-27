@@ -32,6 +32,7 @@ public enum BTNInGame
     ManuExit,
     Status,
     Save,//저장
+    Load,
     Inventory,
     Option,
     OptionExit,

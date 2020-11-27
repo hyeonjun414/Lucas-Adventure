@@ -69,7 +69,7 @@ public class GameManager : MonoBehaviour
     void Start()
 
     {
-        Load();//불러오기
+       // Load();//불러오기
         player = FindObjectOfType<Player>();
         inven = Inventory.instance;
         inventoryPanel.SetActive(activeInventory);

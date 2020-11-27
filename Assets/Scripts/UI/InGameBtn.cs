@@ -45,6 +45,8 @@ public class InGameBtn : MonoBehaviour
                 activeStatus = !activeStatus;
                 ManuPanel.SetActive(false);
                 break;
+            case BTNInGame.Load:
+                break;
            //================//
             case BTNInGame.Option:
                 OptionPanel.SetActive(true);

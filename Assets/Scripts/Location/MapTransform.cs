@@ -23,7 +23,7 @@ public class MapTransform : MonoBehaviour
     {
         if(SceneManager.GetActiveScene().name == "home")
         {
-            if (areaNum != GM.clearArea)
+            if (areaNum != GM.curArea)
                 gameObject.SetActive(false);
         }
     }

@@ -340,7 +340,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69d1dd2d49329ec47842603089efd5f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dropitem: {fileID: 1312152282217810490, guid: 6dbf10f316251024f887d43bb938e5db,
+  dropitem: {fileID: 4286782481912221681, guid: 04d46d5fae02e9f4d9064ab4ec1b04ed,
     type: 3}
   damageText: {fileID: 6752262327075515371, guid: 770a6af9a3431eb47b6232240b778534,
     type: 3}

@@ -8,13 +8,6 @@ public class FieldItem : MonoBehaviour
     public SpriteRenderer image;
     ItemDatabase itemDB;
 
-    private void Start()
-    {
-        itemDB = FindObjectOfType<ItemDatabase>();
-        Item getItem = itemDB.items[Random.Range(0, itemDB.items.Count)];
-        //Item getItem = itemDB.unique[Random.Range(0, itemDB.unique.Count)];
-        SetItem(getItem);
-    }
 
     public void SetItem(Item _item)
     {
@@ -33,6 +26,18 @@ public class FieldItem : MonoBehaviour
     public void DestroyItem()
     {
         Destroy(gameObject);
+    }
+    public void BossDrop()
+    {
+        itemDB = FindObjectOfType<ItemDatabase>();
+        Item getItem = itemDB.unique[Random.Range(0, itemDB.unique.Count)];
+        SetItem(getItem);
+    }
+    public void EnemyDrop()
+    {
+        itemDB = FindObjectOfType<ItemDatabase>();
+        Item getItem = itemDB.items[Random.Range(0, itemDB.items.Count)];
+        SetItem(getItem);
     }
 }
 

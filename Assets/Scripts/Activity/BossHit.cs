@@ -64,11 +64,13 @@ public class BossHit : MonoBehaviour
             mat.color = Color.gray;
             gameObject.layer = 9;
             boss.isDead = true;
-            Instantiate(dropitem, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
+            GameObject go = Instantiate(dropitem, new Vector2(0,0), Quaternion.identity);
+            FieldItem fi = go.GetComponent<FieldItem>();
+            fi.BossDrop();
+            
             Gate_set._instance.countdown();
-            //GameManager._instance.BossDie();
             GameManager gm = FindObjectOfType<GameManager>();
-            gm.clearArea++;
+            gm.curArea++;
             anim.enabled = false;
             //Destroy(boss.gameObject, 2);
         }

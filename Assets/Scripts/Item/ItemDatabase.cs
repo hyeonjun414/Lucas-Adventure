@@ -25,30 +25,30 @@ public class ItemDatabase : MonoBehaviour
         //WeaponAdd(ItemType.Weapon, "machete", 20);
 
         //Sword
-        WeaponAdd(ItemType.Weapon, "duel_sword", 10);
-        WeaponAdd(ItemType.Weapon, "golden_sword", 10);
-        WeaponAdd(ItemType.Weapon, "katana", 10);
-        WeaponAdd(ItemType.Weapon, "red_gem_sword", 10);
+        //WeaponAdd(ItemType.Weapon, "duel_sword", 10);
+        //WeaponAdd(ItemType.Weapon, "golden_sword", 10);
+        //WeaponAdd(ItemType.Weapon, "katana", 10);
+        //WeaponAdd(ItemType.Weapon, "red_gem_sword", 10);
         //WeaponAdd(ItemType.Weapon, "regular_sword", 10);
-        WeaponAdd(ItemType.Weapon, "rusty_sword", 10);
+        //WeaponAdd(ItemType.Weapon, "rusty_sword", 10);
 
         //Mace
-        WeaponAdd(ItemType.Weapon, "baton_with_spike", 7);
-        WeaponAdd(ItemType.Weapon, "big_hammer", 7);
-        WeaponAdd(ItemType.Weapon, "axe", 7);
-        WeaponAdd(ItemType.Weapon, "hammer", 7);
-        WeaponAdd(ItemType.Weapon, "mace", 7);
+        //WeaponAdd(ItemType.Weapon, "baton_with_spike", 7);
+        //WeaponAdd(ItemType.Weapon, "big_hammer", 7);
+        //WeaponAdd(ItemType.Weapon, "axe", 7);
+        //WeaponAdd(ItemType.Weapon, "hammer", 7);
+        WeaponAdd(ItemType.Weapon, "mace", 5);
 
         //Spear
-        WeaponAdd(ItemType.Weapon, "spear", 15);
-        WeaponAdd(ItemType.Weapon, "stone_spear", 15);
+        //WeaponAdd(ItemType.Weapon, "spear", 15);
+        WeaponAdd(ItemType.Weapon, "stone_spear", 5);
 
         //HeavyWeapon
         WeaponAdd(ItemType.Weapon, "sword", 5);
-        WeaponAdd(ItemType.Weapon, "knight_sword", 5);
-        WeaponAdd(ItemType.Weapon, "lavish_sword", 5);
-        WeaponAdd(ItemType.Weapon, "sword", 5);
-        WeaponAdd(ItemType.Weapon, "cleaver", 5);
+        //WeaponAdd(ItemType.Weapon, "knight_sword", 5);
+        //WeaponAdd(ItemType.Weapon, "lavish_sword", 5);
+        //WeaponAdd(ItemType.Weapon, "sword", 5);
+        //WeaponAdd(ItemType.Weapon, "cleaver", 5);
 
 
 

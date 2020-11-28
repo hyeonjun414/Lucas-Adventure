@@ -242,6 +242,8 @@ public class Player : MonoBehaviour
             maxExp = Mathf.Round(maxExp);
             damage += 5;
             armor += 2;
+            health += 10;
+            maxhealth += 10;
             equipWeaponto.damage += 5;
         }
     }

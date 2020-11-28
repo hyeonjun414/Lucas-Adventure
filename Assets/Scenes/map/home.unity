@@ -19433,6 +19433,17 @@ PrefabInstance:
       propertyPath: clearArea
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4522539577809990085, guid: aa799645a7b593148a32fa0842d135b5,
+        type: 3}
+      propertyPath: curArea
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4522539577809990085, guid: aa799645a7b593148a32fa0842d135b5,
+        type: 3}
+      propertyPath: ClearMsg
+      value: 
+      objectReference: {fileID: 2385092298575078137, guid: f8eeeb90968c2dd409f91fdad83d75e2,
+        type: 3}
     - target: {fileID: 4522539577809990086, guid: aa799645a7b593148a32fa0842d135b5,
         type: 3}
       propertyPath: m_LocalPosition.x

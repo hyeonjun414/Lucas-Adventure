@@ -71,7 +71,9 @@ public class EnemyHit : MonoBehaviour
                 for(int i=0; i<coinNum; i++){
                     Instantiate(Coins, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
                 }
-                Instantiate(dropitem, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
+                GameObject go = Instantiate(dropitem, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
+                FieldItem fi = go.GetComponent<FieldItem>();
+                fi.EnemyDrop();
                 Gate_set._instance.countdown();
             }
             Destroy(enemy.gameObject, 2);

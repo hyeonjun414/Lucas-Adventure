@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
 
     //스테이지 관리
     public string stage;
-    public int clearArea;
+    public int curArea;
 
     // UI 연동
     public GameObject Event;
@@ -49,6 +49,7 @@ public class GameManager : MonoBehaviour
     SoundManager sound;
     public ShopBtn itrBtn;
     public Fade_Manager fm;
+    public GameObject ClearMsg;
 
     void Awake()
     {
@@ -79,6 +80,8 @@ public class GameManager : MonoBehaviour
             stage = SceneManager.GetActiveScene().name;
             isBossStage();
             sound.FindSound();
+            if (stage == "home" && curArea > 2)
+                Instantiate(ClearMsg);
         }
 
         IsShop(); // home씬에 들어서면 상점을 버튼과 연결함
@@ -200,10 +203,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void BossDie()
-    {
-        clearArea++;
-    }
     // 플레이어 사망시 발생하는 루틴
     IEnumerator PlayerDie()
     {

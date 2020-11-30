@@ -14,9 +14,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LoadingScene.unity
     guid: 27b46befcce2cea45bc4f32779eb7c73
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/map/stage/1-1.unity
     guid: 304e62ad9d6860447955f71f24a86ccc
@@ -42,12 +39,6 @@ EditorBuildSettings:
     path: Assets/Scenes/map/stage/3-2.unity
     guid: 81630c1b7cb46a0429549551dae18341
   - enabled: 1
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 1
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 1
     path: Assets/Scenes/map/boss/3-Boss.unity
     guid: da60174b5d678f3478ddd575a9e95c49
   - enabled: 1
@@ -59,31 +50,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/map/boss/4-Boss.unity
     guid: f87c5285501e5824d994cb00332c9d7c
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   m_configObjects: {}

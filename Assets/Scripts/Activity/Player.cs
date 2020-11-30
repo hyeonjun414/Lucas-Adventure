@@ -94,7 +94,7 @@ public class Player : MonoBehaviour
         Speed = data.Speed; //스피드
         exp = data.exp;
        
-        transform.position = new Vector3(data.x, data.y);
+       // transform.position = new Vector3(data.x, data.y);
 
         /*
         SaveData save = SaveManager.Load();

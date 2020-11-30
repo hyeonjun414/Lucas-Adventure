@@ -17,8 +17,9 @@ public class SaveData {
     public float exp;   // 현재 경험치
     public int level;
 
-    public float x;
-    public float y;
+    public List<Item> uniqueitems;
+    public List<Item> equipWeapon;
+    public int curCoin;
 
     public SaveData(Player player)
     {
@@ -27,12 +28,18 @@ public class SaveData {
         level = player.level; //level
         damage = player.damage; // damage
         armor = player.armor; //아머
-        coin = player.coin; //코인
+        coin = player.inven.curCoin; //코인
         exp = player.exp; //경험치
         curMapName = player.curMapName; //맵
       
-        x = player.transform.position.x;  //x좌표
-        y = player.transform.position.y;  //y좌표
+       
+    }
+
+    public SaveData(Inventory inven)
+    {
+        uniqueitems = inven.uniqueitems;
+        curCoin = inven.curCoin;
+        equipWeapon = inven.equipWeapon;
     }
 
 

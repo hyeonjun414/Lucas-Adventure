@@ -24,6 +24,23 @@ public class Inventory : MonoBehaviour
         AddItem(baseItem);
         curCoin = 500;
     }
+
+
+    //==============================//
+    public void SaveInven()
+    {
+        SaveManager.Save_1(this);
+    }
+
+    public void LoadInven()
+    {
+        SaveData inven = SaveManager.Load_2();
+        inven.uniqueitems = uniqueitems;
+        inven.curCoin = curCoin;
+        inven.equipWeapon = equipWeapon;
+    }
+
+    //==============================//
     public bool AddItem(Item _item)
     {
         if (_item.itemType == ItemType.Weapon)

@@ -65,6 +65,7 @@ public class GameManager : MonoBehaviour
         _instance = this;
     }
     void Start()
+
     {
         // 씬에서 오브젝트를 찾아내 연결
         player = FindObjectOfType<Player>();
@@ -220,4 +221,27 @@ public class GameManager : MonoBehaviour
 
         boss = FindObjectOfType<Boss>();
     }
+
+    //==============================//
+    
+    public void Save()
+    {
+        PlayerPrefs.SetFloat("PlayerX", player.transform.position.x); //Player X축 위치
+        PlayerPrefs.SetFloat("PlayerY", player.transform.position.y); //Player Y축 위치
+        PlayerPrefs.SetInt("Health", player.health);
+        PlayerPrefs.Save();
+        
+    }
+
+    public void Load()
+    {
+        if (!PlayerPrefs.HasKey("PlayerX"))
+            return;
+        float x = PlayerPrefs.GetFloat("PlayerX");
+        float y = PlayerPrefs.GetFloat("PlayerY");
+        int hp = PlayerPrefs.GetInt("Health");
+        player.transform.position = new Vector3(x, y, 0);
+        player.health = hp;
+    }
+    
 }

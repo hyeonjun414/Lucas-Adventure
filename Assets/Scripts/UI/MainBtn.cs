@@ -27,6 +27,9 @@ public class MainBtn : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 SceneLoad.LoadSceneHandle("home", 0);
                 Debug.Log("새 게임");
                 break;
+            
+            
+           
             case BTNMain.Continue:
                 SceneLoad.LoadSceneHandle("PlayerScene", 0);
                 Debug.Log("이어하기");

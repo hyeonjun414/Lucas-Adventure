@@ -8856,6 +8856,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4418181546030418131, guid: 05e30127c1b1f2c499a69f63b1429836,
         type: 3}
+      propertyPath: spawnpoints.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4418181546030418131, guid: 05e30127c1b1f2c499a69f63b1429836,
+        type: 3}
       propertyPath: gate
       value: 
       objectReference: {fileID: 1467283545}
@@ -8863,7 +8868,7 @@ PrefabInstance:
         type: 3}
       propertyPath: spawnpoints.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 612367328820394833}
     - target: {fileID: 4418181546030418131, guid: 05e30127c1b1f2c499a69f63b1429836,
         type: 3}
       propertyPath: spawnpoints.Array.data[1]
@@ -8966,7 +8971,9 @@ MonoBehaviour:
   transferMapName: home
   player: {fileID: 0}
   startingPoint: {fileID: 0}
+  GM: {fileID: 0}
   fade: {fileID: 0}
+  areaNum: 0
 --- !u!4 &897220197
 Transform:
   m_ObjectHideFlags: 0
@@ -9585,6 +9592,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ecbd4c3952de9749a759d76dd7a2bb0, type: 3}
+--- !u!4 &612367328820394833 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2119382793903309269, guid: 2ecbd4c3952de9749a759d76dd7a2bb0,
+    type: 3}
+  m_PrefabInstance: {fileID: 612367328820394832}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7111980045336789743
 PrefabInstance:
   m_ObjectHideFlags: 0

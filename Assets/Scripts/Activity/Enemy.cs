@@ -169,8 +169,4 @@ public class Enemy : MonoBehaviour
 
         StartCoroutine("ChangeMovement");
     }
-    void BossRoutine()
-    {
-
-    }
 }

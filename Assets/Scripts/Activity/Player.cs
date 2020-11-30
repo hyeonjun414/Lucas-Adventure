@@ -63,10 +63,12 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        // 컴포넌트 기능 연결
         rigid = gameObject.GetComponent<Rigidbody2D>();
         spriteRenderer = gameObject.GetComponentInChildren<SpriteRenderer>();
         anim = GetComponentInChildren<Animator>();
 
+        // 인게임에서 한번이라도 이미 생성된 적이 있으면 파괴
         if (!playerExists)
         {
             playerExists = true;
@@ -86,7 +88,7 @@ public class Player : MonoBehaviour
         Attack();
         levelup();
         Swap();
-        
+        Move();
         // 입력 값에 따라 좌우 이미지 좌우 반전
         if (!isAttack)
         {
@@ -102,10 +104,6 @@ public class Player : MonoBehaviour
         }
         
 
-    }
-    void FixedUpdate()
-    {
-        Move();
     }
 
     //입력 키 모음
@@ -139,7 +137,7 @@ public class Player : MonoBehaviour
         //공격키가 눌리고 공격준비가 완료되면 공격
         if((fDown && isFireReady) || (InputAttack && isFireReady) && !isAttack)
         {
-            swing.Play();
+            swing.Play(); // 스윙 효과음 실행
             StartCoroutine("Icantswap"); //공격중에는 교체 불가
             anim.SetTrigger("isAttack"); //공격 애니메이션의 실행
             equipWeaponto.Use(inven.equipWeapon[0]); //장착무기의 공격루틴 활성화
@@ -244,6 +242,8 @@ public class Player : MonoBehaviour
             maxExp = Mathf.Round(maxExp);
             damage += 5;
             armor += 2;
+            health += 10;
+            maxhealth += 10;
             equipWeaponto.damage += 5;
         }
     }
@@ -280,7 +280,7 @@ public class Player : MonoBehaviour
             equipWeaponto.damage += damage;
             return;
         }
-        //장착중인 무기와 현재 장비가 다르면
+        //장착중인 무기와 현재 장비가 다르면 착용 정보를 바꿔줌
         if(equipWeapon.itemName != curWeapon.itemName)
         {
             GameObject equipgo = GameObject.Find(equipWeapon.itemName+"(Clone)");
@@ -294,6 +294,7 @@ public class Player : MonoBehaviour
             equipWeaponto = weaponto;
             equipWeaponto.damage += damage;
         }
+        //현재 들고있는 무기에 따라 애니메이션 결정
         switch (equipWeaponto.type)
         {
             case Weapon.Type.ShotSword:
@@ -335,7 +336,7 @@ public class Player : MonoBehaviour
         }
     }
 
-
+    // Player의 콜라이더에 상점이 발견되면 버튼 활성화
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Store"))
@@ -343,6 +344,7 @@ public class Player : MonoBehaviour
             InteractionBtn.SetActive(true);
         }
     }
+    // Player의 콜라이더 범위에서 상점이 나가면 버튼 비활성화
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Store"))
@@ -350,6 +352,7 @@ public class Player : MonoBehaviour
             InteractionBtn.SetActive(false);
         }
     }
+    // 시작화면으로 돌아가면 스스로 파괴시킴
     void SelfDestroy()
     {
         if (SceneManager.GetActiveScene().name == "StartScene")
@@ -358,6 +361,7 @@ public class Player : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    // 게임매니져에서 조작하는 함수로 존재하지 않는다고 설정함
     public void PlayerDie()
     {
         if (isDead)

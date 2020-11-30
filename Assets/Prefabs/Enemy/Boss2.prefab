@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7196504270127823484}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.37, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7196504271019128856}
@@ -344,4 +344,3 @@ MonoBehaviour:
     type: 3}
   damageText: {fileID: 6752262327075515371, guid: 770a6af9a3431eb47b6232240b778534,
     type: 3}
-  GM: {fileID: 0}

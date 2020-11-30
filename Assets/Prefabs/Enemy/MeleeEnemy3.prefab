@@ -119,8 +119,9 @@ MonoBehaviour:
   obj: {fileID: 577199625951930826}
   dropitem: {fileID: 4286782481912221681, guid: 04d46d5fae02e9f4d9064ab4ec1b04ed,
     type: 3}
-  Coins: {fileID: 0}
-  damageText: {fileID: 0}
+  Coins: {fileID: 8220115403989457548, guid: a17125128b522e9479d396404f3d5f58, type: 3}
+  damageText: {fileID: 6752262327075515371, guid: 92d903407038603458e0849ee45b0054,
+    type: 3}
   isDamege: 0
 --- !u!70 &6794272304199365821
 CapsuleCollider2D:
@@ -184,8 +185,8 @@ Rigidbody2D:
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
+  m_UseAutoMass: 1
+  m_Mass: 0.29634953
   m_LinearDrag: 2
   m_AngularDrag: 0.05
   m_GravityScale: 0

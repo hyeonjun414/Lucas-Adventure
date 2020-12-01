@@ -32,7 +32,10 @@ public class MapTransform : MonoBehaviour
     {
         if (other.name == "Player")
         {
-            StartCoroutine(TransferCoroutine());
+            MySceneManager.Instance.ChangeScene(transferMapName);
+            player.curMapName = transferMapName;
+
+            //StartCoroutine(TransferCoroutine());
         }
     }
 

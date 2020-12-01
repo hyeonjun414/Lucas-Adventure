@@ -442,12 +442,12 @@ PrefabInstance:
     - target: {fileID: 6660661999230386080, guid: d1b8ac19df7737a44b16fff2c312da8a,
         type: 3}
       propertyPath: size.x
-      value: 40
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 6660661999230386080, guid: d1b8ac19df7737a44b16fff2c312da8a,
         type: 3}
       propertyPath: size.y
-      value: 25
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 6660661999230386084, guid: d1b8ac19df7737a44b16fff2c312da8a,
         type: 3}

@@ -129,6 +129,7 @@ public class GameManager : MonoBehaviour
             {
                 quickSlot[i].color = new Color(1, 1, 1, 0);
                 invenQuickSlot[i].color = new Color(1, 1, 1, 0);
+                weaponCntTxt[i].text = "-"; // 빈 무기칸의 사용횟수표기도 초기화
             }
         }
         // 인벤토리 고유아이템 슬롯

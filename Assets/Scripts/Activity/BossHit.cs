@@ -31,6 +31,7 @@ public class BossHit : MonoBehaviour
             // 무기의 공격력만큼 적의 체력을 감소시킴.
             int damage = Random.Range(weapon.damage - weapon.damage / 10, weapon.damage + weapon.damage / 10);
             boss.curHealth -= damage;
+            weapon.makeEft(other.bounds.ClosestPoint(transform.position));
             // 공격을 당할때 밀려나는 방향을 계산.
             Debug.Log(other.transform.parent.parent.name);
             Vector2 reactVec = (transform.position - other.transform.parent.parent.position).normalized;

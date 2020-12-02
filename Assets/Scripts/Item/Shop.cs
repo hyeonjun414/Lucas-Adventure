@@ -125,13 +125,13 @@ public class Shop : MonoBehaviour
     {
         for(int i = 0; i<uniqueSlot.Length; i++)
         {
-            Sprite img = unique[i].itemImage;
+            Sprite img = Resources.Load<Sprite>("ItemImage/" + unique[i].itemName);
             uniqueSlot[i].sprite = img;
             uniqueSlot[i].preserveAspect = true;
         }
         for (int i = 0; i < potionSlot.Length; i++)
         {
-            Sprite img = potion[i].itemImage;
+            Sprite img = Resources.Load<Sprite>("ItemImage/" + potion[i].itemName);
             potionSlot[i].sprite = img;
             potionSlot[i].preserveAspect = true;
         }
@@ -139,7 +139,7 @@ public class Shop : MonoBehaviour
     public void UniqueInfo(int UniqueSlotNum)
     {
         pickUnique = unique[UniqueSlotNum];
-        pickUniqueImg.sprite = pickUnique.itemImage;
+        pickUniqueImg.sprite = Resources.Load<Sprite>("ItemImage/" + unique[UniqueSlotNum].itemName);
         pickUniqueImg.preserveAspect = true;
         pickUniqueName.text = pickUnique.itemName;
         pickUniqueInfo.text = pickUnique.itemInfo;
@@ -148,22 +148,19 @@ public class Shop : MonoBehaviour
     public void PotionInfo(int PotionSlotNum)
     {
         pickPotion = potion[PotionSlotNum];
-        pickPotionImg.sprite = pickPotion.itemImage;
+        pickPotionImg.sprite = Resources.Load<Sprite>("ItemImage/" + potion[PotionSlotNum].itemName);
         pickPotionImg.preserveAspect = true;
         pickPotionName.text = pickPotion.itemName;
         pickPotionInfo.text = pickPotion.itemInfo;
         pickPotionValue.text = "가격 : " + pickPotion.itemValue.ToString();
     }
-   
-
     void PotionAdd(ItemType itype, string iName, int iCount, int iValue, string info)
     {
-        potion.Add(new Item(itype, iName, iCount, iValue,Resources.Load<Sprite>("ItemImage/" + iName), info));
+        potion.Add(new Item(itype, iName, iCount, iValue, info));
     }
 
     void UniqueAdd(ItemType itype, string iName, int iCount, int iValue, string info)
     {
-        unique.Add(new Item(itype, iName, iCount, iValue, Resources.Load<Sprite>("ItemImage/" + iName), info));
+        unique.Add(new Item(itype, iName, iCount, iValue, info));
     }
-
 }

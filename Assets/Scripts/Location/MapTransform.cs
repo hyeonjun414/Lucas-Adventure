@@ -9,43 +9,33 @@ public class MapTransform : MonoBehaviour
     public Player player;
     public GameObject startingPoint;
     public GameManager GM;
-    public Fade_Manager fade;
     public int areaNum;
-    //private OrderManager theOrder;
-    // Update is called once per frame
+    BoxCollider2D coll;
     void Start()
     {
         GM = FindObjectOfType<GameManager>();
         player = FindObjectOfType<Player>();
-        fade = FindObjectOfType<Fade_Manager>();
+        coll = GetComponent<BoxCollider2D>();
     }
-    private void Update()
+    void Update()
     {
         if(SceneManager.GetActiveScene().name == "home")
         {
             if (areaNum != GM.curArea)
-                gameObject.SetActive(false);
+                coll.enabled = false;
+            else
+                coll.enabled = true;
+
         }
     }
-
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.name == "Player")
         {
             MySceneManager.Instance.ChangeScene(transferMapName);
             player.curMapName = transferMapName;
-
-            //StartCoroutine(TransferCoroutine());
         }
     }
 
-    IEnumerator TransferCoroutine()
-    {
-        fade.FadeOut(0.1f);
-        yield return new WaitForSeconds(0.5f);
-        player.curMapName = transferMapName;  
-        SceneManager.LoadScene(transferMapName);
-        fade.FadeIn(0.1f);
-    }
 
 }

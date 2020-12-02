@@ -19,10 +19,10 @@ public class RewardUnic : MonoBehaviour
     public void SetItem(Item _item)
     {
         item.itemName = _item.itemName;
-        item.itemImage = _item.itemImage;
+        //item.itemImage = _item.itemImage;
         item.itemType = _item.itemType;
         item.itemCount = _item.itemCount;
-        image.sprite = item.itemImage;
+        image.sprite = Resources.Load<Sprite>("ItemImage/" + item.itemName);
     }
 
     public Item GetItem()

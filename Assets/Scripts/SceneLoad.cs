@@ -28,32 +28,31 @@ public class SceneLoad : MonoBehaviour
         yield return null;
         AsyncOperation operation = SceneManager.LoadSceneAsync(loadScene);
         operation.allowSceneActivation = false;
-
+        if (loadType == 0)
+            Debug.Log("새 게임");
+        else if (loadType == 1)
+        {
+            GameObject go = Instantiate(Resources.Load<GameObject>("continueGame"));
+            DontDestroyOnLoad(go);
+        }
         while (!operation.isDone)
         {
             yield return null;
 
-            if (loadType == 0)
-                Debug.Log("새 게임");
-            else if(loadType == 1)
-                Debug.Log("헌 게임");
-
-
+            
+                
             if (progressbar.value < 0.9f)
             {
                 progressbar.value = Mathf.MoveTowards(progressbar.value, 0.9f, Time.deltaTime);
             }
-
             else if(operation.progress >= 0.9f)
             {
                 progressbar.value = Mathf.MoveTowards(progressbar.value, 1f, Time.deltaTime);
             }
-
             if(progressbar.value >= 1f)
             {
                 loadtext.text = "화면을 터치하세요.";
             }
-
             if (Input.GetMouseButton(0) && progressbar.value >= 1f && operation.progress >= 0.9f)
             {
                 operation.allowSceneActivation = true;

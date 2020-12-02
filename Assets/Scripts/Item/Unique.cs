@@ -9,30 +9,24 @@ public enum UniqueName
     ArmorUp,
     SpeedUp,
 };
-public class uniquelist
-{
-    public int itemindex;
-    public bool check;
-    public uniquelist(int _itemindex, bool _check)
-    {
-        itemindex = _itemindex;
-        check = _check;
-    }
-}
 public class Unique : MonoBehaviour
 {
-
+    public static Unique instance;
     Player player;
     Inventory inven;
     
-    public List<uniquelist> uniqueList = new List<uniquelist>();
+    public List<bool> uniqueList = new List<bool>();
+    void Awake()
+    {
+        instance = this;
+    }
     private void Start()
     {
         player = GetComponentInParent<Player>();
         inven = GetComponent<Inventory>();
         for(int i=0; i<4; i++)
         {
-            uniqueList.Add(new uniquelist(-1, false));
+            uniqueList.Add(false);
         }
     }
     private void Update()
@@ -41,6 +35,15 @@ public class Unique : MonoBehaviour
 
 
     }
+    public void SaveUnique()
+    {
+        SaveManager.Save(this);
+    }
+    public void LoadUnique()
+    {
+        SaveData data = SaveManager.Load_unique();
+        uniqueList = data.uniqueList;
+    }
     public void checkUnique()
     {
         for(int i=0; i<inven.uniqueitems.Count; i++)
@@ -48,36 +51,32 @@ public class Unique : MonoBehaviour
             switch (inven.uniqueitems[i].itemCount)
             {
                 case 0:
-                    uniqueList[0].itemindex = i;
-                    if(uniqueList[0].check == false)
+                    if(uniqueList[0] == false)
                     {
                         HealthUp(100);
                     }
-                    uniqueList[0].check = true;
+                    uniqueList[0] = true;
                     break;
                 case 1:
-                    uniqueList[1].itemindex = i;
-                    if (uniqueList[1].check == false)
+                    if (uniqueList[1] == false)
                     {
                         DamageUp(10);
                     }
-                    uniqueList[1].check = true;
+                    uniqueList[1] = true;
                     break;
                 case 2:
-                    uniqueList[2].itemindex = i;
-                    if (uniqueList[2].check == false)
+                    if (uniqueList[2] == false)
                     {
                         ArmorUp(5);
                     }
-                    uniqueList[2].check = true;
+                    uniqueList[2] = true;
                     break;
                 case 3:
-                    uniqueList[3].itemindex = i;
-                    if (uniqueList[3].check == false)
+                    if (uniqueList[3] == false)
                     {
                         SpeedUp(5);
                     }
-                    uniqueList[3].check = true;
+                    uniqueList[3] = true;
                     break;
             }
         }

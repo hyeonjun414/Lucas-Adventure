@@ -84,14 +84,16 @@ public class Player : MonoBehaviour
 
     public void LoadPlayer()
     {
-        SaveData data = SaveManager.Load();
+        SaveData data = SaveManager.Load_Player();
         health = data.health;
+        maxhealth = data.maxhealth;
         level = data.level; //level
         damage = data.damage; // damage
         armor = data.armor; //아머
         coin = data.coin; //코인
         curMapName = data.curMapName; //맵
         Speed = data.Speed; //스피드
+        maxSpeed = data.maxSpeed;
         exp = data.exp;
        
        // transform.position = new Vector3(data.x, data.y);

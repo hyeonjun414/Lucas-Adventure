@@ -19,28 +19,22 @@ public class Inventory : MonoBehaviour
     void Start()
     {
         //기본 장비 지급
-        Item baseItem = new Item(ItemType.Weapon, "regular_sword", 999999, 
-                                 Resources.Load<Sprite>("ItemImage/" + "regular_sword"));
+        Item baseItem = new Item(ItemType.Weapon, "regular_sword", 999999);
         AddItem(baseItem);
         curCoin = 500;
     }
-
-
-    //==============================//
     public void SaveInven()
     {
-        SaveManager.Save_1(this);
+        SaveManager.Save(this);
     }
 
     public void LoadInven()
     {
-        SaveData inven = SaveManager.Load_2();
-        inven.uniqueitems = uniqueitems;
-        inven.curCoin = curCoin;
-        inven.equipWeapon = equipWeapon;
+        SaveData inven = SaveManager.Load_inven();
+        uniqueitems = inven.uniqueitems;
+        curCoin = inven.curCoin;
+        equipWeapon = inven.equipWeapon;
     }
-
-    //==============================//
     public bool AddItem(Item _item)
     {
         if (_item.itemType == ItemType.Weapon)

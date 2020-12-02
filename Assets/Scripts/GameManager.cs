@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
     // UI 연동 끝
     
     Inventory inven;
-
+    Unique unique;
     // 게임매니저 하위 계층
     public ItemDatabase itemDB;
     SoundManager sound;
@@ -70,6 +70,7 @@ public class GameManager : MonoBehaviour
         // 씬에서 오브젝트를 찾아내 연결
         player = FindObjectOfType<Player>();
         inven = Inventory.instance;
+        unique = Unique.instance;
         sound = GetComponentInChildren<SoundManager>();
 
     }
@@ -175,7 +176,8 @@ public class GameManager : MonoBehaviour
             if (inven.equipWeapon[i].itemName != null)
             {
                 //인벤토리의 이미지를 받아와 퀵슬롯과 인벤토리무기슬롯에 업데이트
-                Sprite img = inven.equipWeapon[i].itemImage;
+                Sprite img = Resources.Load<Sprite>("ItemImage/" + inven.equipWeapon[i].itemName);
+                //Sprite img = inven.equipWeapon[i].itemImage;
                 quickSlot[i].sprite = img;
                 quickSlot[i].preserveAspect = true;
                 invenQuickSlot[i].sprite = img;
@@ -190,7 +192,8 @@ public class GameManager : MonoBehaviour
             if (inven.uniqueitems[i].itemName != null)
             {
                 //인벤토리의 이미지를 받아와 퀵슬롯과 인벤토리무기슬롯에 업데이트
-                Sprite img = inven.uniqueitems[i].itemImage;
+                Sprite img = Resources.Load<Sprite>("ItemImage/" + inven.uniqueitems[i].itemName);
+                //Sprite img = inven.uniqueitems[i].itemImage;
                 uniqueSlot[i].sprite = img;
                 uniqueSlot[i].preserveAspect = true;
             }
@@ -222,27 +225,21 @@ public class GameManager : MonoBehaviour
 
         boss = FindObjectOfType<Boss>();
     }
-
-    //==============================//
     
     public void Save()
     {
-        PlayerPrefs.SetFloat("PlayerX", player.transform.position.x); //Player X축 위치
-        PlayerPrefs.SetFloat("PlayerY", player.transform.position.y); //Player Y축 위치
-        PlayerPrefs.SetInt("Health", player.health);
-        PlayerPrefs.Save();
-        
+        PlayerPrefs.SetInt("curArea", curArea);
+        player.SavePlayer();
+        unique.SaveUnique();
+        inven.SaveInven();
     }
 
     public void Load()
     {
-        if (!PlayerPrefs.HasKey("PlayerX"))
-            return;
-        float x = PlayerPrefs.GetFloat("PlayerX");
-        float y = PlayerPrefs.GetFloat("PlayerY");
-        int hp = PlayerPrefs.GetInt("Health");
-        player.transform.position = new Vector3(x, y, 0);
-        player.health = hp;
+        curArea = PlayerPrefs.GetInt("curArea");
+        player.LoadPlayer();
+        unique.LoadUnique();
+        inven.LoadInven();
     }
     
 }

@@ -20,21 +20,6 @@ public class SoundManager : MonoBehaviour
 
     bool findSound = false;
 
-    
-    private void Awake()
-    {
-        
-        
-        
-    }
-
-    private void Start()
-    {
-    }
-    private void Update()
-    {
-        
-    }
     private void LateUpdate()
     {
         if(!findSound)
@@ -48,6 +33,7 @@ public class SoundManager : MonoBehaviour
         }
         
     }
+    // 배경음 제어
     public void SetMusicVolume()
     {
         for(int i=0; i<Bgm.Count; i++)
@@ -64,7 +50,7 @@ public class SoundManager : MonoBehaviour
             bgmVolume = bgmSlider.value;
         }
     }
-
+    // 효과음 제어
     public void SetEffectVolume()
     {
         for (int i = 0; i < Effect.Count; i++)
@@ -81,6 +67,7 @@ public class SoundManager : MonoBehaviour
             eftVolume = eftSlider.value;
         }
     }
+    // 현재 씬의 모든 사운드 소스를 가져와서 효과음과 배경음으로 나눔
     public void FindSound()
     {
         sound = null;
@@ -104,7 +91,7 @@ public class SoundManager : MonoBehaviour
         findSound = true;
         
     }
-
+    // 현재 설정 저장
     public void SetVolume()
     {
         if(findSound){
@@ -115,6 +102,7 @@ public class SoundManager : MonoBehaviour
         }
         
     }
+    // 저장된 설정을 불러와 적용
     public void GetVolume(){
         eftVolume = PlayerPrefs.GetFloat("eftVolume");
         bgmVolume =  PlayerPrefs.GetFloat("bgmVolume");

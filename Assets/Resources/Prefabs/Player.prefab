@@ -137,7 +137,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!58 &779245528229323542
 CircleCollider2D:
@@ -189,7 +189,6 @@ MonoBehaviour:
     itemType: 0
     itemName: 
     itemInfo: 
-    itemImage: {fileID: 0}
     itemCount: 0
     itemValue: 0
   equipWeaponto: {fileID: 0}
@@ -447,6 +446,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57cf711f6da84e141a4c268fa6b38690, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uniqueList: 
 --- !u!1 &6198639278299216397
 GameObject:
   m_ObjectHideFlags: 0

@@ -48,7 +48,6 @@ public class GameManager : MonoBehaviour
     public ItemDatabase itemDB;
     SoundManager sound;
     public ShopBtn itrBtn;
-    public Fade_Manager fm;
     public GameObject ClearMsg;
 
     void Awake()
@@ -102,6 +101,7 @@ public class GameManager : MonoBehaviour
     //전체적인 인게임 UI를 실시간으로 갱신
     void UIupdate()
     {
+        // UI의 텍스트를 현상태에 맞게 갱신
         stageTxt.text = "STAGE " + stage;
 
         playerLevelTxt.text = "Lv." + player.level;
@@ -137,18 +137,15 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < 8; i++)
         {
             if (i < inven.uniqueitems.Count)
-            {
                 uniqueSlot[i].color = new Color(1, 1, 1, inven.uniqueitems[i].itemName != null ? 1 : 0);
-            }
             else
-            {
                 uniqueSlot[i].color = new Color(1, 1, 1, 0);
-            }
         }
     }
     // 조건에 맞으면 스스로 파괴시킴
     void SelfDestroy()
     {
+        // 현재 씬이 시작화면이면 GameManager를 파괴
         if(SceneManager.GetActiveScene().name == "StartScene")
         {
             GMExists = false;
@@ -158,14 +155,11 @@ public class GameManager : MonoBehaviour
     // UI의 상호작용버튼과 상점 패널의 연결
     void IsShop()
     {
+        // 현재 씬이 home 씬이면 home의 shop 오브젝트와 UI를 연결
         if (SceneManager.GetActiveScene().name == "home")
-        {
             itrBtn.ShopPanel = GameObject.Find("ShopUI").transform.Find("Shop Panel").gameObject;
-        }
         else
-        {
             itrBtn.ShopPanel = null;
-        }
     }
     // UI중 퀵슬롯의 이미지와 사용횟수는 갱신
     void quickSlotUpdate()
@@ -175,9 +169,8 @@ public class GameManager : MonoBehaviour
         {
             if (inven.equipWeapon[i].itemName != null)
             {
-                //인벤토리의 이미지를 받아와 퀵슬롯과 인벤토리무기슬롯에 업데이트
+                //UI 슬롯과 인벤토리 정보를 일치시킴
                 Sprite img = Resources.Load<Sprite>("ItemImage/" + inven.equipWeapon[i].itemName);
-                //Sprite img = inven.equipWeapon[i].itemImage;
                 quickSlot[i].sprite = img;
                 quickSlot[i].preserveAspect = true;
                 invenQuickSlot[i].sprite = img;
@@ -191,9 +184,8 @@ public class GameManager : MonoBehaviour
         {
             if (inven.uniqueitems[i].itemName != null)
             {
-                //인벤토리의 이미지를 받아와 퀵슬롯과 인벤토리무기슬롯에 업데이트
+                //UI 슬롯과 인벤토리 정보를 일치시킴
                 Sprite img = Resources.Load<Sprite>("ItemImage/" + inven.uniqueitems[i].itemName);
-                //Sprite img = inven.uniqueitems[i].itemImage;
                 uniqueSlot[i].sprite = img;
                 uniqueSlot[i].preserveAspect = true;
             }
@@ -219,13 +211,14 @@ public class GameManager : MonoBehaviour
         Destroy(player.gameObject);
         Destroy(gameObject);
     }
+    //보스 탐색 루틴
     IEnumerator FindBoss()
     {
-        yield return new WaitForSeconds(1f);
-
+        yield return new WaitForSeconds(0.5f);
         boss = FindObjectOfType<Boss>();
     }
     
+    // 저장
     public void Save()
     {
         PlayerPrefs.SetInt("curArea", curArea);
@@ -234,6 +227,7 @@ public class GameManager : MonoBehaviour
         inven.SaveInven();
     }
 
+    // 저장
     public void Load()
     {
         curArea = PlayerPrefs.GetInt("curArea");

@@ -11351,7 +11351,6 @@ MonoBehaviour:
   player: {fileID: 0}
   startingPoint: {fileID: 0}
   GM: {fileID: 0}
-  fade: {fileID: 0}
   areaNum: 3
 --- !u!114 &724899721 stripped
 MonoBehaviour:
@@ -19170,7 +19169,6 @@ MonoBehaviour:
   player: {fileID: 0}
   startingPoint: {fileID: 0}
   GM: {fileID: 0}
-  fade: {fileID: 0}
   areaNum: 2
 --- !u!114 &1241526602 stripped
 MonoBehaviour:
@@ -19282,7 +19280,6 @@ MonoBehaviour:
   player: {fileID: 0}
   startingPoint: {fileID: 0}
   GM: {fileID: 0}
-  fade: {fileID: 0}
   areaNum: 4
 --- !u!114 &1278803554 stripped
 MonoBehaviour:
@@ -19576,7 +19573,19 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7772778677339269047, guid: aa799645a7b593148a32fa0842d135b5, type: 3}
+    - {fileID: 7772778677214129999, guid: aa799645a7b593148a32fa0842d135b5, type: 3}
+    - {fileID: 7772778676893404217, guid: aa799645a7b593148a32fa0842d135b5, type: 3}
+    - {fileID: 7772778676533875441, guid: aa799645a7b593148a32fa0842d135b5, type: 3}
+    - {fileID: 7772778676214933421, guid: aa799645a7b593148a32fa0842d135b5, type: 3}
+    - {fileID: 7772778676048791356, guid: aa799645a7b593148a32fa0842d135b5, type: 3}
+    - {fileID: 7772778675958278766, guid: aa799645a7b593148a32fa0842d135b5, type: 3}
+    - {fileID: 7772778675857798971, guid: aa799645a7b593148a32fa0842d135b5, type: 3}
+    - {fileID: 7772778677497032325, guid: aa799645a7b593148a32fa0842d135b5, type: 3}
+    - {fileID: 7772778677191556849, guid: aa799645a7b593148a32fa0842d135b5, type: 3}
+    - {fileID: 7772778677080988698, guid: aa799645a7b593148a32fa0842d135b5, type: 3}
+    - {fileID: 7772778676501269671, guid: aa799645a7b593148a32fa0842d135b5, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: aa799645a7b593148a32fa0842d135b5, type: 3}
 --- !u!114 &1575680702 stripped
 MonoBehaviour:
@@ -19791,7 +19800,6 @@ MonoBehaviour:
   player: {fileID: 0}
   startingPoint: {fileID: 0}
   GM: {fileID: 0}
-  fade: {fileID: 0}
   areaNum: 1
 --- !u!114 &1677590540 stripped
 MonoBehaviour:

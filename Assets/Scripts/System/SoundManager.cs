@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class SoundManager : MonoBehaviour
 {
@@ -18,20 +19,16 @@ public class SoundManager : MonoBehaviour
     int activeEft;
     int activeBgm;
 
-    bool findSound = false;
-
+    private void Start()
+    {
+        if(SceneManager.GetActiveScene().name == "StartScene")
+            FindSound();
+    }
     private void LateUpdate()
     {
-        if(!findSound)
-        {
-            FindSound();
-        } 
-        else{
-            SetMusicVolume();
-            SetEffectVolume();
-            SetVolume();
-        }
-        
+        SetMusicVolume();
+        SetEffectVolume();
+        SetVolume();
     }
     // 배경음 제어
     public void SetMusicVolume()
@@ -88,18 +85,15 @@ public class SoundManager : MonoBehaviour
             }
         }
         GetVolume();
-        findSound = true;
         
     }
     // 현재 설정 저장
     public void SetVolume()
     {
-        if(findSound){
-            PlayerPrefs.SetFloat("eftVolume", eftVolume);
-            PlayerPrefs.SetFloat("bgmVolume", bgmVolume);
-            PlayerPrefs.SetInt("activeEft", activeEft);
-            PlayerPrefs.SetInt("activeBgm", activeBgm);
-        }
+        PlayerPrefs.SetFloat("eftVolume", eftVolume);
+        PlayerPrefs.SetFloat("bgmVolume", bgmVolume);
+        PlayerPrefs.SetInt("activeEft", activeEft);
+        PlayerPrefs.SetInt("activeBgm", activeBgm);
         
     }
     // 저장된 설정을 불러와 적용

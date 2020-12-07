@@ -56,10 +56,10 @@ public class Boss : MonoBehaviour
         //지속적으로 체력바의 갱신 애니메이션 상태, 죽음 여부를 판단
         anim.SetBool("isRun", rigid.velocity != Vector2.zero);
         HPbarUpdate();
-        EnemyDie();
+        BossDie();
     }
     
-    void EnemyDie()
+    void BossDie()
     {
         if (isDead)
         {
@@ -159,7 +159,7 @@ public class Boss : MonoBehaviour
                 yield return new WaitForSeconds(1f);
                 //DrawAttack();
                 for(int j = 60; j<300; j+=15){
-                    ShotingWithoutTracing(j);
+                    ShotingAround(j);
                     yield return new WaitForSeconds(0.1f);
                 }
                 //DrawAttackDelete();
@@ -201,7 +201,7 @@ public class Boss : MonoBehaviour
        Rigidbody2D rigidBullet = instantBullet.GetComponent<Rigidbody2D>();
        rigidBullet.velocity = moveVelo * 2;
     }
-    void ShotingWithoutTracing(int angle)
+    void ShotingAround(int angle)
     {
         
         // 탄알을 생성하고 타겟의 위치에 탄알을 일정한 속도로 발사

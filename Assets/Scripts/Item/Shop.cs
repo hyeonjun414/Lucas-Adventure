@@ -38,7 +38,7 @@ public class Shop : MonoBehaviour
         UniqueAdd(ItemType.Unique, "healthUp", 0, 100, "체력 100 증가");
         UniqueAdd(ItemType.Unique, "damageUp", 1, 200, "공격력 10 증가");
         UniqueAdd(ItemType.Unique, "armorUp", 2, 300, "방어력 5 증가");
-        UniqueAdd(ItemType.Unique, "speedUp", 3, 200, "이동속도 2 증가");
+        UniqueAdd(ItemType.Unique, "speedUp", 3, 200, "이동속도 5 증가");
 
         PotionAdd(ItemType.Potion, "HP-Potion1", 0,10, "현재 체력 15 회복");
         PotionAdd(ItemType.Potion, "MP-Potion1", 1,10, "현재 마나 15 회복");

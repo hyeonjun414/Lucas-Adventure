@@ -181,7 +181,6 @@ MonoBehaviour:
   player: {fileID: 0}
   startingPoint: {fileID: 0}
   GM: {fileID: 0}
-  fade: {fileID: 0}
   areaNum: 0
 --- !u!4 &75450238
 Transform:
@@ -213,7 +212,7 @@ GameObject:
   - component: {fileID: 187526776}
   m_Layer: 0
   m_Name: colid
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

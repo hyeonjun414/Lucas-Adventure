@@ -43,9 +43,9 @@ public class Weapon : MonoBehaviour
     {
         // 공격할 때만 무기의 충돌처리를 활성화 시킴
         meleeArea.enabled = true;
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(0.6f);
         meleeArea.enabled = false;
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.4f);
         item.itemCount--;
     }
     public void makeEft(Vector3 vec)
@@ -56,18 +56,5 @@ public class Weapon : MonoBehaviour
         Destroy(go1, 0.5f);
         Destroy(go2, 0.5f);
     }
-    /*private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.tag =="EnemyGFX")
-        {
-            EnemyHit enemy = other.GetComponent<EnemyHit>();
-            if (!enemy.isDamege)
-            {
-                ;
-
-            }
-        }
-            
-    }*/
 
 }

@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 5265401847716401519}
   - component: {fileID: 4563538478155591713}
   - component: {fileID: 8050750868854505203}
-  - component: {fileID: 8130081869632104557}
   - component: {fileID: 2463415889893208615}
   m_Layer: 0
   m_Name: CoinGFX
@@ -28,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4019611908890872139}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.012, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8220115403989457545}
@@ -103,20 +102,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &8130081869632104557
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4019611908890872139}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2fa3ecf710e62a24da0e9f3130275a83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  value: 10
-  pick: 0
 --- !u!82 &2463415889893208615
 AudioSource:
   m_ObjectHideFlags: 0
@@ -225,6 +210,7 @@ GameObject:
   - component: {fileID: 1136187917899325548}
   - component: {fileID: 7209520459648225798}
   - component: {fileID: 6450839082928318922}
+  - component: {fileID: 101419662944707092}
   m_Layer: 0
   m_Name: Coin
   m_TagString: Coin
@@ -276,7 +262,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.15
+  m_Radius: 0.4
 --- !u!50 &6450839082928318922
 Rigidbody2D:
   serializedVersion: 4
@@ -298,3 +284,17 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &101419662944707092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8220115403989457548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fa3ecf710e62a24da0e9f3130275a83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  value: 10
+  pick: 0

@@ -2,12 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum BTNType
-{
-    
-    
-}
-
 public enum BTNShop
 {
     Shop,
@@ -41,9 +35,4 @@ public enum BTNSlot
 {
     Unique,
     Potion,
-}
-
-public class MainUI : MonoBehaviour
-{
-
 }

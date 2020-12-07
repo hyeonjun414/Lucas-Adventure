@@ -221,6 +221,7 @@ public class GameManager : MonoBehaviour
     // 저장
     public void Save()
     {
+        Debug.Log(Application.persistentDataPath);
         PlayerPrefs.SetInt("curArea", curArea);
         player.SavePlayer();
         unique.SaveUnique();
@@ -230,6 +231,7 @@ public class GameManager : MonoBehaviour
     // 저장
     public void Load()
     {
+        Debug.Log(Application.persistentDataPath);
         curArea = PlayerPrefs.GetInt("curArea");
         player.LoadPlayer();
         unique.LoadUnique();

@@ -19,14 +19,7 @@ public class MapTransform : MonoBehaviour
     }
     void Update()
     {
-        if(SceneManager.GetActiveScene().name == "home")
-        {
-            if (areaNum != GM.curArea)
-                coll.enabled = false;
-            else
-                coll.enabled = true;
-
-        }
+        curLevelCheck();
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -34,6 +27,18 @@ public class MapTransform : MonoBehaviour
         {
             MySceneManager.Instance.ChangeScene(transferMapName);
             player.curMapName = transferMapName;
+        }
+    }
+
+    void curLevelCheck()
+    {
+        if (SceneManager.GetActiveScene().name == "home")
+        {
+            if (areaNum != GM.curArea)
+                coll.enabled = false;
+            else
+                coll.enabled = true;
+
         }
     }
 

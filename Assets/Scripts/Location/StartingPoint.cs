@@ -11,6 +11,11 @@ public class StartingPoint : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        SetCameraPosition();
+    }
+    
+    void SetCameraPosition()
+    {
         thePlayer = FindObjectOfType<Player>();
 
         if (startPoint == thePlayer.curMapName)
@@ -18,11 +23,6 @@ public class StartingPoint : MonoBehaviour
             thePlayer.transform.position = gameObject.transform.position;
             //카메라위치
         }
-    }
-    
-    void Update()
-    { 
-    
     }
 
 }

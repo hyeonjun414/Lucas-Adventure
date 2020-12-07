@@ -65,21 +65,6 @@ public class Player : MonoBehaviour
     public void SavePlayer()
     {
         SaveManager.Save(this);
-        /*
-        SaveData save = new SaveData();
-        save.health = health; //hp
-        save.level = level; //level
-        save.damage = damage; // damage
-        save.armor = armor; //아머
-        save.coin = coin; //코인
-        save.exp = exp; //경험치
-        save.curMapName = curMapName; //맵
-        save.Speed = Speed; //스피드
-        save.x = transform.position.x;  //x좌표
-        save.y = transform.position.y;  //y좌표
-
-        SaveManager.Save(save);
-        */
     }
 
     public void LoadPlayer()
@@ -96,25 +81,7 @@ public class Player : MonoBehaviour
         maxSpeed = data.maxSpeed;
         exp = data.exp;
        
-       // transform.position = new Vector3(data.x, data.y);
-
-        /*
-        SaveData save = SaveManager.Load();
-        health = save.health;
-        level = save.level; //level
-        damage = save.damage; // damage
-        armor = save.armor; //아머
-        coin = save.coin; //코인
-        curMapName = save.curMapName; //맵
-        Speed = save.Speed; //스피드
-        exp = save.exp; 
-        transform.position = new Vector3(save.x, save.y);
-        */
     }
-
-    //===============================//11/30
-
-
 
     void Start()
     {

@@ -38,7 +38,7 @@ public class BossHit : MonoBehaviour
             // 피격 코루틴 실행.
             StartCoroutine(OnDamage(reactVec));
             Debug.Log("Melee : " + boss.curHealth);
-            GameObject hudText = Instantiate(damageText, new Vector3(transform.position.x, transform.position.y + 0.5f, 0), Quaternion.identity);
+            GameObject hudText = Instantiate(damageText, new Vector3(transform.position.x, transform.position.y + 0.5f, 10f), Quaternion.identity);
             hudText.GetComponent<DamageText>().damage = damage;
         }
     }

@@ -15,10 +15,4 @@ public class EffectSound : MonoBehaviour
         sound.mute = activesound != 1 ? true : false;
         sound.Play();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }

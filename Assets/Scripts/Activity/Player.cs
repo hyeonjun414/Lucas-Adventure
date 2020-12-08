@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
 
-    private static bool playerExists;
+    public static bool playerExists;
 
     static public Player instance;  //선언된 변수의 값을 공유
    

@@ -18,13 +18,20 @@ public class InGameBtn : MonoBehaviour
     bool activeStatus = false;
     
     public GameObject OptionPanel;
-    
     public void OnBtnClick()
     {
         switch (btntype)
         {
             case BTNInGame.Exit:
-                SceneManager.LoadScene("StartScene");
+                
+                GameObject go = FindObjectOfType<GameManager>().gameObject;
+                GameManager.GMExists = false;
+                Destroy(go);
+                GameObject go2 = FindObjectOfType<Player>().gameObject;
+                Player.playerExists = false;
+                Destroy(go2);
+                MySceneManager.Instance.ChangeScene("StartScene");
+
                 break;
             case BTNInGame.Inventory:
                 activeInventory = !activeInventory;
@@ -40,19 +47,20 @@ public class InGameBtn : MonoBehaviour
                 activeStatus = !activeStatus;
                 StatusPanel.SetActive(activeStatus);
                 break;
-           //=-===============//
-            case BTNInGame.Save:
-                activeStatus = !activeStatus;
-                ManuPanel.SetActive(false);
-                break;
-            case BTNInGame.Load:
-                break;
-           //================//
             case BTNInGame.Option:
                 OptionPanel.SetActive(true);
                 break;
             case BTNInGame.OptionExit:
                 OptionPanel.SetActive(false);
+                break;
+            case BTNInGame.Load:
+                GameObject go3 = FindObjectOfType<GameManager>().gameObject;
+                GameManager.GMExists = false;
+                Destroy(go3);
+                GameObject go4 = FindObjectOfType<Player>().gameObject;
+                Player.playerExists = false;
+                Destroy(go4);
+                SceneLoad.LoadSceneHandle("home", 1);
                 break;
         }
     }

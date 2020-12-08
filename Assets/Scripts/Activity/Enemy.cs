@@ -49,7 +49,7 @@ public class Enemy : MonoBehaviour
             Move();
             Tracing();
         }
-        EnemyDie();
+        if(type != Type.BMonster) EnemyDie();
     }
     void Move()
     {

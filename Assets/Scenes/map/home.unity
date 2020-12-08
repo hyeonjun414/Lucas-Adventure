@@ -19562,16 +19562,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1575680702}
+      objectReference: {fileID: 1492065441}
     - target: {fileID: 7772778676297968835, guid: aa799645a7b593148a32fa0842d135b5,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: Load
+      value: OnBtnClick
       objectReference: {fileID: 0}
     - target: {fileID: 7772778676297968835, guid: aa799645a7b593148a32fa0842d135b5,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7772778676297968835, guid: aa799645a7b593148a32fa0842d135b5,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7772778676297968835, guid: aa799645a7b593148a32fa0842d135b5,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7772778677339269047, guid: aa799645a7b593148a32fa0842d135b5, type: 3}
@@ -19587,6 +19597,29 @@ PrefabInstance:
     - {fileID: 7772778677080988698, guid: aa799645a7b593148a32fa0842d135b5, type: 3}
     - {fileID: 7772778676501269671, guid: aa799645a7b593148a32fa0842d135b5, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: aa799645a7b593148a32fa0842d135b5, type: 3}
+--- !u!1 &1492065440 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7772778676297968837, guid: aa799645a7b593148a32fa0842d135b5,
+    type: 3}
+  m_PrefabInstance: {fileID: 1492065439}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1492065441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1492065440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef25308213c9dcc46ada7c38009bb3c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btntype: 5
+  inventoryPanel: {fileID: 0}
+  ManuPanel: {fileID: 0}
+  StatusPanel: {fileID: 0}
+  OptionPanel: {fileID: 0}
 --- !u!114 &1575680702 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4522539577809990085, guid: aa799645a7b593148a32fa0842d135b5,

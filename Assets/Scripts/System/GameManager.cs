@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager _instance;
-    private static bool GMExists; // 게임매니저가 이미 생성되었는지 확인
+    public static bool GMExists; // 게임매니저가 이미 생성되었는지 확인
     public Player player;
     public Boss boss;
 
@@ -221,11 +221,15 @@ public class GameManager : MonoBehaviour
     // 저장
     public void Save()
     {
-        Debug.Log(Application.persistentDataPath);
-        PlayerPrefs.SetInt("curArea", curArea);
-        player.SavePlayer();
-        unique.SaveUnique();
-        inven.SaveInven();
+        if(SceneManager.GetActiveScene().name == "home")
+        {
+            Debug.Log(Application.persistentDataPath);
+            PlayerPrefs.SetInt("curArea", curArea);
+            player.SavePlayer();
+            unique.SaveUnique();
+            inven.SaveInven();
+        }
+        
     }
 
     // 저장

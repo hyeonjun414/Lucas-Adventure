@@ -87,7 +87,7 @@ MonoBehaviour:
   type: 0
   speed: 5
   maxHealth: 100
-  curHealth: 100
+  curHealth: 50
   damage: 10
   exp: 50
   target: {fileID: 0}

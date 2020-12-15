@@ -39,7 +39,7 @@ public class Enemy : MonoBehaviour
         //적의 행동패턴을 시작
         StartCoroutine("ChangeMovement");
         if(type == Type.Range) //원거리 적은 1초마다 탄알을 발사
-            InvokeRepeating("Shoting", 0, 1);
+            InvokeRepeating("Shoting", 0, 2);
     }
     
     void FixedUpdate()

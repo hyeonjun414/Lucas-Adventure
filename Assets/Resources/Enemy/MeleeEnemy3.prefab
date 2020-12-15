@@ -119,8 +119,10 @@ MonoBehaviour:
   obj: {fileID: 577199625951930826}
   dropitem: {fileID: 4286782481912221681, guid: 04d46d5fae02e9f4d9064ab4ec1b04ed,
     type: 3}
+  Coins: {fileID: 0}
   damageText: {fileID: 6752262327075515371, guid: 92d903407038603458e0849ee45b0054,
     type: 3}
+  isDamege: 0
 --- !u!70 &6794272304199365821
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -225,7 +227,7 @@ MonoBehaviour:
   speed: 5
   maxHealth: 100
   curHealth: 100
-  damage: 10
+  damage: 20
   exp: 50
   target: {fileID: 0}
   Bullet: {fileID: 0}
